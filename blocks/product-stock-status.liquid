@@ -1,0 +1,354 @@
+{%- comment -%}
+  Product Stock Status Block
+
+  - This block is used to display the stock status of a product
+  - This includes two key items (1) the inventory quantity and (2) the inventory transfer notice
+  - Features a sonar animation for in-stock products
+
+  Parameters:
+  - closest.product: The product object (automatically available in blocks)
+  - block: The block object (automatically available in blocks)
+{%- endcomment -%}
+
+{%- liquid
+  assign block_settings = block.settings
+  assign current_variant = closest.product.selected_or_first_available_variant
+  assign product_resource = closest.product
+  
+  assign show_low_inventory_message = false
+  if current_variant.inventory_management == 'shopify'
+    if current_variant.inventory_quantity <= block_settings.inventory_threshold and current_variant.inventory_quantity > 0
+      # If inventory is low, show the low inventory message
+      assign show_low_inventory_message = true
+    endif
+  endif
+
+  # Incoming inventory is only displayed if the following conditions are met:
+  # - Inventory transfer notice is enabled
+  # - If the product is not in stock
+  # - If the product does not have low inventory
+  # - If the product has incoming inventory
+  # - If product inventory is less than or equal to zero and inventory policy is continue
+  # In other words, if the product has low inventory or in stock, don't show the incoming inventory message
+
+  assign oos_and_continue_selling = false
+  if current_variant.inventory_quantity <= 0 and current_variant.inventory_policy == 'continue'
+    assign oos_and_continue_selling = true
+  endif
+
+  assign show_incoming_inventory_message = false
+
+  if block_settings.inventory_transfers_enable and current_variant.incoming and show_low_inventory_message == false and current_variant.available == false
+    assign show_incoming_inventory_message = true
+  endif
+
+  if block_settings.inventory_transfers_enable and oos_and_continue_selling
+    assign show_incoming_inventory_message = true
+  endif
+
+  # Determine if product is in stock (for sonar animation)
+  assign is_in_stock = false
+  if current_variant.inventory_quantity > 0
+    assign is_in_stock = true
+  elsif current_variant.inventory_policy == 'continue'
+    assign is_in_stock = true
+  elsif current_variant.inventory_management != 'shopify' and current_variant != null
+    assign is_in_stock = true
+  endif
+-%}
+
+<div 
+  class="product-block product-block--sales-point spacing-style {% if block_settings.type_preset != '' %}{{ block_settings.type_preset }}{% endif %}"
+  style="{% render 'spacing-style', settings: block_settings %}"
+  {{ block.shopify_attributes }}
+>
+  <ul class="sales-points">
+    <li class="sales-point {% unless current_variant.inventory_quantity > 0 %}hide{% endunless %}">
+      <span class="icon-and-text{% if show_low_inventory_message == true %} inventory--low{% endif %}{% if is_in_stock and show_low_inventory_message == false %} inventory--in-stock{% endif %}">
+        <span class="icon icon--inventory"></span>
+        <span data-product-inventory data-threshold="{{ block_settings.inventory_threshold }}" data-enabled="{{ block_settings.inventory_transfers_enable }}">
+          {%- if show_low_inventory_message -%}
+            {{ 'content.inventory_low_stock_show_count' | t: count: current_variant.inventory_quantity }}
+          {%- else -%}
+            {{ 'content.inventory_in_stock' | t }}
+          {%- endif -%}
+        </span>
+      </span>
+    </li>
+    <li
+      data-incoming-inventory
+      class="sales-point {% unless show_incoming_inventory_message %}hide{% endunless %}"
+      data-enabled="{{ block_settings.inventory_transfers_enable }}"
+    >
+      <span class="icon-and-text">
+        <span class="icon icon--inventory"></span>
+        <span class="js-incoming-text">
+          {%- if current_variant.next_incoming_date -%}
+            {%- assign date = current_variant.next_incoming_date | date: format: 'date' -%}
+            {%- if current_variant.available == false -%}
+              {{ 'content.inventory_will_be_in_stock_after' | t: date: date }}
+            {%- endif -%}
+          {%- else -%}
+            {{ 'content.inventory_waiting_for_stock' | t }}
+          {%- endif -%}
+        </span>
+      </span>
+    </li>
+  </ul>
+</div>
+
+{%- assign variants_with_inventory_tracking = product_resource.variants | where: 'inventory_management', 'shopify' -%}
+
+<script>
+  // Store inventory quantities in JS because they're no longer
+  // available directly in JS when a variant changes.
+  // Have an object that holds all potential products so it works
+  // with quick view or with multiple featured products.
+  window.inventories = window.inventories || {};
+  window.inventories['{{ product_resource.id }}'] = {};
+   {% for variant in variants_with_inventory_tracking %}
+    window.inventories['{{ product_resource.id }}'][{{ variant.id }}] = {
+      'quantity': {{ variant.inventory_quantity | default: 0 }},
+      'policy': '{{ variant.inventory_policy | default: false }}',
+      'incoming': '{{ variant.incoming | default: false }}',
+      'next_incoming_date': {{ variant.next_incoming_date | date: format: 'date' | json }}
+    };
+   {% endfor %}
+</script>
+
+{% comment %}
+  If loaded in quick view, it might be from a JS-loaded function
+  that loads recommended products. If that's the case, the above
+  JS will not set the variant inventory. Add it to an accessible
+  data div to read later instead.
+{% endcomment %}
+<div
+  data-product-id="{{ product_resource.id }}"
+  class="hide js-product-inventory-data"
+  aria-hidden="true"
+>
+  {%- for variant in variants_with_inventory_tracking -%}
+    <div
+      class="js-variant-inventory-data"
+      data-id="{{ variant.id }}"
+      data-quantity="{{ variant.inventory_quantity | default: 0 }}"
+      data-policy="{{ variant.inventory_policy | default: false }}"
+      data-incoming="{{ variant.incoming | default: false }}"
+      data-date="{{ variant.next_incoming_date | date: format: 'date' }}"
+    >
+    </div>
+  {%- endfor -%}
+</div>
+
+{% stylesheet %}
+  .product-block--sales-point {
+    font-size: var(--font-paragraph--size, 1rem);
+    line-height: var(--font-paragraph--line-height, 1.5);
+  }
+
+  .sales-points {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-xs, 0.5rem);
+  }
+
+  .sales-point {
+    display: flex;
+    align-items: center;
+  }
+
+  .sales-point.hide {
+    display: none !important;
+  }
+
+  .icon-and-text {
+    display: flex;
+    align-items: center;
+    gap: var(--padding-xs, 0.5rem);
+  }
+
+  .icon--inventory {
+    position: relative;
+    display: inline-block;
+    width: 0.625rem;
+    height: 0.625rem;
+    flex-shrink: 0;
+  }
+
+  /* Base circle for all inventory icons */
+  .icon--inventory:before {
+    background: var(--color-instock, #54c63a);
+    border-radius: 50%;
+    content: "";
+    height: 0.625rem;
+    left: 0;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    width: 0.625rem;
+    z-index: 2;
+    box-shadow: 0 0 0.5rem rgba(62, 214, 96, 0.5);
+  }
+
+  /* Sonar animation for in-stock products (when not low stock) */
+  .inventory--in-stock .icon--inventory:before {
+    background: var(--color-instock, #3ED660);
+    box-shadow: 0 0 0.5rem rgba(62, 214, 96, 0.5);
+  }
+
+  .inventory--in-stock .icon--inventory:after {
+    background: var(--color-instock, #3ED660);
+    border-radius: 50%;
+    content: "";
+    height: 0.625rem;
+    left: 0;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    width: 0.625rem;
+    z-index: 1;
+    opacity: 0.6;
+    animation: sonar-pulse 2s ease-out infinite;
+  }
+
+  /* Low stock styling */
+  .inventory--low .icon--inventory:before {
+    background: var(--color-lowstock, #EE9441);
+    box-shadow: none;
+  }
+
+  .inventory--low .icon--inventory:after {
+    background: var(--color-lowstock, #EE9441);
+    animation: inventory-pulse 2s linear infinite;
+    animation-delay: 1s;
+  }
+
+  @keyframes inventory-pulse {
+    0% {
+      transform: scale(1);
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 0.3;
+    }
+    100% {
+      transform: scale(3);
+      opacity: 0;
+    }
+  }
+
+  @keyframes sonar-pulse {
+    0% {
+      transform: scale(1);
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 0.3;
+    }
+    100% {
+      transform: scale(3);
+      opacity: 0;
+    }
+  }
+
+  /* Respect prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    .icon--inventory:before,
+    .icon--inventory:after {
+      animation: none;
+    }
+    
+    .inventory--in-stock .icon--inventory:after {
+      display: none;
+    }
+    
+    .inventory--in-stock .icon--inventory:before {
+      box-shadow: 0 0 0.25rem rgba(62, 214, 96, 0.3);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.product_stock_status",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:content.resource_reference_product_stock_status"
+    },
+    {
+      "type": "range",
+      "id": "inventory_threshold",
+      "label": "t:settings.inventory_threshold",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 10
+    },
+    {
+      "type": "checkbox",
+      "id": "inventory_transfers_enable",
+      "label": "t:settings.show_inventory_transfer_notice",
+      "default": false
+    },
+    {
+      "type": "paragraph",
+      "content": "Learn how to create inventory transfers [here](https://help.shopify.com/en/manual/products/inventory/transfers/create-transfer)."
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-start",
+      "label": "t:settings.left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-end",
+      "label": "t:settings.right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.product_stock_status",
+      "category": "t:categories.product"
+    }
+  ]
+}
+{% endschema %}

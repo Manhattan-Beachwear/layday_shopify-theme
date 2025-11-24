@@ -203,6 +203,7 @@ h6 {
 .wrap-text {
   overflow-wrap: break-word;
   word-break: break-word;
+  -webkit-hyphens: auto;
   hyphens: auto;
 }
 
@@ -622,11 +623,15 @@ p:empty {
 }
 
 .user-select-text {
+  /* Add Safari/iOS/Edge support */
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
   user-select: text;
 }
 
 .justify-left {
-  justify-content: left;
+  justify-content: flex-start;
 }
 
 .justify-center {
@@ -1241,6 +1246,7 @@ results-list[initialized] {
 
 .dialog-modal::backdrop {
   transition: backdrop-filter var(--animation-speed) var(--animation-easing);
+  -webkit-backdrop-filter: brightness(1); /* Safari support */
   backdrop-filter: brightness(1);
   background: rgb(var(--backdrop-color-rgb) / var(--backdrop-opacity));
 }
@@ -1311,8 +1317,23 @@ button.shopify-payment-button__button--unbranded {
   padding-inline: var(--button-padding-inline);
 }
 
+.button-hover-effect-lift .button,
+.button-hover-effect-lift .button-secondary,
+.button-hover-effect-scale .button,
+.button-hover-effect-scale .button-secondary,
+.button-hover-effect-subtle-zoom .button,
+.button-hover-effect-subtle-zoom .button-secondary {
+  position: relative;
+  transition: transform var(--hover-transition-duration) var(--hover-transition-timing),
+    color var(--animation-speed) var(--animation-easing), box-shadow var(--animation-speed) var(--animation-easing),
+    background-color var(--animation-speed) var(--animation-easing);
+  will-change: transform;
+  z-index: var(--layer-flat);
+}
+
 .button {
   font-family: var(--button-font-family-primary);
+  font-weight: var(--button-font-weight-primary);
   text-transform: var(--button-text-case-primary);
   border-radius: var(--style-border-radius-buttons-primary);
 }
@@ -1323,12 +1344,14 @@ button.shopify-payment-button__button--unbranded {
 
 .button-secondary {
   font-family: var(--button-font-family-secondary);
+  font-weight: var(--button-font-weight-secondary);
   text-transform: var(--button-text-case-secondary);
   border-radius: var(--style-border-radius-buttons-secondary);
 }
 
 button.shopify-payment-button__button--unbranded {
   font-family: var(--button-font-family-primary);
+  font-weight: var(--button-font-weight-primary);
   text-transform: var(--button-text-case-primary);
 }
 
@@ -1386,6 +1409,29 @@ button.shopify-payment-button__button--unbranded:hover:not([disabled]) {
   --button-color: var(--color-secondary-button-hover-text);
   --button-background-color: var(--color-secondary-button-hover-background);
   --button-border-color: var(--color-secondary-button-hover-border);
+}
+
+@media (any-pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .button-hover-effect-lift .button:hover,
+  .button-hover-effect-lift .button-secondary:hover,
+  .button-hover-effect-lift button.shopify-payment-button__button--unbranded:hover:not([disabled]) {
+    transform: translateY(calc(-1 * var(--hover-lift-amount)));
+    z-index: var(--layer-raised);
+  }
+
+  .button-hover-effect-scale .button:hover,
+  .button-hover-effect-scale .button-secondary:hover,
+  .button-hover-effect-scale button.shopify-payment-button__button--unbranded:hover:not([disabled]) {
+    transform: scale(var(--hover-scale-amount));
+    z-index: var(--layer-raised);
+  }
+
+  .button-hover-effect-subtle-zoom .button:hover,
+  .button-hover-effect-subtle-zoom .button-secondary:hover,
+  .button-hover-effect-subtle-zoom button.shopify-payment-button__button--unbranded:hover:not([disabled]) {
+    transform: scale(var(--hover-subtle-zoom-amount));
+    z-index: var(--layer-raised);
+  }
 }
 
 /* Needed to override the default Shopify styles */
@@ -3054,10 +3100,12 @@ fly-to-cart {
 @keyframes backdropFilter {
   from {
     backdrop-filter: brightness(1);
+    -webkit-backdrop-filter: brightness(1);
   }
 
   to {
     backdrop-filter: brightness(0.75);
+    -webkit-backdrop-filter: brightness(0.75);
   }
 }
 

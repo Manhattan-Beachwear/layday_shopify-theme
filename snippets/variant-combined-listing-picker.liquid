@@ -102,11 +102,16 @@
     endfor
   endif
 
-  # If no products found, don't render
+  # If no products found, set flag to fall back to default variant picker
+  assign should_fallback = false
   if found_products == ''
-    break
+    assign should_fallback = true
   endif
 %}
+
+{% if should_fallback %}
+  {% render 'variant-main-picker', product_resource: product_resource, block: block %}
+{% else %}
 
 
 {% liquid
@@ -1554,6 +1559,7 @@
       </fieldset>
     </form>
   </variant-picker-cl>
+{% endif %}
 {% endif %}
 
 {% stylesheet %}

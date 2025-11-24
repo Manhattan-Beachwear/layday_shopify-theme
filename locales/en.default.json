@@ -184,8 +184,10 @@
       "other": "{{ count }} left"
     },
     "inventory_low_stock": "Low stock",
-    "inventory_in_stock": "In stock",
+    "inventory_in_stock": "In stock, ready to ship",
     "inventory_out_of_stock": "Out of stock",
+    "inventory_will_be_in_stock_after": "Will be in stock after {{ date }}",
+    "inventory_waiting_for_stock": "Waiting for stock",
     "item_count": {
       "one": "{{ count }} item",
       "other": "{{ count }} items"
