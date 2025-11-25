@@ -15,9 +15,9 @@
       "type": "divider",
       "name": "t:names.divider_section",
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-1",
         "section_width": "full-width",
-        "thickness": 1,
+        "thickness": 1.5,
         "corner_radius": "square",
         "width_percent": 100,
         "alignment_horizontal": "center",
