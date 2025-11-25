@@ -293,32 +293,11 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
-            },
-            "social_links_GpxNbx": {
-              "type": "social-links",
-              "name": "t:names.social_media_links",
-              "settings": {
-                "facebook_url": "https://www.facebook.com/creaturesofleisure/",
-                "instagram_url": "https://www.instagram.com/creaturesofleisure/",
-                "youtube_url": "https://www.youtube.com/channel/UCmC7THLAfMOTAYfzFEdy9gQ",
-                "tiktok_url": "",
-                "twitter_url": "",
-                "threads_url": "",
-                "linkedin_url": "",
-                "bluesky_url": "",
-                "snapchat_url": "",
-                "pinterest_url": "",
-                "tumblr_url": "",
-                "vimeo_url": "",
-                "custom_url": ""
-              },
-              "blocks": {}
             }
           },
           "block_order": [
             "text_UfmXtX",
-            "email_signup_bHiGhb",
-            "social_links_GpxNbx"
+            "email_signup_bHiGhb"
           ]
         }
       },
@@ -330,10 +309,10 @@
       "name": "t:names.footer",
       "settings": {
         "section_width": "page-width",
-        "gap": 20,
+        "gap": 34,
         "color_scheme": "scheme-1",
-        "padding-block-start": 36,
-        "padding-block-end": 36
+        "padding-block-start": 100,
+        "padding-block-end": 100
       }
     },
     "utilities": {
