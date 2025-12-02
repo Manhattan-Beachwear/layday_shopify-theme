@@ -401,6 +401,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
+                "image": "shopify://shop_images/ITALO_TEAM_PAGE_20236.jpg",
                 "link": "",
                 "image_ratio": "adapt",
                 "width": "fill",
@@ -487,8 +488,8 @@
                   "type": "button",
                   "name": "t:names.button",
                   "settings": {
-                    "label": "Shop now",
-                    "link": "shopify://collections/all",
+                    "label": "@ italoferreira",
+                    "link": "https://www.instagram.com/italoferreira",
                     "open_in_new_tab": true,
                     "style_class": "button-secondary",
                     "width": "fit-content",
