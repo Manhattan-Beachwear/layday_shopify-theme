@@ -554,6 +554,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
+                "image": "shopify://shop_images/ETHAN_TEAM_PAGE_202316.jpg",
                 "link": "",
                 "image_ratio": "adapt",
                 "width": "fill",
@@ -614,11 +615,11 @@
                 "text_Abwacp": {
                   "type": "text",
                   "settings": {
-                    "text": "<h2>Intentional design</h2>",
+                    "text": "<p>Ethan Ewing</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
-                    "type_preset": "h3",
+                    "type_preset": "h4",
                     "font": "var(--font-body--family)",
                     "font_size": "1rem",
                     "line_height": "normal",
@@ -640,8 +641,8 @@
                   "type": "button",
                   "name": "t:names.button",
                   "settings": {
-                    "label": "Shop now",
-                    "link": "shopify://collections/all",
+                    "label": "@ Ethan_Ewing",
+                    "link": "https://www.instagram.com/ethan_ewing",
                     "open_in_new_tab": true,
                     "style_class": "button-secondary",
                     "width": "fit-content",
