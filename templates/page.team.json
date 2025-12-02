@@ -1052,7 +1052,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/ETHAN_TEAM_PAGE_202316.jpg",
+                "image": "shopify://shop_images/HARRISON_TEAM_PAGE_202320.jpg",
                 "link": "",
                 "image_ratio": "adapt",
                 "width": "fill",
@@ -1113,7 +1113,7 @@
                 "text_yrzm7b": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>Ethan Ewing</p>",
+                    "text": "<p>Harrison Roach</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -1139,8 +1139,8 @@
                   "type": "button",
                   "name": "t:names.button",
                   "settings": {
-                    "label": "@ Ethan_Ewing",
-                    "link": "https://www.instagram.com/ethan_ewing",
+                    "label": "@ harrisonsan",
+                    "link": "https://www.instagram.com/HARRISONSAN",
                     "open_in_new_tab": true,
                     "style_class": "button-secondary",
                     "width": "fit-content",
