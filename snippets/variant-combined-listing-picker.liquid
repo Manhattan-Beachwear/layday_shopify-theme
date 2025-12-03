@@ -1310,24 +1310,51 @@
                   endfor
                 endif
                 
-                # Get featured media for hover preview - prioritize variant's featured media
-                assign featured_media = ''
-                if variant_for_hover != blank and variant_for_hover.featured_media != blank
-                  assign featured_media = variant_for_hover.featured_media
-                elsif variant_image_for_swatch != blank
-                  assign featured_media = variant_image_for_swatch
-                elsif matching_product_for_fallback != '' and matching_product_for_fallback.featured_media != blank
-                  assign featured_media = matching_product_for_fallback.featured_media
+                # Find the product that this color variant belongs to (for hover preview)
+                # For combined listings, each color represents a different product, so we need the product's featured media
+                assign hover_product = matching_product_for_fallback
+                if variant_for_hover != blank
+                  # Find which product this variant belongs to by checking the combo URL
+                  if first_available_variant_url != blank
+                    # Extract product ID from URL or find product by variant
+                    if combined_listings_metafield != blank and combined_listings_metafield.value != blank
+                      for linked_product in combined_listings_metafield.value
+                        # Check if this product's URL matches the variant URL
+                        assign linked_product_url = linked_product.url | append: ''
+                        assign variant_url_base = first_available_variant_url | split: '?' | first
+                        if linked_product_url == variant_url_base or first_available_variant_url contains linked_product_url
+                          assign hover_product = linked_product
+                          break
+                        endif
+                        # Also check by variant ID
+                        for variant in linked_product.variants
+                          if variant.id == variant_for_hover.id
+                            assign hover_product = linked_product
+                            break
+                          endif
+                        endfor
+                        if hover_product != matching_product_for_fallback
+                          break
+                        endif
+                      endfor
+                    endif
+                  endif
                 endif
                 
-                # Get featured media for hover preview - prioritize variant's featured media
+                # Get featured media for hover preview - prioritize product's featured media (main product image)
+                # This ensures we show the correct product image for each color on hover
                 assign featured_media = ''
-                if variant_for_hover != blank and variant_for_hover.featured_media != blank
+                if hover_product != '' and hover_product != matching_product_for_fallback and hover_product.featured_media != blank
+                  # Use the product's featured media (this is the main product image for that color)
+                  assign featured_media = hover_product.featured_media
+                elsif variant_for_hover != blank and variant_for_hover.featured_media != blank
+                  # Fallback to variant's featured media if product media not available
                   assign featured_media = variant_for_hover.featured_media
+                elsif matching_product_for_fallback != '' and matching_product_for_fallback.featured_media != blank
+                  # Use matching product's featured media as fallback
+                  assign featured_media = matching_product_for_fallback.featured_media
                 elsif variant_image_for_swatch != blank
                   assign featured_media = variant_image_for_swatch
-                elsif matching_product_for_fallback != '' and matching_product_for_fallback.featured_media != blank
-                  assign featured_media = matching_product_for_fallback.featured_media
                 endif
               %}
               
@@ -1945,12 +1972,14 @@
 
             {%- liquid
               # Get the actual variant's featured media for hover preview
-              assign hover_media = variant_image_for_swatch
+              # Priority: variant's featured media > product's featured media > variant_image_for_swatch
+              assign hover_media = ''
               if display_product != '' and variant_id != blank
                 assign variant_id_as_number = variant_id | plus: 0
                 assign variant_id_as_string = variant_id | append: ''
                 for variant in display_product.variants
                   if variant.id == variant_id or variant.id == variant_id_as_number or variant.id == variant_id_as_string
+                    # First try variant's featured media
                     if variant.featured_media != blank
                       assign hover_media = variant.featured_media
                     endif
@@ -1958,7 +1987,13 @@
                   endif
                 endfor
               endif
-              # Fallback to variant_image_for_swatch if variant doesn't have featured media
+              
+              # If no variant media, use product's featured media (main product image for that color)
+              if hover_media == blank and display_product != '' and display_product.featured_media != blank
+                assign hover_media = display_product.featured_media
+              endif
+              
+              # Final fallback to variant_image_for_swatch
               if hover_media == blank
                 assign hover_media = variant_image_for_swatch
               endif
