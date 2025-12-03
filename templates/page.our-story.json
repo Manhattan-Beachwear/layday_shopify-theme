@@ -2002,7 +2002,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h3>1997</h3>",
+                "text": "<h3>2017</h3>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -2028,7 +2028,7 @@
               "type": "text",
               "name": "t:names.description",
               "settings": {
-                "text": "<p>Creatures launch into Traction pads made in Perth, Australia with the original Square-Loc pattern.</p>",
+                "text": "<p>Non-Slip Cuff - Just like the name suggests, the Non-Slip Cuff is spongy, light and super secure. It stays comfortably on your ankle without rotating from side to side.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -2150,7 +2150,7 @@
               "type": "text",
               "name": "t:names.description",
               "settings": {
-                "text": "<p>Creatures first Signature team pads are made for the likes of Taj Burrow, Jake Paterson, Luke Egan & Shane Powell.</p>",
+                "text": "<p>Thermo-Lite Technology is first introduced to Creatures of Leisure traction. A lighter, thinner traction which wins SBIA Surf Accessory of the Year in 2019.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
