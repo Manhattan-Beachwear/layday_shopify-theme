@@ -56,6 +56,15 @@
         {%- endif %}
       </legend>
       {%- for product_option_value in product_option.values -%}
+        {%- liquid
+          # Skip option values that are blank, null, or "0"
+          assign option_value_str = product_option_value | append: ''
+          assign should_skip = false
+          if option_value_str == blank or option_value_str == '' or option_value_str == '0'
+            assign should_skip = true
+          endif
+        -%}
+        {%- unless should_skip -%}
         {% if product_option_value.size > longest_value and option_id_attribute %}
           {% assign longest_value = product_option_value.size %}
         {% endif %}
@@ -110,6 +119,7 @@
           {% endif %}
           {% render 'strikethrough-variant', product_option: product_option_value %}
         </label>
+        {%- endunless -%}
       {%- endfor -%}
       {% if option_id_attribute %}
         {% style %}
