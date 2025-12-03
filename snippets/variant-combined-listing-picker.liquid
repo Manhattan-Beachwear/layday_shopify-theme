@@ -42,19 +42,17 @@
   endif
   
   # Get show_swatches setting (priority: block settings > global settings)
-  # Checkbox: true when checked, false when unchecked, blank when not set
+  # Checkbox: true when checked, false when unchecked
+  # Default to true if not explicitly set
   assign show_swatches_setting = true
   if block != blank and block_settings != blank
-    # Directly use the block setting value (will be true, false, or blank)
-    if block_settings.show_swatches == false
-      assign show_swatches_setting = false
-    elsif block_settings.show_swatches == true
-      assign show_swatches_setting = true
+    # Check if show_swatches setting exists (it will be true or false, never blank for checkboxes)
+    # In Shopify, unchecked checkboxes are false, checked are true
+    if block_settings.show_swatches == false or block_settings.show_swatches == true
+      assign show_swatches_setting = block_settings.show_swatches
     endif
-  elsif settings.show_swatches == false
-    assign show_swatches_setting = false
-  elsif settings.show_swatches == true
-    assign show_swatches_setting = true
+  elsif settings.show_swatches == false or settings.show_swatches == true
+    assign show_swatches_setting = settings.show_swatches
   endif
   
   # Get show_size_swatches setting (priority: block settings > global settings)
@@ -1067,7 +1065,7 @@
   >
     <form class="variant-picker-cl-dual__form">
       {% comment %} Color Picker {% endcomment %}
-      {%- if show_swatches_setting -%}
+      {%- if show_swatches_setting == true -%}
         <fieldset class="variant-option variant-option--buttons variant-option--swatches">
         {%- liquid
           # Always show labels on product pages, otherwise respect the setting
@@ -1915,7 +1913,7 @@
   </variant-picker-cl-dual>
 {% elsif sorted_products != '' %}
   {% comment %} SINGLE PICKER MODE: Render color swatches or buttons/dropdowns {% endcomment %}
-  {%- if show_swatches_setting -%}
+  {%- if show_swatches_setting == true -%}
     <swatches-variant-picker-component
       data-product-id="{{ product_resource.id }}"
       data-product-url="{{ product_resource.url }}"
