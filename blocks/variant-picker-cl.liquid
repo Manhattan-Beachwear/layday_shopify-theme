@@ -40,7 +40,7 @@
       "label": "Show size swatches",
       "default": false,
       "info": "When enabled, size variants will be displayed as swatches (only applies to combined listings with size options)",
-      "visible_if": "{{ block.settings.show_swatches == true }}"
+      "visible_if": "{{ block.settings.show_swatches }}"
     },
     {
       "type": "checkbox",
@@ -48,7 +48,7 @@
       "label": "Text labels for swatches",
       "default": false,
       "info": "When enabled, the selected swatch value will be displayed next to the option name",
-      "visible_if": "{{ block.settings.show_swatches == true }}"
+      "visible_if": "{{ block.settings.show_swatches }}"
     },
     {
       "type": "text_alignment",
