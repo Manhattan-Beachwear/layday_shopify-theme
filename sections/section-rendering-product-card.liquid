@@ -17,6 +17,43 @@
   unless url
     assign url = product.url
   endunless
+  
+  # Check if combined listings are enabled and product has combined listing
+  assign enable_combined = section.settings.enable_combined_listings
+  assign has_combined_listing = false
+  assign combined_listings_metafield = product.metafields.custom.combined_listing
+  
+  if enable_combined
+    # Check if product has combined listing (same logic as variant-combined-listing-picker)
+    if combined_listings_metafield != blank and combined_listings_metafield.value != blank
+      assign has_combined_listing = true
+    else
+      # Check if product is referenced in another product's metafield
+      for all_product in collections.all.products
+        if all_product.id != product.id
+          assign check_metafield = all_product.metafields.custom.combined_listing
+          if check_metafield != blank and check_metafield.value != blank
+            assign current_product_found_in_metafield = false
+            for linked_product in check_metafield.value
+              assign linked_product_id = linked_product.id
+              assign current_product_id = product.id
+              assign linked_product_id_as_string = linked_product_id | append: ''
+              assign current_product_id_as_string = current_product_id | append: ''
+              if linked_product_id == current_product_id or linked_product_id_as_string == current_product_id_as_string
+                assign current_product_found_in_metafield = true
+                break
+              endif
+            endfor
+            
+            if current_product_found_in_metafield
+              assign has_combined_listing = true
+              break
+            endif
+          endif
+        endif
+      endfor
+    endif
+  endif
 %}
 
 {%- if settings.transition_to_main_product -%}
@@ -33,7 +70,11 @@
     ref="productCardLink"
   >
     {% render 'variant-quick-add', product_resource: product %}
-    {% render 'variant-swatches', product_resource: product, has_option_selected: true %}
+    {% if has_combined_listing and enable_combined %}
+      {% render 'variant-combined-listing-picker', product_resource: product, block: blank %}
+    {% else %}
+      {% render 'variant-swatches', product_resource: product, has_option_selected: true %}
+    {% endif %}
 
     <product-price>
       {% render 'price', product_resource: product, show_unit_price: true %}
@@ -55,6 +96,17 @@
       "type": "product",
       "id": "product",
       "label": "t:settings.product"
+    },
+    {
+      "type": "header",
+      "content": "Combined Listings"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_combined_listings",
+      "label": "Enable Combined Listings",
+      "default": false,
+      "info": "When enabled, products linked via combined listing metafield will appear as a single product with color variant swatches"
     }
   ]
 }
