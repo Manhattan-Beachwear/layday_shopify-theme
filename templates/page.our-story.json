@@ -997,7 +997,7 @@
               "type": "text",
               "name": "t:names.description",
               "settings": {
-                "text": "<p>We obsess over the details and strive to deliver the best products at the best prices, every time.</p>",
+                "text": "<p>Creatures launch into Traction pads made in Perth, Australia with the original Square-Loc pattern.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -1092,7 +1092,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2>Customer care</h2>",
+                "text": "<h3>1998</h3>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
