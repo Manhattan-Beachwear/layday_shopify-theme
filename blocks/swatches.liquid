@@ -1,37 +1,88 @@
 {%- liquid
   assign block_settings = block.settings
-  for product_option in closest.product.options_with_values
-    assign swatch_count = product_option.values | map: 'swatch' | compact | size
-    
-    # Check if any option values have assets folder files (for backup swatch feature)
-    assign assets_swatch_count = 0
-    assign enable_backup_check = settings.enable_swatch_assets_backup
-    if enable_backup_check == blank
-      assign enable_backup_check = true
-    endif
-    
-    if enable_backup_check
-      for product_option_value in product_option.values
-        if product_option_value.name != blank
-          assign swatch_file_extension = settings.swatch_file_extension | default: 'png'
-          assign color_file_name = product_option_value.name | handle | append: '.' | append: swatch_file_extension
-          if images[color_file_name] != blank
-            assign assets_swatch_count = assets_swatch_count | plus: 1
+  assign product_has_swatches = false
+  
+  # Check if combined listings are enabled (from section or block settings)
+  assign enable_combined = false
+  if section.settings.enable_combined_listings
+    assign enable_combined = true
+  elsif block.settings.enable_combined_listings
+    assign enable_combined = true
+  endif
+  
+  # Check if product has combined listing metafield
+  assign has_combined_listing = false
+  assign combined_listings_metafield = closest.product.metafields.custom.combined_listing
+  
+  if enable_combined
+    # Check if product has combined listing (same logic as variant-combined-listing-picker)
+    if combined_listings_metafield != blank and combined_listings_metafield.value != blank
+      assign has_combined_listing = true
+    else
+      # Check if product is referenced in another product's metafield
+      for all_product in collections.all.products
+        if all_product.id != closest.product.id
+          assign check_metafield = all_product.metafields.custom.combined_listing
+          if check_metafield != blank and check_metafield.value != blank
+            assign current_product_found_in_metafield = false
+            for linked_product in check_metafield.value
+              assign linked_product_id = linked_product.id
+              assign current_product_id = closest.product.id
+              assign linked_product_id_as_string = linked_product_id | append: ''
+              assign current_product_id_as_string = current_product_id | append: ''
+              if linked_product_id == current_product_id or linked_product_id_as_string == current_product_id_as_string
+                assign current_product_found_in_metafield = true
+                break
+              endif
+            endfor
+            
+            if current_product_found_in_metafield
+              assign has_combined_listing = true
+              break
+            endif
           endif
         endif
       endfor
     endif
-    
-    # Use swatches if we have metaobject swatches OR assets folder swatches
-    assign total_swatch_count = swatch_count | plus: assets_swatch_count
+  endif
+  
+  # Only check for regular swatches if not using combined listing picker
+  unless has_combined_listing and enable_combined
+    for product_option in closest.product.options_with_values
+      assign swatch_count = product_option.values | map: 'swatch' | compact | size
+      
+      # Check if any option values have assets folder files (for backup swatch feature)
+      assign assets_swatch_count = 0
+      assign enable_backup_check = settings.enable_swatch_assets_backup
+      if enable_backup_check == blank
+        assign enable_backup_check = true
+      endif
+      
+      if enable_backup_check
+        for product_option_value in product_option.values
+          if product_option_value.name != blank
+            assign swatch_file_extension = settings.swatch_file_extension | default: 'png'
+            assign color_file_name = product_option_value.name | handle | append: '.' | append: swatch_file_extension
+            if images[color_file_name] != blank
+              assign assets_swatch_count = assets_swatch_count | plus: 1
+            endif
+          endif
+        endfor
+      endif
+      
+      # Use swatches if we have metaobject swatches OR assets folder swatches
+      assign total_swatch_count = swatch_count | plus: assets_swatch_count
 
-    if total_swatch_count > 0
-      assign product_has_swatches = true
-    endif
-  endfor
+      if total_swatch_count > 0
+        assign product_has_swatches = true
+      endif
+    endfor
+  endunless
 -%}
 
-{% if product_has_swatches %}
+{% if has_combined_listing and enable_combined %}
+  {% render 'variant-combined-listing-picker', product_resource: closest.product, block: block %}
+{% elsif product_has_swatches %}
   <product-swatches
     data-product-id="{{ closest.product.id }}"
     data-product-url="{{ closest.product.url }}"
