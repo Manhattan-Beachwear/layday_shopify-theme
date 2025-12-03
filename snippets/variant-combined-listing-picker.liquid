@@ -1296,6 +1296,246 @@
 
         {% render 'overflow-list', children: children, ref: 'overflowList', defer: true %}
       </fieldset>
+      
+      {%- liquid
+        # Check if size swatches should be shown
+        assign show_size_swatches = false
+        if block != blank and block.settings.show_size_swatches
+          assign show_size_swatches = true
+        elsif settings.show_size_swatches
+          assign show_size_swatches = true
+        endif
+      -%}
+      
+      {%- if show_size_swatches and unique_sizes != '' and size_option_name != '' -%}
+        <fieldset class="variant-option variant-option--buttons variant-option--swatches">
+          {%- if show_text_labels -%}
+            <legend>
+              {{ size_option_name | escape }}:
+              {%- if current_size_value != blank and current_size_value != '' -%}
+                <span class="variant-option__swatch-value">{{ current_size_value | escape }}</span>
+              {%- endif %}
+            </legend>
+          {%- endif %}
+          {% capture size_children %}
+            {% assign sizes_array = unique_sizes | split: '|||' %}
+            {% for size_value_item in sizes_array %}
+              {%- liquid
+                # Skip option values that are blank, null, 0 (number), "0" (string), or "null" (string)
+                assign size_value_str = size_value_item | append: ''
+                assign should_skip_size = false
+                if size_value_item == blank or size_value_item == 0 or size_value_str == '' or size_value_str == '0' or size_value_str == 'null'
+                  assign should_skip_size = true
+                endif
+              -%}
+              {%- unless should_skip_size -%}
+              {% if size_value_item != blank and size_value_item != '' %}
+                {% liquid
+                  assign is_current_size = false
+                  if size_value_item == current_size_value
+                    assign is_current_size = true
+                  endif
+                  
+                  # Check if this size has any available combinations
+                  # If a color is selected, check combinations with that color
+                  # Otherwise, check all combinations for this size
+                  assign size_is_available = false
+                  if dual_variant_data != ''
+                    assign combinations_check = dual_variant_data | split: '|||'
+                    for combination_entry in combinations_check
+                      if combination_entry != blank and combination_entry != ''
+                        assign combo_parts = combination_entry | split: '|'
+                        if combo_parts.size >= 6
+                          assign combo_size = combo_parts[3] | strip
+                          assign combo_color = combo_parts[2] | strip
+                          assign combo_available = combo_parts[5] | strip
+                          
+                          # Check if this size matches
+                          if combo_size == size_value_item
+                            # If color is selected, only check combinations with that color
+                            if current_color_value != blank and current_color_value != ''
+                              if combo_color == current_color_value and combo_available == 'true'
+                                assign size_is_available = true
+                                break
+                              endif
+                            else
+                              # No color selected, check if any combination with this size is available
+                              if combo_available == 'true'
+                                assign size_is_available = true
+                                break
+                              endif
+                            endif
+                          endif
+                        endif
+                      endif
+                    endfor
+                  endif
+                  
+                  # Find the first available variant for this size to get variant ID and URL
+                  assign first_available_size_variant_id = ''
+                  assign first_available_size_variant_url = ''
+                  assign size_variant_for_hover = ''
+                  if dual_variant_data != '' and size_is_available
+                    assign combinations_check = dual_variant_data | split: '|||'
+                    for combination_entry in combinations_check
+                      if combination_entry != blank and combination_entry != ''
+                        assign combo_parts = combination_entry | split: '|'
+                        if combo_parts.size >= 6
+                          assign combo_size = combo_parts[3] | strip
+                          assign combo_variant_id = combo_parts[1] | strip
+                          assign combo_url = combo_parts[4] | strip
+                          assign combo_available = combo_parts[5] | strip
+                          assign size_value_normalized = size_value_item | strip
+                          
+                          if combo_size == size_value_normalized and combo_available == 'true'
+                            # If color is selected, only use combinations with that color
+                            if current_color_value != blank and current_color_value != ''
+                              assign combo_color = combo_parts[2] | strip
+                              if combo_color == current_color_value
+                                assign first_available_size_variant_id = combo_variant_id
+                                assign first_available_size_variant_url = combo_url
+                                
+                                # Try to find the actual variant object for hover preview
+                                if matching_product_for_fallback != ''
+                                  assign variant_id_as_number = combo_variant_id | plus: 0
+                                  assign variant_id_as_string = combo_variant_id | append: ''
+                                  for variant in matching_product_for_fallback.variants
+                                    if variant.id == variant_id_as_number or variant.id == variant_id_as_string or variant.id == combo_variant_id
+                                      assign size_variant_for_hover = variant
+                                      break
+                                    endif
+                                  endfor
+                                endif
+                                
+                                # If not found in matching product, check all linked products
+                                if size_variant_for_hover == blank
+                                  if combined_listings_metafield != blank and combined_listings_metafield.value != blank
+                                    for linked_product in combined_listings_metafield.value
+                                      assign variant_id_as_number = combo_variant_id | plus: 0
+                                      assign variant_id_as_string = combo_variant_id | append: ''
+                                      for variant in linked_product.variants
+                                        if variant.id == variant_id_as_number or variant.id == variant_id_as_string or variant.id == combo_variant_id
+                                          assign size_variant_for_hover = variant
+                                          break
+                                        endif
+                                      endfor
+                                      if size_variant_for_hover != blank
+                                        break
+                                      endif
+                                    endfor
+                                  endif
+                                endif
+                                
+                                break
+                              endif
+                            else
+                              # No color selected, use first available size
+                              assign first_available_size_variant_id = combo_variant_id
+                              assign first_available_size_variant_url = combo_url
+                              
+                              # Try to find the actual variant object for hover preview
+                              if matching_product_for_fallback != ''
+                                assign variant_id_as_number = combo_variant_id | plus: 0
+                                assign variant_id_as_string = combo_variant_id | append: ''
+                                for variant in matching_product_for_fallback.variants
+                                  if variant.id == variant_id_as_number or variant.id == variant_id_as_string or variant.id == combo_variant_id
+                                    assign size_variant_for_hover = variant
+                                    break
+                                  endif
+                                endfor
+                              endif
+                              
+                              # If not found in matching product, check all linked products
+                              if size_variant_for_hover == blank
+                                if combined_listings_metafield != blank and combined_listings_metafield.value != blank
+                                  for linked_product in combined_listings_metafield.value
+                                    assign variant_id_as_number = combo_variant_id | plus: 0
+                                    assign variant_id_as_string = combo_variant_id | append: ''
+                                    for variant in linked_product.variants
+                                      if variant.id == variant_id_as_number or variant.id == variant_id_as_string or variant.id == combo_variant_id
+                                        assign size_variant_for_hover = variant
+                                        break
+                                      endif
+                                    endfor
+                                    if size_variant_for_hover != blank
+                                      break
+                                    endif
+                                  endfor
+                                endif
+                              endif
+                              
+                              break
+                            endif
+                          endif
+                        endif
+                      endif
+                    endfor
+                  endif
+                  
+                  # Get featured media for hover preview
+                  assign size_featured_media = ''
+                  if size_variant_for_hover != blank and size_variant_for_hover.featured_media != blank
+                    assign size_featured_media = size_variant_for_hover.featured_media
+                  elsif matching_product_for_fallback != '' and matching_product_for_fallback.featured_media != blank
+                    assign size_featured_media = matching_product_for_fallback.featured_media
+                  endif
+                %}
+                
+                <li class="variant-option__swatch">
+                  <label
+                    {% if size_featured_media != blank %}
+                      data-media-id="{{ size_featured_media.id }}"
+                    {% endif %}
+                    data-option-available="{{ size_is_available }}"
+                    class="variant-option__button-label variant-option__button-label--has-swatch swatch-rounded"
+                    {% if size_featured_media != blank %}
+                      on:pointerenter="product-card/previewVariant/{{ size_featured_media.id }}"
+                      on:pointerleave="product-card/resetVariant"
+                    {% endif %}
+                  >
+                    <input
+                      type="radio"
+                      name="{{ size_option_name | escape }}-{{ product_resource.id }}-swatch"
+                      value="{{ size_value_item | escape }}"
+                      aria-label="{{ size_value_item | escape }}"
+                      data-input-id="2-{{ forloop.index0 }}"
+                      {% if size_featured_media != blank %}
+                        data-option-media-id="{{ size_featured_media.id }}"
+                      {% endif %}
+                      data-option-available="{{ size_is_available }}"
+                      {% if first_available_size_variant_url != blank %}
+                        data-connected-product-url="{{ first_available_size_variant_url }}"
+                      {% endif %}
+                      {% if is_current_size %}
+                        checked
+                      {% endif %}
+                      data-available-count="{% if size_is_available %}1{% else %}0{% endif %}"
+                      data-variant-id="{{ first_available_size_variant_id }}"
+                      data-first-available-or-first-variant-id="{{ first_available_size_variant_id }}"
+                    >
+                    <span class="swatch swatch--unscaled" style="--swatch-background: transparent; border: var(--style-border-swatch-width) var(--style-border-swatch-style) var(--color-border);">
+                      <span style="display: inline-block; padding: 4px 8px; font-size: 0.875rem;">{{ size_value_item | escape }}</span>
+                    </span>
+                  </label>
+                </li>
+              {% endif %}
+              {%- endunless -%}
+            {% endfor %}
+            <li
+              slot="more"
+            >
+              <button
+                class="hidden-swatches__count"
+                aria-label="{{ 'actions.show_all_options' | t }}"
+                on:click="/showAllSwatches"
+              ></button>
+            </li>
+          {% endcapture %}
+
+          {% render 'overflow-list', children: size_children, ref: 'overflowListSize', defer: true %}
+        </fieldset>
+      {%- endif -%}
+      
       <script type="application/json">
         {{ product_resource.selected_or_first_available_variant | json }}
       </script>
