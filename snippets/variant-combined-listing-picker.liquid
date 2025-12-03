@@ -42,11 +42,19 @@
   endif
   
   # Get show_swatches setting (priority: block settings > global settings)
+  # Checkbox: true when checked, false when unchecked, blank when not set
   assign show_swatches_setting = true
-  if block != blank and block_settings != blank and block_settings.show_swatches != blank
-    assign show_swatches_setting = block_settings.show_swatches
-  elsif settings.show_swatches != blank
-    assign show_swatches_setting = settings.show_swatches
+  if block != blank and block_settings != blank
+    # Directly use the block setting value (will be true, false, or blank)
+    if block_settings.show_swatches == false
+      assign show_swatches_setting = false
+    elsif block_settings.show_swatches == true
+      assign show_swatches_setting = true
+    endif
+  elsif settings.show_swatches == false
+    assign show_swatches_setting = false
+  elsif settings.show_swatches == true
+    assign show_swatches_setting = true
   endif
   
   # Get show_size_swatches setting (priority: block settings > global settings)

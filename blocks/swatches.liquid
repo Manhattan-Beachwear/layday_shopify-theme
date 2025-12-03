@@ -199,6 +199,13 @@
       "content": "t:content.resource_reference_product_swatches"
     },
     {
+      "type": "checkbox",
+      "id": "show_swatch_text_labels",
+      "label": "Text labels for swatches",
+      "default": false,
+      "info": "When enabled, the selected swatch value will be displayed next to the option name"
+    },
+    {
       "type": "select",
       "id": "product_swatches_alignment",
       "label": "t:settings.alignment",
@@ -293,13 +300,6 @@
       "unit": "px",
       "default": 0,
       "visible_if": "{{ block.settings.hide_padding == false }}"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_swatch_text_labels",
-      "label": "Text labels for swatches",
-      "default": false,
-      "info": "When enabled, the selected swatch value will be displayed next to the option name"
     }
   ],
   "presets": [
