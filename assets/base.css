@@ -1322,7 +1322,9 @@ button.shopify-payment-button__button--unbranded {
 .button-hover-effect-scale .button,
 .button-hover-effect-scale .button-secondary,
 .button-hover-effect-subtle-zoom .button,
-.button-hover-effect-subtle-zoom .button-secondary {
+.button-hover-effect-subtle-zoom .button-secondary,
+.button-hover-effect-shimmer .button,
+.button-hover-effect-shimmer .button-secondary {
   position: relative;
   transition: transform var(--hover-transition-duration) var(--hover-transition-timing),
     color var(--animation-speed) var(--animation-easing), box-shadow var(--animation-speed) var(--animation-easing),
@@ -1434,6 +1436,67 @@ button.shopify-payment-button__button--unbranded:hover:not([disabled]) {
   .button-hover-effect-subtle-zoom button.shopify-payment-button__button--unbranded:hover:not([disabled]) {
     transform: scale(var(--hover-subtle-zoom-amount));
     z-index: var(--layer-raised);
+  }
+}
+
+/* Shimmer effect styles */
+.button-hover-effect-shimmer .button,
+.button-hover-effect-shimmer .button-secondary,
+.button-hover-effect-shimmer button.shopify-payment-button__button--unbranded {
+  overflow: hidden;
+}
+
+.button-hover-effect-shimmer .button::before,
+.button-hover-effect-shimmer .button-secondary::before,
+.button-hover-effect-shimmer button.shopify-payment-button__button--unbranded::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 75%;
+  height: 100%;
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 80%
+  );
+  transform: skewX(-25deg);
+  transition: left 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.button-hover-effect-shimmer .button,
+.button-hover-effect-shimmer .button-secondary,
+.button-hover-effect-shimmer button.shopify-payment-button__button--unbranded {
+  transition: color var(--animation-speed) var(--animation-easing),
+    box-shadow var(--animation-speed) var(--animation-easing),
+    background-color var(--animation-speed) var(--animation-easing),
+    transform 0.1s ease;
+}
+
+.button-hover-effect-shimmer .button:hover,
+.button-hover-effect-shimmer .button-secondary:hover,
+.button-hover-effect-shimmer button.shopify-payment-button__button--unbranded:hover:not([disabled]) {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.button-hover-effect-shimmer .button:active,
+.button-hover-effect-shimmer .button-secondary:active,
+.button-hover-effect-shimmer button.shopify-payment-button__button--unbranded:active:not([disabled]) {
+  transform: scale(0.98);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+@media (any-pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .button-hover-effect-shimmer .button:hover::before,
+  .button-hover-effect-shimmer .button-secondary:hover::before,
+  .button-hover-effect-shimmer button.shopify-payment-button__button--unbranded:hover:not([disabled])::before,
+  .button-hover-effect-shimmer .button:focus-visible::before,
+  .button-hover-effect-shimmer .button-secondary:focus-visible::before,
+  .button-hover-effect-shimmer button.shopify-payment-button__button--unbranded:focus-visible:not([disabled])::before {
+    left: 125%;
   }
 }
 

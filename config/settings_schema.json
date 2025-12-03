@@ -1886,6 +1886,10 @@
           {
             "value": "subtle-zoom",
             "label": "t:options.subtle_zoom"
+          },
+          {
+            "value": "shimmer",
+            "label": "t:options.shimmer"
           }
         ],
         "default": "none",
