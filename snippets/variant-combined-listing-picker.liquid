@@ -1051,14 +1051,20 @@
   >
     <form class="variant-picker-cl-dual__form">
       {% comment %} Color Picker {% endcomment %}
-      <fieldset class="variant-picker-cl-dual__fieldset variant-picker-cl-dual__fieldset--color">
-        <legend>
-          {{ color_option_name | escape }}
-          {%- if current_color_value != blank and current_color_value != '' -%}
-            <span class="variant-picker-cl-dual__swatch-value">{{ current_color_value | escape }}</span>
-          {%- endif %}
-        </legend>
-        <div class="variant-picker-cl-dual__options" data-option-type="color" data-fieldset-index="0">
+      <fieldset class="variant-option variant-option--buttons variant-option--swatches">
+        {%- liquid
+          # Use the show_swatch_text_labels_setting variable set at the top
+          assign show_text_labels = show_swatch_text_labels_setting
+        -%}
+        {%- if show_text_labels -%}
+          <legend>
+            {{ color_option_name | escape }}:
+            {%- if current_color_value != blank and current_color_value != '' -%}
+              <span class="variant-option__swatch-value">{{ current_color_value | escape }}</span>
+            {%- endif %}
+          </legend>
+        {%- endif %}
+        {% capture children %}
           {% assign colors_array = unique_colors | split: '|||' %}
           {% for color_value_item in colors_array %}
             {%- liquid
@@ -1302,63 +1308,104 @@
                 elsif matching_product_for_fallback != '' and matching_product_for_fallback.featured_media != blank
                   assign featured_media = matching_product_for_fallback.featured_media
                 endif
+                
+                # Get featured media for hover preview - prioritize variant's featured media
+                assign featured_media = ''
+                if variant_for_hover != blank and variant_for_hover.featured_media != blank
+                  assign featured_media = variant_for_hover.featured_media
+                elsif variant_image_for_swatch != blank
+                  assign featured_media = variant_image_for_swatch
+                elsif matching_product_for_fallback != '' and matching_product_for_fallback.featured_media != blank
+                  assign featured_media = matching_product_for_fallback.featured_media
+                endif
               %}
               
-              <label
-                class="variant-picker-cl-dual__label{% if has_swatch_to_render %} variant-picker-cl-dual__label--has-swatch{% endif %}{% if is_current_color %} variant-picker-cl-dual__label--current{% endif %}"
-                {% if color_is_available == false %}
-                  data-option-available="false"
-                {% else %}
-                  data-option-available="true"
-                {% endif %}
-              >
-                <input
-                  type="radio"
-                  id="cl-dual-color-{{ section.id }}-{{ block.id }}-{{ color_value_item | handleize }}"
-                  name="color_selection-{{ block.id }}"
-                  value="{{ color_value_item | escape }}"
-                  data-option-type="color"
-                  data-fieldset-index="0"
-                  data-input-index="{{ forloop.index0 }}"
-                  data-previous-checked="false"
+              <li class="variant-option__swatch">
+                <label
+                  {% if featured_media != blank %}
+                    data-media-id="{{ featured_media.id }}"
+                  {% endif %}
                   data-option-available="{{ color_is_available }}"
-                  {% if is_current_color %}
-                    data-current-checked="true"
-                    checked
-                  {% else %}
-                    data-current-checked="false"
+                  class="variant-option__button-label variant-option__button-label--has-swatch swatch-rounded{% if is_current_color %} variant-option__button-label--current{% endif %}"
+                  {% if featured_media != blank %}
+                    on:pointerenter="product-card/previewVariant/{{ featured_media.id }}"
+                    on:pointerleave="product-card/resetVariant"
                   {% endif %}
-                  {% if color_is_available == false %}
-                    aria-disabled="true"
-                  {% endif %}
-                  aria-label="{{ color_value_item | escape }}"
                 >
-                {% if has_swatch_to_render %}
-                  {% if swatch_to_render != blank %}
-                    {% render 'swatch',
-                      swatch: swatch_to_render,
-                      mode: 'unscaled',
-                      option_value_name: option_value_name_for_swatch
-                    %}
+                  <input
+                    type="radio"
+                    id="cl-dual-color-{{ section.id }}-{{ block.id }}-{{ color_value_item | handleize }}"
+                    name="color_selection-{{ block.id }}"
+                    value="{{ color_value_item | escape }}"
+                    data-option-type="color"
+                    data-fieldset-index="0"
+                    data-input-index="{{ forloop.index0 }}"
+                    data-previous-checked="false"
+                    data-option-available="{{ color_is_available }}"
+                    {% if featured_media != blank %}
+                      data-option-media-id="{{ featured_media.id }}"
+                    {% endif %}
+                    {% if first_available_variant_url != blank %}
+                      data-connected-product-url="{{ first_available_variant_url }}"
+                    {% endif %}
+                    {% if is_current_color %}
+                      data-current-checked="true"
+                      checked
+                    {% else %}
+                      data-current-checked="false"
+                    {% endif %}
+                    {% if color_is_available == false %}
+                      aria-disabled="true"
+                    {% endif %}
+                    aria-label="{{ color_value_item | escape }}"
+                    data-available-count="{% if color_is_available %}1{% else %}0{% endif %}"
+                    data-variant-id="{{ first_available_variant_id }}"
+                    data-first-available-or-first-variant-id="{{ first_available_variant_id }}"
+                  >
+                  {% if has_swatch_to_render %}
+                    {% if swatch_to_render != blank %}
+                      {% render 'swatch',
+                        swatch: swatch_to_render,
+                        variant_image: featured_media,
+                        option_value_name: option_value_name_for_swatch,
+                        enable_swatch_assets_backup: swatch_enable_assets_backup,
+                        swatch_file_extension: swatch_file_extension_setting,
+                        show_variant_image: swatch_show_variant_image,
+                        variant_swatch_width: swatch_variant_width
+                      %}
+                    {% else %}
+                      {% render 'swatch',
+                        swatch: blank,
+                        variant_image: featured_media,
+                        option_value_name: option_value_name_for_swatch,
+                        enable_swatch_assets_backup: swatch_enable_assets_backup,
+                        swatch_file_extension: swatch_file_extension_setting,
+                        show_variant_image: swatch_show_variant_image,
+                        variant_swatch_width: swatch_variant_width
+                      %}
+                    {% endif %}
                   {% else %}
-                    {% render 'swatch',
-                      swatch: blank,
-                      variant_image: featured_media,
-                      mode: 'unscaled',
-                      option_value_name: option_value_name_for_swatch
-                    %}
+                    {% if color_is_available == true %}
+                      <span class="variant-picker-cl-dual__pill"></span>
+                    {% endif %}
+                    <span class="variant-picker-cl-dual__text">{{ color_value_item | escape }}</span>
                   {% endif %}
-                {% else %}
-                  {% if color_is_available == true %}
-                    <span class="variant-picker-cl-dual__pill"></span>
-                  {% endif %}
-                  <span class="variant-picker-cl-dual__text">{{ color_value_item | escape }}</span>
-                {% endif %}
-              </label>
+                </label>
+              </li>
             {% endif %}
             {%- endunless -%}
           {% endfor %}
-        </div>
+          <li
+            slot="more"
+          >
+            <button
+              class="hidden-swatches__count"
+              aria-label="{{ 'actions.show_all_options' | t }}"
+              on:click="/showAllSwatches"
+            ></button>
+          </li>
+        {% endcapture %}
+        {% render 'overflow-list', children: children, ref: 'overflowList', defer: true %}
       </fieldset>
       
       {%- liquid
@@ -2193,6 +2240,40 @@
     flex-direction: column;
     gap: var(--padding-lg);
     width: 100%;
+  }
+
+  /* Ensure swatches in dual picker follow global swatch styling */
+  .variant-picker-cl-dual .variant-option--swatches {
+    overflow: visible;
+  }
+
+  .variant-picker-cl-dual .variant-option__swatch {
+    display: inline-block;
+  }
+
+  .variant-picker-cl-dual .variant-option__button-label--has-swatch {
+    --focus-outline-radius: var(--variant-picker-swatch-radius);
+    padding: 0;
+    border: none;
+    display: block;
+    flex-basis: auto;
+    min-height: auto;
+  }
+
+  .variant-picker-cl-dual .variant-option__button-label--has-swatch:hover {
+    outline: var(--focus-outline-width) solid rgb(var(--color-foreground-rgb) / var(--opacity-35-55));
+    outline-offset: var(--focus-outline-offset);
+  }
+
+  .variant-picker-cl-dual .variant-option__button-label--has-swatch:has(:checked) {
+    --focus-outline: var(--focus-outline-width) solid var(--color-foreground);
+    outline: var(--focus-outline);
+    outline-offset: var(--focus-outline-offset);
+  }
+
+  .variant-picker-cl-dual .variant-option__button-label--has-swatch .swatch {
+    pointer-events: none;
+    z-index: 0;
   }
 
   .variant-picker-cl-dual__fieldset {
