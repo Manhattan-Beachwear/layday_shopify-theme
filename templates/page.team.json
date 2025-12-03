@@ -3236,7 +3236,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/MITCH_TEAM_PAGE_202313.jpg",
+                "image": "shopify://shop_images/KOBI_TEAM_PAGE_2023.jpg",
                 "link": "",
                 "image_ratio": "adapt",
                 "width": "fill",
@@ -3297,7 +3297,7 @@
                 "text_wBwXtR": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>Mitch Coleborn</p>",
+                    "text": "<p>Kobi Clements</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
