@@ -470,6 +470,11 @@ p:empty {
   display: none !important;
 }
 
+.hide {
+  /* stylelint-disable-next-line declaration-no-important */
+  display: none !important;
+}
+
 @media screen and (max-width: 749px) {
   .hidden--mobile,
   .mobile\:hidden {
