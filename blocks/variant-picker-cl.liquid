@@ -35,6 +35,22 @@
       "default": true
     },
     {
+      "type": "checkbox",
+      "id": "show_size_swatches",
+      "label": "Show size swatches",
+      "default": false,
+      "info": "When enabled, size variants will be displayed as swatches (only applies to combined listings with size options)",
+      "visible_if": "{{ block.settings.show_swatches == true }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_swatch_text_labels",
+      "label": "Text labels for swatches",
+      "default": false,
+      "info": "When enabled, the selected swatch value will be displayed next to the option name",
+      "visible_if": "{{ block.settings.show_swatches == true }}"
+    },
+    {
       "type": "text_alignment",
       "id": "alignment",
       "label": "t:settings.alignment",
