@@ -1857,7 +1857,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/bodyboarding_1_web_540x_90af27c7-5924-4573-bdad-6b0d1f9e25e2.jpg",
+                "image": "shopify://shop_images/ABOUTweb_SureFire2_360x_eb55081a-a83b-4ee1-9ff9-0ec56c46ab35.webp",
                 "link": "",
                 "image_ratio": "adapt",
                 "width": "fill",
@@ -1979,7 +1979,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/ABOUTweb_Traction2.webp",
+                "image": "shopify://shop_images/ABOUTweb_NonSlip_360x_7cc1f061-eb07-40e5-864f-0993ec38107a.webp",
                 "link": "",
                 "image_ratio": "adapt",
                 "width": "fill",
@@ -2101,7 +2101,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/ABOUTweb_sigTraction.jpg",
+                "image": "shopify://shop_images/ABOUTweb_ThermoLite_360x_3f9575f4-98e1-4261-81b2-9f392d78ae1f.webp",
                 "link": "",
                 "image_ratio": "adapt",
                 "width": "fill",
