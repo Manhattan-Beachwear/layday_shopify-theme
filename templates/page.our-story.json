@@ -828,6 +828,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
+                "image": "shopify://shop_images/bodyboarding_1_web_540x_90af27c7-5924-4573-bdad-6b0d1f9e25e2.jpg",
                 "link": "",
                 "image_ratio": "adapt",
                 "width": "fill",
@@ -949,6 +950,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
+                "image": "shopify://shop_images/ABOUTweb_Traction2.webp",
                 "link": "",
                 "image_ratio": "adapt",
                 "width": "fill",
@@ -1070,6 +1072,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
+                "image": "shopify://shop_images/ABOUTweb_sigTraction.jpg",
                 "link": "",
                 "image_ratio": "adapt",
                 "width": "fill",
