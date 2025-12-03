@@ -135,6 +135,7 @@
             <li class="variant-option__swatch">
               <label
                 data-media-id="{{ featured_media.id }}"
+                data-option-available="{{ product_option_value.available }}"
                 class="variant-option__button-label variant-option__button-label--has-swatch swatch-rounded"
                 on:pointerenter="product-card/previewVariant/{{ featured_media.id }}"
                 on:pointerleave="product-card/resetVariant"
@@ -161,7 +162,7 @@
                 {% render 'swatch',
                   swatch: product_option_value.swatch,
                   variant_image: featured_media,
-                  option_value_name: product_option_value.name,
+                  option_value_name: product_option_value.name
                 %}
                 {% render 'strikethrough-variant', product_option: product_option_value %}
               </label>

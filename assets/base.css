@@ -2201,6 +2201,13 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
   }
 }
 
+/* Reduce opacity for swatches when variant is out of stock */
+.variant-option__button-label--has-swatch:has([data-option-available='false']) .swatch,
+.variant-picker-cl__label--has-swatch:has([data-option-available='false']) .swatch,
+.variant-picker-cl-dual__label--has-swatch:has([data-option-available='false']) .swatch {
+  opacity: var(--opacity-60);
+}
+
 .variant-picker .variant-option--buttons label:has(.swatch) {
   border-radius: var(--variant-picker-swatch-radius);
 }
