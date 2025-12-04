@@ -2,13 +2,15 @@
 {% assign icon_block_class = 'icon-block__media icon-block-' | append: block.id %}
 
 {% capture icon %}
-  {% render 'icon-or-image',
-    icon: block_settings.icon,
-    image_upload: block_settings.image_upload,
-    width: block_settings.width,
-    class_name: icon_block_class,
-    attributes: block.shopify_attributes
-  %}
+  {% if block_settings.icon != 'none' and block_settings.icon != 'divider_stock' and block_settings.icon != 'divider_custom' %}
+    {% render 'icon-or-image',
+      icon: block_settings.icon,
+      image_upload: block_settings.image_upload,
+      width: block_settings.width,
+      class_name: icon_block_class,
+      attributes: block.shopify_attributes
+    %}
+  {% endif %}
 {% endcapture %}
 
 {%- if block_settings.link != blank -%}
@@ -50,6 +52,22 @@
         {
           "value": "none",
           "label": "t:options.none"
+        },
+        {
+          "value": "divider_custom",
+          "label": "━━━ Custom Icons ━━━"
+        },
+        {
+          "value": "australia_map",
+          "label": "t:options.australia_map"
+        },
+        {
+          "value": "b_corp",
+          "label": "t:options.b_corp"
+        },
+        {
+          "value": "divider_stock",
+          "label": "━━━ Stock Icons ━━━"
         },
         {
           "value": "apple",
