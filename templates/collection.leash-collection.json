@@ -118,6 +118,7 @@
               "type": "swatches",
               "name": "t:names.swatches",
               "settings": {
+                "show_swatch_text_labels": false,
                 "product_swatches_alignment": "flex-start",
                 "product_swatches_alignment_mobile": "flex-start",
                 "hide_padding": false,
@@ -152,7 +153,8 @@
         "padding-inline-end": 0,
         "color_scheme": "scheme-1",
         "padding-block-start": 0,
-        "padding-block-end": 32
+        "padding-block-end": 32,
+        "enable_combined_listings": false
       }
     },
     "section_gUwcPP": {
@@ -162,7 +164,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h1>Leashes - Purpose Built</h1>",
+            "text": "<h4>Leashes - Purpose Built</h4>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -253,6 +255,7 @@
           "settings": {
             "image": "shopify://shop_images/RELIANCE20_WEB_IMAGERY__1.jpg",
             "link": "",
+            "hover_scale": false,
             "image_ratio": "square",
             "width": "fill",
             "custom_width": 100,
@@ -541,6 +544,7 @@
               "type": "swatches",
               "name": "t:names.swatches",
               "settings": {
+                "show_swatch_text_labels": false,
                 "product_swatches_alignment": "flex-start",
                 "product_swatches_alignment_mobile": "flex-start",
                 "hide_padding": false,
@@ -578,7 +582,8 @@
         "gap": 28,
         "color_scheme": "scheme-1",
         "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-end": 48,
+        "enable_combined_listings": false
       }
     },
     "section_KcjGgb": {
@@ -589,6 +594,7 @@
           "settings": {
             "image": "shopify://shop_images/RELIANCE20_WEB_IMAGERY__1.jpg",
             "link": "",
+            "hover_scale": false,
             "image_ratio": "square",
             "width": "fill",
             "custom_width": 100,
@@ -877,6 +883,7 @@
               "type": "swatches",
               "name": "t:names.swatches",
               "settings": {
+                "show_swatch_text_labels": false,
                 "product_swatches_alignment": "flex-start",
                 "product_swatches_alignment_mobile": "flex-start",
                 "hide_padding": false,
@@ -914,7 +921,8 @@
         "gap": 28,
         "color_scheme": "scheme-1",
         "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-end": 48,
+        "enable_combined_listings": false
       }
     },
     "section_cH3FnR": {
@@ -925,6 +933,7 @@
           "settings": {
             "image": "shopify://shop_images/LI20006BK_1_1.jpg",
             "link": "",
+            "hover_scale": false,
             "image_ratio": "square",
             "width": "fill",
             "custom_width": 100,
@@ -1213,6 +1222,7 @@
               "type": "swatches",
               "name": "t:names.swatches",
               "settings": {
+                "show_swatch_text_labels": false,
                 "product_swatches_alignment": "flex-start",
                 "product_swatches_alignment_mobile": "flex-start",
                 "hide_padding": false,
@@ -1250,7 +1260,8 @@
         "gap": 28,
         "color_scheme": "scheme-1",
         "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-end": 48,
+        "enable_combined_listings": false
       }
     },
     "section_NbLHrV": {
