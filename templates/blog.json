@@ -50,7 +50,7 @@
               "name": "t:names.title",
               "static": true,
               "settings": {
-                "type_preset": "h2",
+                "type_preset": "paragraph",
                 "font": "var(--font-primary--family)",
                 "font_size": "",
                 "line_height": "normal",
