@@ -220,6 +220,7 @@
               "settings": {
                 "inventory_threshold": 10,
                 "show_inventory_quantity": true,
+                "inventory_transfers_enable": false,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
