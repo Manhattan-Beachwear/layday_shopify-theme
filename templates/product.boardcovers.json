@@ -325,7 +325,7 @@
                 },
                 "group_rnjBEb": {
                   "type": "group",
-                  "name": "t:names.group",
+                  "name": "Designed in Australia",
                   "settings": {
                     "content_direction": "row",
                     "vertical_on_mobile": true,
@@ -367,7 +367,7 @@
                       "type": "icon",
                       "name": "t:names.icon",
                       "settings": {
-                        "icon": "b_corp",
+                        "icon": "australia_map",
                         "width": 48,
                         "link": "",
                         "open_in_new_tab": false
