@@ -16,7 +16,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h3>{{ closest.collection.title }}</h3>",
+            "text": "<h4>{{ closest.collection.title }}</h4>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
