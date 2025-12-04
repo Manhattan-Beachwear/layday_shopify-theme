@@ -934,7 +934,7 @@
             "image": "shopify://shop_images/LI20006BK_1_1.jpg",
             "link": "",
             "hover_scale": false,
-            "image_ratio": "square",
+            "image_ratio": "adapt",
             "width": "fill",
             "custom_width": 100,
             "width_mobile": "fill",
