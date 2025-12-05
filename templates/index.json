@@ -666,7 +666,7 @@
         "carousel_on_mobile": false,
         "max_products": 9,
         "columns": 3,
-        "mobile_columns": "2",
+        "mobile_columns": "1",
         "mobile_card_size": "60cqw",
         "columns_gap": 8,
         "rows_gap": 24,
