@@ -449,23 +449,23 @@ export class ProductCard extends Component {
    */
   #updateBadgeVisibility(event) {
     const badgeContainer = this.querySelector('.product-badges');
-    if (!badgeContainer) return;
+    if (!(badgeContainer instanceof HTMLElement)) return;
 
     // Get availability from the label that triggered the event
     let isAvailable = true;
-    if (event?.target) {
+    if (event?.target instanceof Element) {
       // The event target might be the label itself or a child element
       const label =
         event.target.closest('label[data-option-available]') ||
         (event.target.tagName === 'LABEL' && event.target.hasAttribute('data-option-available') ? event.target : null);
 
-      if (label) {
+      if (label instanceof HTMLElement) {
         const available = label.dataset.optionAvailable;
         isAvailable = available === 'true';
       } else {
         // Fallback: check the input element within the label
         const input = event.target.closest('label')?.querySelector('input[data-option-available]');
-        if (input) {
+        if (input instanceof HTMLElement) {
           isAvailable = input.dataset.optionAvailable === 'true';
         }
       }
@@ -489,18 +489,22 @@ export class ProductCard extends Component {
         soldOutBadge.textContent = this.#getSoldOutText();
         badgeContainer.appendChild(soldOutBadge);
       }
-      soldOutBadge.style.display = 'flex';
+      if (soldOutBadge instanceof HTMLElement) {
+        soldOutBadge.style.display = 'flex';
+      }
 
       // Hide other badges if they exist
       const otherBadges = badgeContainer.querySelectorAll(
         '.product-badges__badge:not(.product-badges__badge--sold-out-preview)'
       );
       otherBadges.forEach((badge) => {
-        badge.style.display = 'none';
+        if (badge instanceof HTMLElement) {
+          badge.style.display = 'none';
+        }
       });
     } else {
       // Hide sold out badge if variant is available
-      if (soldOutBadge) {
+      if (soldOutBadge instanceof HTMLElement) {
         soldOutBadge.style.display = 'none';
       }
 
@@ -509,7 +513,9 @@ export class ProductCard extends Component {
         '.product-badges__badge:not(.product-badges__badge--sold-out-preview)'
       );
       otherBadges.forEach((badge) => {
-        badge.style.display = '';
+        if (badge instanceof HTMLElement) {
+          badge.style.display = '';
+        }
       });
     }
   }
@@ -519,11 +525,11 @@ export class ProductCard extends Component {
    */
   #resetBadgeVisibility() {
     const badgeContainer = this.querySelector('.product-badges');
-    if (!badgeContainer) return;
+    if (!(badgeContainer instanceof HTMLElement)) return;
 
     // Hide the preview sold out badge
     const soldOutBadge = badgeContainer.querySelector('.product-badges__badge--sold-out-preview');
-    if (soldOutBadge) {
+    if (soldOutBadge instanceof HTMLElement) {
       soldOutBadge.style.display = 'none';
     }
 
@@ -532,7 +538,9 @@ export class ProductCard extends Component {
       '.product-badges__badge:not(.product-badges__badge--sold-out-preview)'
     );
     otherBadges.forEach((badge) => {
-      badge.style.display = '';
+      if (badge instanceof HTMLElement) {
+        badge.style.display = '';
+      }
     });
   }
 
@@ -547,7 +555,7 @@ export class ProductCard extends Component {
       return existingBadge.textContent.trim();
     }
     // Try to get from theme translations
-    const themeTranslations = window.Shopify?.theme?.translations;
+    const themeTranslations = /** @type {any} */ (window.Shopify)?.theme?.translations;
     if (themeTranslations?.content?.product_badge_sold_out) {
       return themeTranslations.content.product_badge_sold_out;
     }
@@ -665,7 +673,7 @@ class SwatchesVariantPickerComponent extends VariantPicker {
     // Check if this swatch points to a different product (combined listing)
     const connectedProductUrl = clickedSwatch.dataset.connectedProductUrl;
     const currentProductUrl = this.dataset.productUrl?.split('?')[0];
-    const isDifferentProduct = connectedProductUrl && connectedProductUrl !== currentProductUrl;
+    const isDifferentProduct = Boolean(connectedProductUrl && connectedProductUrl !== currentProductUrl);
 
     // For swatch inputs, check if we need special handling
     if (isSwatchInput && availableCount > 0 && firstAvailableVariantId) {
