@@ -474,8 +474,8 @@
             "border_width": 1,
             "border_opacity": 100,
             "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
+            "padding-block-start": 10,
+            "padding-block-end": 20,
             "padding-inline-start": 0,
             "padding-inline-end": 0
           },
@@ -511,9 +511,9 @@
               "name": "t:names.text",
               "settings": {
                 "text": "<p>Tested in the most intense conditions by the world's best - RELIANCE 2.0 is <strong>BUILT FOR PUNISHMENT</strong>.</p>",
-                "width": "fit-content",
+                "width": "100%",
                 "max_width": "normal",
-                "alignment": "left",
+                "alignment": "center",
                 "type_preset": "rte",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
@@ -525,8 +525,8 @@
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
+                "padding-block-start": 50,
+                "padding-block-end": 50,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
