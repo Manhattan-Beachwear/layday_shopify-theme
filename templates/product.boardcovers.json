@@ -567,6 +567,7 @@
             "size_chart_qGm8dz": {
               "type": "size-chart",
               "name": "Size chart",
+              "disabled": true,
               "settings": {
                 "size_chart": "{{ closest.product.metafields.custom.board_dimensions.value }}",
                 "display_mode": "popover",
