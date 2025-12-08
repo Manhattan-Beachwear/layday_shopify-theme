@@ -59,6 +59,13 @@ input:hover {
   background-color: var(--color-input-hover-background);
 }
 
+iframe {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 /** override ios and firefox defaults */
 select {
   background-color: var(--color-background);
