@@ -69,7 +69,7 @@
     {% comment %} Custom 3rd party scripts {% endcomment %}
      {% comment %}theme-check-disable{% endcomment %}
       <script src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
-      <script>
+      {% comment %} <script>
         var klaviyo = klaviyo || [];
         klaviyo.init({
           account: "W2v6ME",
@@ -103,7 +103,7 @@
           success_text_color: "#1B9500"
           }
         });
-      </script>
+      </script> {% endcomment %}
       <!-- Restyle Klaviyo Button and Hide notifyMeButton -->
       <script>
         document.addEventListener('DOMContentLoaded', () => {
