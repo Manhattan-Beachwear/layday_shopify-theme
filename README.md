@@ -1,5 +1,24 @@
 # Horizon
 
+
+### Theme Customizations
+
+**File**: `theme-customizations.md`
+
+Comprehensive documentation for all customizations made to the Horizon theme, including their purpose, strategy, implementation details, and affected files.
+
+**Key Topics**:
+
+- Combined Listing Variant Picker
+- Custom Accordion Component
+- Custom Disclosure Component
+- Product Custom Property Block
+- Product Title Processing
+- Variant Picker Utilities
+- Cross-references and integration points
+- Maintenance notes and testing considerations
+
+
 [Getting started](#getting-started) |
 [Staying up to date with Horizon changes](#staying-up-to-date-with-horizon-changes) |
 [Developer tools](#developer-tools) |
