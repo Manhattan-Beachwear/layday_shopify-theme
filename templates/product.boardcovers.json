@@ -532,6 +532,37 @@
                   },
                   "blocks": {}
                 },
+                "accordion_row_ffhfyH": {
+                  "type": "_accordion-row",
+                  "name": "t:names.accordion_row",
+                  "settings": {
+                    "heading": "Size Chart",
+                    "open_by_default": false,
+                    "icon": "ruler",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "page_dGEiyk": {
+                      "type": "page",
+                      "name": "t:names.page",
+                      "settings": {
+                        "page": "{{ closest.product.metafields.custom.board_dimensions.value }}",
+                        "inherit_color_scheme": true,
+                        "color_scheme": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "page_dGEiyk"
+                  ]
+                },
                 "accordion_row_UHBiHH": {
                   "type": "_accordion-row",
                   "settings": {
@@ -570,43 +601,12 @@
                   "block_order": [
                     "text_xC7mHC"
                   ]
-                },
-                "accordion_row_ffhfyH": {
-                  "type": "_accordion-row",
-                  "name": "t:names.accordion_row",
-                  "settings": {
-                    "heading": "Size Chart",
-                    "open_by_default": false,
-                    "icon": "ruler",
-                    "width": 20
-                  },
-                  "blocks": {
-                    "page_dGEiyk": {
-                      "type": "page",
-                      "name": "t:names.page",
-                      "settings": {
-                        "page": "{{ closest.product.metafields.custom.board_dimensions.value }}",
-                        "inherit_color_scheme": true,
-                        "color_scheme": "",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "page_dGEiyk"
-                  ]
                 }
               },
               "block_order": [
                 "accordion_row_FwxXxW",
-                "accordion_row_UHBiHH",
-                "accordion_row_ffhfyH"
+                "accordion_row_ffhfyH",
+                "accordion_row_UHBiHH"
               ]
             }
           },
