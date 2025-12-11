@@ -34,44 +34,69 @@
   assign product_card_id = 'product-card-link-' | append: block.id | append: '-' | append: product.id
   assign product_card_gap_value = product_card_gap | default: block_settings.product_card_gap
 
+  # Check if combined listings are enabled (from section settings)
+  assign enable_combined = false
+  if section.settings.enable_combined_listings
+    assign enable_combined = true
+  endif
+  
+  # Get combined listing data if enabled
+  assign combined_listings_metafield = product.metafields.custom.combined_listing
+-%}
+
+{%- if enable_combined -%}
+  {%- render 'util-combined-listing-data', product_resource: product, combined_listings_metafield: combined_listings_metafield, enable_combined: enable_combined -%}
+{%- endif -%}
+
+{%- liquid
   # Logic to determine which variant URL to use (matching swatch selection logic)
-  assign variant_to_link = product.selected_or_first_available_variant
-  assign combined_listing_count = product.options_with_values | map: 'values' | map: 'product_url' | compact | size
-  assign no_swatch_selected = null
+  # Use first variant from combined listing if available, otherwise use default logic
+  if has_combined_listing and enable_combined and first_variant != blank
+    assign variant_to_link = first_variant
+  else
+    assign variant_to_link = product.selected_or_first_available_variant
+    assign combined_listing_count = product.options_with_values | map: 'values' | map: 'product_url' | compact | size
+    assign no_swatch_selected = null
 
-  unless combined_listing_count > 0
-    # Simple direct check: which variant owns the featured image?
-    if product.featured_media
-      assign found_variant = false
+    unless combined_listing_count > 0
+      # Simple direct check: which variant owns the featured image?
+      if product.featured_media
+        assign found_variant = false
 
-      for variant in product.variants
-        if variant.featured_media.id == product.featured_media.id
-          assign variant_to_link = variant
-          assign found_variant = true
-          break
-        endif
-      endfor
-
-      # Check if we need to set no_swatch_selected
-      unless found_variant
-        # Featured image is not a variant image
-        # Check if product has swatches
-        for option in product.options_with_values
-          assign swatch_count = option.values | map: 'swatch' | compact | size
-          if swatch_count > 1
-            # Multiple swatches exist but featured image doesn't match any
-            assign no_swatch_selected = true
+        for variant in product.variants
+          if variant.featured_media.id == product.featured_media.id
+            assign variant_to_link = variant
+            assign found_variant = true
             break
           endif
         endfor
-      endunless
-    endif
-  endunless
+
+        # Check if we need to set no_swatch_selected
+        unless found_variant
+          # Featured image is not a variant image
+          # Check if product has swatches
+          for option in product.options_with_values
+            assign swatch_count = option.values | map: 'swatch' | compact | size
+            if swatch_count > 1
+              # Multiple swatches exist but featured image doesn't match any
+              assign no_swatch_selected = true
+              break
+            endif
+          endfor
+        endunless
+      endif
+    endunless
+  endif
 
   if settings.transition_to_main_product
-    assign featured_image = variant_to_link.featured_image
-    if featured_image == blank
-      assign featured_image = product.featured_media.preview_image
+    # Use first variant image from combined listing if available
+    if has_combined_listing and enable_combined and first_variant_image != blank
+      assign featured_image = first_variant_image
+    else
+      assign featured_image = variant_to_link.featured_image
+      if featured_image == blank
+        assign featured_image = product.featured_media.preview_image
+      endif
     endif
 
     if featured_image != blank
@@ -112,7 +137,11 @@
   <a
     id="{{ product_card_id | md5 }}"
     {% unless onboarding %}
-      href="{{ variant_to_link.url }}"
+      {% if has_combined_listing and enable_combined and first_variant_url != blank %}
+        href="{{ first_variant_url }}"
+      {% else %}
+        href="{{ variant_to_link.url }}"
+      {% endif %}
     {% endunless %}
     class="product-card__link"
     ref="productCardLink"

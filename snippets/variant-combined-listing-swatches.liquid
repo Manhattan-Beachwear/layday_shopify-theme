@@ -53,10 +53,24 @@
 
   # Check for combined listings metafield on current product
   assign combined_listings_metafield = product_resource.metafields.custom.combined_listing
-  assign found_products = ''
-  assign source_metafield_product = product_resource
   
-  # If current product has the metafield, use it
+  # Use enable_combined from block/section settings if available, otherwise default to true
+  # (This snippet is only called when combined listings should be enabled)
+  if block != blank and block.settings != blank and block.settings.enable_combined_listings != blank
+    assign enable_combined = block.settings.enable_combined_listings
+  elsif section != blank and section.settings != blank and section.settings.enable_combined_listings != blank
+    assign enable_combined = section.settings.enable_combined_listings
+  else
+    assign enable_combined = true
+  endif
+  
+  # Collect all products from metafield (current + related) with their data
+  # Match the logic from variant-combined-listing-picker: process all products from metafield, then always add current product
+  assign all_products_data = ''
+  assign processed_product_ids = ''
+  
+  # Process products directly from the metafield (same as variant-combined-listing-picker)
+  # Use the metafield value we already verified exists
   if combined_listings_metafield != blank and combined_listings_metafield.value != blank
     for linked_product in combined_listings_metafield.value
       assign linked_product_id = linked_product.id
@@ -64,142 +78,81 @@
       assign linked_product_id_as_string = linked_product_id | append: ''
       assign current_product_id_as_string = current_product_id | append: ''
       
+      # Check if this linked product is already in all_products_data to avoid duplicates
       assign already_added = false
-      if found_products != ''
-        assign found_products_check = found_products | split: ','
-        for check_id in found_products_check
-          assign check_id_as_number = check_id | plus: 0
-          if linked_product_id == check_id or linked_product_id == check_id_as_number or linked_product_id_as_string == check_id
-            assign already_added = true
-            break
+      if all_products_data != ''
+        assign all_products_check = all_products_data | split: ','
+        for check_item in all_products_check
+          assign check_parts = check_item | split: '|'
+          if check_parts.size > 0
+            assign check_id = check_parts[0] | strip
+            assign check_id_as_number = check_id | plus: 0
+            if linked_product_id == check_id or linked_product_id == check_id_as_number or linked_product_id_as_string == check_id
+              assign already_added = true
+              break
+            endif
           endif
         endfor
       endif
       
       unless already_added
-        if found_products == ''
-          assign found_products = linked_product.id
+        if all_products_data == ''
+          assign all_products_data = linked_product_id | append: '|linked'
         else
-          assign found_products = found_products | append: ',' | append: linked_product.id
+          assign all_products_data = all_products_data | append: ',' | append: linked_product_id | append: '|linked'
+        endif
+        if processed_product_ids == ''
+          assign processed_product_ids = linked_product_id
+        else
+          assign processed_product_ids = processed_product_ids | append: ',' | append: linked_product_id
         endif
       endunless
     endfor
-  else
-    # If current product doesn't have the metafield, check if it's referenced in any other product's metafield
-    for all_product in collections.all.products
-      if all_product.id != product_resource.id
-        assign check_metafield = all_product.metafields.custom.combined_listing
-        if check_metafield != blank and check_metafield.value != blank
-          assign current_product_found_in_metafield = false
-          for linked_product in check_metafield.value
-            assign linked_product_id = linked_product.id
-            assign current_product_id = product_resource.id
-            assign linked_product_id_as_string = linked_product_id | append: ''
-            assign current_product_id_as_string = current_product_id | append: ''
-            if linked_product_id == current_product_id or linked_product_id_as_string == current_product_id_as_string
-              assign current_product_found_in_metafield = true
-              break
-            endif
-          endfor
-          
-          if current_product_found_in_metafield
-            assign combined_listings_metafield = check_metafield
-            assign source_metafield_product = all_product
-            for metafield_product in check_metafield.value
-              if found_products == ''
-                assign found_products = metafield_product.id
-              else
-                assign found_products = found_products | append: ',' | append: metafield_product.id
-              endif
-            endfor
-            assign metafield_owner_in_list = false
-            assign found_products_array = found_products | split: ','
-            for product_id_check in found_products_array
-              assign product_id_check_as_number = product_id_check | plus: 0
-              assign all_product_id_as_string = all_product.id | append: ''
-              if all_product.id == product_id_check or all_product.id == product_id_check_as_number or all_product_id_as_string == product_id_check
-                assign metafield_owner_in_list = true
-                break
-              endif
-            endfor
-            unless metafield_owner_in_list
-              if found_products == ''
-                assign found_products = all_product.id
-              else
-                assign found_products = found_products | append: ',' | append: all_product.id
-              endif
-            endunless
+  endif
+  
+  # Always add current product explicitly (ensures it's always included)
+  assign current_product_id_for_data = product_resource.id | append: ''
+  if current_product_id_for_data != blank and current_product_id_for_data != ''
+    # Check if current product is already in the list
+    assign current_already_added = false
+    if all_products_data != ''
+      assign all_products_check_current = all_products_data | split: ','
+      for check_item_current in all_products_check_current
+        assign check_parts_current = check_item_current | split: '|'
+        if check_parts_current.size > 0
+          assign check_id_current = check_parts_current[0] | strip
+          assign check_id_current_as_number = check_id_current | plus: 0
+          if product_resource.id == check_id_current or product_resource.id == check_id_current_as_number or current_product_id_for_data == check_id_current
+            assign current_already_added = true
             break
           endif
         endif
-      endif
-    endfor
-  endif
-
-  # Collect all products from metafield (current + related) with their data
-  assign all_products_data = ''
-  assign processed_product_ids = ''
-  
-  # Process products directly from the metafield
-  if combined_listings_metafield != blank and combined_listings_metafield.value != blank
-    for linked_product in combined_listings_metafield.value
-      assign linked_product_id = linked_product.id
-      assign current_product_id = product_resource.id
-      assign linked_product_id_as_string = linked_product_id | append: ''
-      assign current_product_id_as_string = current_product_id | append: ''
-      assign is_current_product = false
-      
-      if linked_product_id == current_product_id or linked_product_id_as_string == current_product_id_as_string
-        assign is_current_product = true
-      else
-        assign already_processed = false
-        if processed_product_ids != ''
-          assign processed_check = processed_product_ids | split: ','
-          for processed_id in processed_check
-            assign processed_id_as_number = processed_id | plus: 0
-            if linked_product_id == processed_id or linked_product_id == processed_id_as_number or linked_product_id_as_string == processed_id
-              assign already_processed = true
-              break
-            endif
-          endfor
-        endif
-        
-        unless already_processed
-          if all_products_data == ''
-            assign all_products_data = linked_product_id | append: '|similar'
-          else
-            assign all_products_data = all_products_data | append: ',' | append: linked_product_id | append: '|similar'
-          endif
-          if processed_product_ids == ''
-            assign processed_product_ids = linked_product_id
-          else
-            assign processed_product_ids = processed_product_ids | append: ',' | append: linked_product_id
-          endif
-        endunless
-      endif
-    endfor
-  endif
-
-  # Always add current product explicitly
-  assign current_product_id_for_data = product_resource.id | append: ''
-  if current_product_id_for_data != blank and current_product_id_for_data != ''
-    if all_products_data == ''
-      assign all_products_data = current_product_id_for_data | append: '|current'
-    else
-      assign all_products_data = all_products_data | append: ',' | append: current_product_id_for_data | append: '|current'
+      endfor
     endif
+    
+    unless current_already_added
+      if all_products_data == ''
+        assign all_products_data = current_product_id_for_data | append: '|current'
+      else
+        assign all_products_data = all_products_data | append: ',' | append: current_product_id_for_data | append: '|current'
+      endif
+    endunless
   endif
-
-  # Build products array with full data (same logic as variant-combined-listing-picker.liquid)
+  
+  # Build products array with full data (same logic as variant-combined-listing-picker)
   assign products_array = all_products_data | split: ','
   assign products_with_data = ''
-
+  
   for product_data in products_array
+    # Skip empty items
     if product_data != blank and product_data != ''
       assign product_parts = product_data | split: '|'
+      
+      # Handle case where string starts with pipe (first element is empty)
       assign product_id_index = 0
       assign product_type_index = 1
       if product_parts.size > 0 and product_parts[0] == blank or product_parts[0] == ''
+        # First element is empty, shift indices
         assign product_id_index = 1
         assign product_type_index = 2
       endif
@@ -207,25 +160,33 @@
       if product_parts.size > product_type_index
         assign product_id = product_parts[product_id_index] | strip
         assign product_type = product_parts[product_type_index] | strip
+        
+        # Normalize product_type for comparison
         assign product_type_normalized = product_type | downcase | strip
         
+        # If product_id is blank and this is the current product, use product_resource.id
         if product_id == blank or product_id == ''
           if product_type_normalized == 'current'
             assign product_id = product_resource.id
+            assign product_type = 'current'
           endif
         endif
         
         assign product_id_as_number = product_id | plus: 0
-        
+
         # Find the product object
         assign current_product_obj = ''
+        
+        # Use product_resource directly if this is the current product
         if product_type == 'current'
           assign current_product_obj = product_resource
+          # Ensure product_id is set for current product
           if product_id == blank or product_id == ''
             assign product_id = product_resource.id
             assign product_id_as_number = product_id | plus: 0
           endif
         else
+          # Try to find product from metafield first (more reliable)
           if combined_listings_metafield != blank and combined_listings_metafield.value != blank
             for linked_product in combined_listings_metafield.value
               assign linked_product_id = linked_product.id
@@ -237,6 +198,7 @@
             endfor
           endif
           
+          # Fallback: Find product by iterating through all products (if not found in metafield)
           if current_product_obj == ''
             for all_product in collections.all.products
               assign all_product_id_as_string = all_product.id | append: ''
@@ -249,12 +211,14 @@
         endif
 
         if current_product_obj != ''
+          # Get variant to display (selected for current product, first available for others)
           assign variant_to_display = current_product_obj.selected_or_first_available_variant
           if product_type == 'current'
             assign variant_to_display = product_resource.selected_or_first_available_variant
           endif
 
           # Find color option value with swatch if available
+          # Priority: 1) "color" variant option, 2) first available option
           assign color_option_value = ''
           assign color_option_value_name = ''
           assign color_option_name = ''
@@ -265,6 +229,7 @@
             assign option_name_lower = option.name | downcase
             if option_name_lower == 'color'
               assign color_option_name = option.name
+              # Get the color value name from the variant's option value directly
               if option.position == 1
                 assign variant_color_value = variant_to_display.option1
               elsif option.position == 2
@@ -277,6 +242,7 @@
               
               assign color_option_value_name = variant_color_value
               
+              # Check if this option has swatches and find the matching option value
               assign swatch_count = option.values | map: 'swatch' | compact | size
               if swatch_count > 0
                 for product_option_value in option.values
@@ -304,6 +270,7 @@
               elsif first_option.position == 3
                 assign color_option_value_name = variant_to_display.option3
               endif
+              # Check if this option has swatches
               assign swatch_count = first_option.values | map: 'swatch' | compact | size
               if swatch_count > 0
                 for product_option_value in first_option.values
@@ -317,6 +284,7 @@
             endif
           endif
           
+          # Ensure color_option_value_name is never blank - use fallback if needed
           if color_option_value_name == blank or color_option_value_name == ''
             if variant_to_display.title != blank
               assign color_option_value_name = variant_to_display.title
@@ -325,21 +293,26 @@
             endif
           endif
           
+          # Ensure color_option_name is never blank
           if color_option_name == blank or color_option_name == ''
             assign color_option_name = 'Option'
           endif
 
+          # Build product data string: product_id|product_type|variant_id|product_url|product_title|has_swatch|color_option_value_name|color_option_name|is_current|available
           assign is_current = 'false'
           if product_type == 'current'
             assign is_current = 'true'
           endif
 
+          # Use product URL without variant parameter
           assign product_url_clean = current_product_obj.url
+          # Convert boolean to string explicitly
           assign variant_available_string = 'false'
           if variant_to_display.available
             assign variant_available_string = 'true'
           endif
           
+          # Ensure product_id is always set (critical for current product)
           if product_type == 'current'
             assign product_id = product_resource.id
             assign product_id_as_number = product_id | plus: 0
@@ -350,29 +323,8 @@
             endif
           endif
           
-          if product_type == 'current'
-            assign product_id_str = product_resource.id | append: ''
-            if product_id_str == blank or product_id_str == ''
-              assign product_id_str = product_resource.id
-            endif
-          else
-            assign product_id_str = product_id | append: ''
-            if product_id_str == blank or product_id_str == ''
-              assign product_id_str = current_product_obj.id | append: ''
-            endif
-            if product_id_str == blank or product_id_str == ''
-              assign product_id_str = current_product_obj.id
-            endif
-          endif
-          
-          if product_id_str == blank or product_id_str == ''
-            if product_type == 'current'
-              assign product_id_str = product_resource.id
-            else
-              assign product_id_str = current_product_obj.id
-            endif
-          endif
-          
+          # Convert all values to strings
+          assign product_id_str = product_id | append: ''
           assign product_type_str = product_type | append: ''
           assign variant_id_str = variant_to_display.id | append: ''
           assign product_url_str = product_url_clean | append: ''
@@ -383,33 +335,8 @@
           assign is_current_str = is_current | append: ''
           assign available_str = variant_available_string | append: ''
           
-          assign product_type_check = product_type | downcase | strip
-          
-          if product_type_check == 'current'
-            assign final_product_id = product_resource.id
-            if product_id == blank or product_id == ''
-              assign product_id = product_resource.id
-            endif
-          else
-            if product_id != blank and product_id != ''
-              assign final_product_id = product_id
-            else
-              assign final_product_id = current_product_obj.id
-            endif
-          endif
-          
-          assign final_product_id_str = final_product_id | append: ''
-          
-          if final_product_id_str == blank or final_product_id_str == ''
-            if product_type_check == 'current'
-              assign final_product_id_str = product_resource.id
-            else
-              assign final_product_id_str = current_product_obj.id
-            endif
-            assign final_product_id_str = final_product_id_str | append: ''
-          endif
-          
-          assign product_data_string = final_product_id_str | append: '|' | append: product_type_str | append: '|' | append: variant_id_str | append: '|' | append: product_url_str | append: '|' | append: product_title_str | append: '|' | append: has_swatch_str | append: '|' | append: color_value_str | append: '|' | append: color_option_str | append: '|' | append: is_current_str | append: '|' | append: available_str
+          # Build the string: product_id|product_type|variant_id|product_url|product_title|has_swatch|color_option_value_name|color_option_name|is_current|available
+          assign product_data_string = product_id_str | append: '|' | append: product_type_str | append: '|' | append: variant_id_str | append: '|' | append: product_url_str | append: '|' | append: product_title_str | append: '|' | append: has_swatch_str | append: '|' | append: color_value_str | append: '|' | append: color_option_str | append: '|' | append: is_current_str | append: '|' | append: available_str
 
           if products_with_data == ''
             assign products_with_data = product_data_string
@@ -421,14 +348,17 @@
     endif
   endfor
 
-  # Sort products alphabetically by color option value
+  # Sort products alphabetically by color option value (for consistent swatch ordering)
   assign sorted_products_array = products_with_data | split: '|||'
   assign sorted_products = ''
+
+  # Create array of products with their sort keys (color value names, lowercase for case-insensitive sorting)
   assign products_with_sort_keys = ''
-  
   for product_item in sorted_products_array
     if product_item != blank
       assign item_parts = product_item | split: '|'
+      
+      # Handle case where string starts with pipe (first element is empty)
       assign sort_base_index = 0
       if item_parts.size > 0
         assign sort_first_part = item_parts[0] | strip
@@ -437,11 +367,13 @@
         endif
       endif
       
+      # We need at least 10 elements (indices sort_base_index through sort_base_index+9)
       assign sort_min_size = sort_base_index | plus: 10
       if item_parts.size >= sort_min_size
         assign color_value_idx = sort_base_index | plus: 6
         assign color_value = item_parts[color_value_idx] | strip
         
+        # If color_value is blank, fall back to product title for sorting
         if color_value == blank or color_value == ''
           assign product_title_idx = sort_base_index | plus: 4
           if item_parts.size > product_title_idx
@@ -449,8 +381,11 @@
           endif
         endif
         
+        # Ensure we have a value to sort by
         if color_value != blank and color_value != ''
+          # Convert to lowercase for case-insensitive sorting
           assign color_value_lower = color_value | downcase | strip
+          # Format: lowercase_color_value|||SORT|||product_item
           assign sortable_item = color_value_lower | append: '|||SORT|||' | append: product_item
           if products_with_sort_keys == ''
             assign products_with_sort_keys = sortable_item
@@ -462,51 +397,20 @@
     endif
   endfor
 
+  # Sort by the lowercase color value
   assign sorted_with_keys = products_with_sort_keys | split: '|||SEP|||' | sort
 
-  # Deduplicate by color - only keep one product per unique color
-  # Priority: current product > available variants > first variant
-  assign seen_colors = ''
-  assign deduplicated_products = ''
-  assign current_product_color = ''
-  
-  # First, identify the current product's color
-  assign current_variant = product_resource.selected_or_first_available_variant
-  for option in product_resource.options_with_values
-    assign option_name_lower = option.name | downcase
-    if option_name_lower == 'color' or option_name_lower contains 'color'
-      if option.position == 1
-        assign current_product_color = current_variant.option1
-      elsif option.position == 2
-        assign current_product_color = current_variant.option2
-      elsif option.position == 3
-        assign current_product_color = current_variant.option3
-      endif
-      break
-    endif
-  endfor
-  
-  if current_product_color == blank or current_product_color == ''
-    assign first_option = product_resource.options_with_values.first
-    if first_option
-      if first_option.position == 1
-        assign current_product_color = current_variant.option1
-      elsif first_option.position == 2
-        assign current_product_color = current_variant.option2
-      elsif first_option.position == 3
-        assign current_product_color = current_variant.option3
-      endif
-    endif
-  endif
-  
-  # Normalize current product color for comparison
-  assign current_product_color_normalized = current_product_color | downcase | strip
-  
-  # First pass: collect current product if it exists
+  # Extract just the product items (everything after |||SORT|||) and update is_current flag
+  # Check if each swatch's product ID matches the product card's product ID (product_resource.id)
+  # The swatch that matches the product card should be active (is_current = 'true'), all others false
+  assign current_product_id_str = product_resource.id | append: ''
+  assign current_product_id_num = product_resource.id
   for sorted_item in sorted_with_keys
     assign sort_parts = sorted_item | split: '|||SORT|||'
     if sort_parts.size > 1
       assign product_item_original = sort_parts[1]
+      
+      # Parse the item to update is_current flag
       assign item_parts = product_item_original | split: '|'
       assign base_index = 0
       if item_parts.size > 0
@@ -518,131 +422,61 @@
       
       assign min_required_size = base_index | plus: 10
       if item_parts.size >= min_required_size
-        assign is_current_idx = base_index | plus: 8
-        assign is_current = item_parts[is_current_idx] | strip
-        if is_current == 'true'
-          assign color_value_idx = base_index | plus: 6
-          assign color_value = item_parts[color_value_idx] | strip
-          assign color_value_normalized = color_value | downcase | strip
-          
-          if deduplicated_products == ''
-            assign deduplicated_products = product_item_original
-          else
-            assign deduplicated_products = deduplicated_products | append: '|||' | append: product_item_original
-          endif
-          
-          if seen_colors == ''
-            assign seen_colors = color_value_normalized
-          else
-            assign seen_colors = seen_colors | append: '|||' | append: color_value_normalized
-          endif
+        # Get the product ID from this item
+        assign item_product_id_idx = base_index
+        assign item_product_id = item_parts[item_product_id_idx] | strip
+        assign item_product_id_as_number = item_product_id | plus: 0
+        assign item_product_id_str = item_product_id | append: ''
+        
+        # Check if this swatch's product ID matches the product card's product ID
+        assign new_is_current = 'false'
+        if item_product_id == current_product_id_num or item_product_id_as_number == current_product_id_num or item_product_id_str == current_product_id_str
+          assign new_is_current = 'true'
         endif
-      endif
-    endif
-  endfor
-  
-  # Second pass: add other products, skipping colors we've already seen
-  for sorted_item in sorted_with_keys
-    assign sort_parts = sorted_item | split: '|||SORT|||'
-    if sort_parts.size > 1
-      assign product_item_original = sort_parts[1]
-      assign item_parts = product_item_original | split: '|'
-      assign base_index = 0
-      if item_parts.size > 0
-        assign first_part = item_parts[0] | strip
-        if first_part == blank or first_part == ''
-          assign base_index = 1
+        
+        # Rebuild the item with updated is_current flag
+        assign idx0 = base_index
+        assign idx1 = base_index | plus: 1
+        assign idx2 = base_index | plus: 2
+        assign idx3 = base_index | plus: 3
+        assign idx4 = base_index | plus: 4
+        assign idx5 = base_index | plus: 5
+        assign idx6 = base_index | plus: 6
+        assign idx7 = base_index | plus: 7
+        assign idx8 = base_index | plus: 8
+        assign idx9 = base_index | plus: 9
+        
+        assign updated_product_item = item_parts[idx0]
+        assign updated_product_item = updated_product_item | append: '|' | append: item_parts[idx1]
+        assign updated_product_item = updated_product_item | append: '|' | append: item_parts[idx2]
+        assign updated_product_item = updated_product_item | append: '|' | append: item_parts[idx3]
+        assign updated_product_item = updated_product_item | append: '|' | append: item_parts[idx4]
+        assign updated_product_item = updated_product_item | append: '|' | append: item_parts[idx5]
+        assign updated_product_item = updated_product_item | append: '|' | append: item_parts[idx6]
+        assign updated_product_item = updated_product_item | append: '|' | append: item_parts[idx7]
+        assign updated_product_item = updated_product_item | append: '|' | append: new_is_current
+        assign updated_product_item = updated_product_item | append: '|' | append: item_parts[idx9]
+        
+        # Include leading blank if base_index is 1
+        if base_index == 1
+          assign updated_product_item = item_parts[0] | append: '|' | append: updated_product_item
         endif
+      else
+        # If item doesn't have required size, use as-is
+        # Cannot reliably update is_current flag without full data structure
+        assign updated_product_item = product_item_original
       endif
       
-      assign min_required_size = base_index | plus: 10
-      if item_parts.size >= min_required_size
-        assign is_current_idx = base_index | plus: 8
-        assign is_current = item_parts[is_current_idx] | strip
-        assign color_value_idx = base_index | plus: 6
-        assign color_value = item_parts[color_value_idx] | strip
-        assign color_value_normalized = color_value | downcase | strip
-        assign available_idx = base_index | plus: 9
-        assign variant_available = item_parts[available_idx] | strip
-        
-        # Skip if this is the current product (already added) or if we've seen this color
-        assign color_already_seen = false
-        if seen_colors != ''
-          assign seen_colors_array = seen_colors | split: '|||'
-          for seen_color in seen_colors_array
-            if seen_color == color_value_normalized
-              assign color_already_seen = true
-              break
-            endif
-          endfor
-        endif
-        
-        unless is_current == 'true' or color_already_seen
-          # Prefer available variants, but add any variant if no available one exists for this color
-          assign should_add = false
-          assign variant_available_clean = variant_available | strip | downcase
-          if variant_available_clean == 'true'
-            # This is available, add it
-            assign should_add = true
-          else
-            # Check if we already have an available variant for this color
-            assign has_available_for_color = false
-            if deduplicated_products != ''
-              assign existing_products = deduplicated_products | split: '|||'
-              for existing_product in existing_products
-                assign existing_parts = existing_product | split: '|'
-                assign existing_base_index = 0
-                if existing_parts.size > 0
-                  assign existing_first_part = existing_parts[0] | strip
-                  if existing_first_part == blank or existing_first_part == ''
-                    assign existing_base_index = 1
-                  endif
-                endif
-                assign existing_min_size = existing_base_index | plus: 10
-                if existing_parts.size >= existing_min_size
-                  assign existing_color_idx = existing_base_index | plus: 6
-                  assign existing_color = existing_parts[existing_color_idx] | strip
-                  assign existing_color_normalized = existing_color | downcase | strip
-                  assign existing_available_idx = existing_base_index | plus: 9
-                  assign existing_available = existing_parts[existing_available_idx] | strip
-                  assign existing_available_clean = existing_available | strip | downcase
-                  
-                  if existing_color_normalized == color_value_normalized and existing_available_clean == 'true'
-                    assign has_available_for_color = true
-                    break
-                  endif
-                endif
-              endfor
-            endif
-            
-            # Only add if we don't have an available variant for this color yet
-            unless has_available_for_color
-              assign should_add = true
-            endunless
-          endif
-          
-          if should_add
-            if deduplicated_products == ''
-              assign deduplicated_products = product_item_original
-            else
-              assign deduplicated_products = deduplicated_products | append: '|||' | append: product_item_original
-            endif
-            
-            if seen_colors == ''
-              assign seen_colors = color_value_normalized
-            else
-              assign seen_colors = seen_colors | append: '|||' | append: color_value_normalized
-            endif
-          endif
-        endunless
+      if sorted_products == ''
+        assign sorted_products = updated_product_item
+      else
+        assign sorted_products = sorted_products | append: '|||' | append: updated_product_item
       endif
     endif
   endfor
   
-  assign sorted_products = deduplicated_products
-  
-  # Update sorted_products_array to use deduplicated products
-  if sorted_products != ''
+  # Update sorted_products_array
+  if sorted_products != '' and sorted_products != blank
     assign sorted_products_array = sorted_products | split: '|||'
   else
     assign sorted_products_array = ''
@@ -762,6 +596,7 @@
       {%- endif %}
       {% capture children %}
         {% assign final_products = sorted_products | split: '|||' %}
+        
         {% for product_item in final_products %}
           {% if product_item != blank and product_item != '' %}
             {% assign item_parts = product_item | split: '|' %}
@@ -972,8 +807,25 @@
                 endif
                 
                 # Get the featured image URL for the product (for hover preview)
+                # Priority: variant's featured media > product's featured media
                 assign featured_image_url = ''
-                if display_product != '' and display_product.featured_media != blank
+                if display_product != '' and variant_id != blank
+                  assign variant_id_as_number = variant_id | plus: 0
+                  assign variant_id_as_string = variant_id | append: ''
+                  for variant in display_product.variants
+                    if variant.id == variant_id or variant.id == variant_id_as_number or variant.id == variant_id_as_string
+                      if variant.featured_media != blank
+                        if variant.featured_media.preview_image != blank
+                          assign featured_image_url = variant.featured_media.preview_image | image_url: width: 1000
+                        endif
+                      endif
+                      break
+                    endif
+                  endfor
+                endif
+                
+                # Fallback to product's featured media if variant doesn't have one
+                if featured_image_url == blank and display_product != '' and display_product.featured_media != blank
                   if display_product.featured_media.preview_image != blank
                     assign featured_image_url = display_product.featured_media.preview_image | image_url: width: 1000
                   elsif display_product.featured_image != blank
@@ -1049,6 +901,17 @@
                         variant_swatch_width: swatch_variant_width
                       %}
                     {% endif %}
+                    {% unless variant_actually_available %}
+                      <svg
+                        viewBox="0 0 100 46"
+                        preserveAspectRatio="xMidYMid slice"
+                      >
+                        {% # 25deg %}
+                        <line x1="100" y1="0" x2="0" y2="46" vector-effect="non-scaling-stroke" />
+                        {% # duplicate line for motion overlay %}
+                        <line x1="100" y1="0" x2="0" y2="46" vector-effect="non-scaling-stroke" />
+                      </svg>
+                    {% endunless %}
                   {% endif %}
                 </label>
               </li>
@@ -1067,6 +930,7 @@
       {% endcapture %}
       {% render 'overflow-list', children: children, ref: 'overflowList', defer: true %}
     </fieldset>
+    
     <script type="application/json">
       {{ product_resource.selected_or_first_available_variant | json }}
     </script>

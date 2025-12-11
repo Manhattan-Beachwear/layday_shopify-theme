@@ -4,6 +4,7 @@ import { Component } from '@theme/component';
 import { debounce, isDesktopBreakpoint, mediaQueryLarge, requestYieldCallback } from '@theme/utilities';
 import { ThemeEvents, VariantSelectedEvent, VariantUpdateEvent, SlideshowSelectEvent } from '@theme/events';
 import { morph } from '@theme/morph';
+import './combined-listing-group.js';
 
 /**
  * A custom element that displays a product card.
@@ -79,6 +80,9 @@ export class ProductCard extends Component {
     mediaQueryLarge.addEventListener('change', this.#handleQuickAdd);
 
     this.addEventListener('click', this.navigateToProduct);
+
+    // Initialize selected swatch from checked input (for combined listings)
+    this.#initializeSelectedSwatch();
 
     // Preload the next image on the slideshow to avoid white flashes on previewImage
     setTimeout(() => {
@@ -449,33 +453,46 @@ export class ProductCard extends Component {
       }
     }
 
+    // Check if this is a combined listing swatch (different product or has featured image URL)
+    const isCombinedListingSwatch = Boolean(
+      (swatchElement &&
+        swatchElement.dataset.productId &&
+        swatchElement.dataset.productId !== this.dataset.productId) ||
+        (swatchElement &&
+          swatchElement.dataset.productUrl &&
+          this.dataset.productUrl &&
+          swatchElement.dataset.productUrl.split('?')[0] !== this.dataset.productUrl.split('?')[0]) ||
+        featuredImageUrl
+    );
+
     // Try to find the slide with this media ID
     const slide = Array.from(slideshow.slides || []).find((s) => s.getAttribute('slide-id') === idStr);
 
-    if (slide) {
-      // Slide exists in current product - select it
-      slideshow.select({ id: idStr }, undefined, { animate: false });
-    } else if (connectedProductUrl && featuredImageUrl) {
-      // This is a combined listing - different product
+    // For combined listings, always update the image even if a slide exists
+    // (the slide might be from a different product)
+    if (isCombinedListingSwatch && featuredImageUrl) {
+      // This is a combined listing - update image and URL
       // Store original URL if not already stored
       if (!this.#originalProductUrl) {
         this.#originalProductUrl = this.refs.productCardLink.href;
       }
 
-      // Update the product card link URL to point to the connected product
-      this.refs.productCardLink.href = connectedProductUrl;
+      // Update the product card link URL if we have a connected product URL
+      if (connectedProductUrl) {
+        this.refs.productCardLink.href = connectedProductUrl;
 
-      // Also update other links if they exist
-      const { cardGalleryLink, productTitleLink } = this.refs;
-      if (cardGalleryLink instanceof HTMLAnchorElement) {
-        cardGalleryLink.href = connectedProductUrl;
-      }
-      if (productTitleLink instanceof HTMLAnchorElement) {
-        productTitleLink.href = connectedProductUrl;
+        // Also update other links if they exist
+        const { cardGalleryLink, productTitleLink } = this.refs;
+        if (cardGalleryLink instanceof HTMLAnchorElement) {
+          cardGalleryLink.href = connectedProductUrl;
+        }
+        if (productTitleLink instanceof HTMLAnchorElement) {
+          productTitleLink.href = connectedProductUrl;
+        }
       }
 
       // Update the current slide's image if we have a featured image URL
-      if (featuredImageUrl && slideshow.slides && slideshow.slides.length > 0) {
+      if (slideshow.slides && slideshow.slides.length > 0) {
         const currentSlide = slideshow.slides[slideshow.current || 0];
         if (currentSlide) {
           const img = currentSlide.querySelector('img');
@@ -486,25 +503,24 @@ export class ProductCard extends Component {
             }
 
             // Update the image source
-            if (featuredImageUrl) {
-              img.src = featuredImageUrl;
-              img.srcset = featuredImageUrl;
-            }
+            img.src = featuredImageUrl;
+            img.srcset = featuredImageUrl;
             // Also update any picture source elements
-            if (featuredImageUrl) {
-              const picture = currentSlide.querySelector('picture');
-              if (picture) {
-                const sources = picture.querySelectorAll('source');
-                sources.forEach((source) => {
-                  if (source instanceof HTMLSourceElement && source.srcset) {
-                    source.srcset = featuredImageUrl;
-                  }
-                });
-              }
+            const picture = currentSlide.querySelector('picture');
+            if (picture) {
+              const sources = picture.querySelectorAll('source');
+              sources.forEach((source) => {
+                if (source instanceof HTMLSourceElement && source.srcset) {
+                  source.srcset = featuredImageUrl;
+                }
+              });
             }
           }
         }
       }
+    } else if (slide) {
+      // Slide exists in current product - select it
+      slideshow.select({ id: idStr }, undefined, { animate: false });
     } else {
       // Regular variant preview - try to select the slide
       slideshow.select({ id: idStr }, undefined, { animate: false });
@@ -560,23 +576,7 @@ export class ProductCard extends Component {
 
     if (!slideshow) return;
 
-    // Restore original URL if it was changed (combined listing hover)
-    if (this.#originalProductUrl) {
-      this.refs.productCardLink.href = this.#originalProductUrl;
-
-      // Also restore other links if they exist
-      const { cardGalleryLink, productTitleLink } = this.refs;
-      if (cardGalleryLink instanceof HTMLAnchorElement) {
-        cardGalleryLink.href = this.#originalProductUrl;
-      }
-      if (productTitleLink instanceof HTMLAnchorElement) {
-        productTitleLink.href = this.#originalProductUrl;
-      }
-
-      this.#originalProductUrl = null;
-    }
-
-    // If there's a selected swatch (clicked), restore to that instead of original
+    // If there's a selected swatch (clicked or checked on load), restore to that instead of original
     if (this.#selectedSwatchImageUrl && slideshow.slides && slideshow.slides.length > 0) {
       const currentSlide = slideshow.slides[slideshow.current || 0];
       if (currentSlide) {
@@ -612,6 +612,22 @@ export class ProductCard extends Component {
       this.#originalImageSrc = null;
       this.#originalProductUrl = null;
       return;
+    }
+
+    // Restore original URL if it was changed (combined listing hover, no selection)
+    if (this.#originalProductUrl) {
+      this.refs.productCardLink.href = this.#originalProductUrl;
+
+      // Also restore other links if they exist
+      const { cardGalleryLink, productTitleLink } = this.refs;
+      if (cardGalleryLink instanceof HTMLAnchorElement) {
+        cardGalleryLink.href = this.#originalProductUrl;
+      }
+      if (productTitleLink instanceof HTMLAnchorElement) {
+        productTitleLink.href = this.#originalProductUrl;
+      }
+
+      this.#originalProductUrl = null;
     }
 
     // Restore original image if it was changed (combined listing hover, no selection)
@@ -673,6 +689,102 @@ export class ProductCard extends Component {
   setSelectedSwatch(imageUrl, productUrl) {
     this.#selectedSwatchImageUrl = imageUrl;
     this.#selectedSwatchProductUrl = productUrl;
+  }
+
+  /**
+   * Initializes the selected swatch from the checked input on page load.
+   * This ensures the first swatch (alphabetically) is set as the selected swatch.
+   */
+  #initializeSelectedSwatch() {
+    // Find the checked swatch input
+    const checkedInput = this.querySelector('input[type="radio"]:checked[data-featured-image-url]');
+    if (checkedInput instanceof HTMLInputElement) {
+      const featuredImageUrl = checkedInput.dataset.featuredImageUrl;
+      const mediaId = checkedInput.dataset.optionMediaId;
+      const connectedProductUrl =
+        checkedInput.dataset.connectedProductUrl ||
+        (checkedInput.dataset.productUrl && checkedInput.dataset.variantId
+          ? `${checkedInput.dataset.productUrl}?variant=${checkedInput.dataset.variantId}`
+          : checkedInput.dataset.productUrl);
+
+      if (featuredImageUrl || connectedProductUrl) {
+        this.setSelectedSwatch(featuredImageUrl || null, connectedProductUrl || null);
+
+        // Update the image immediately if we have a featured image URL
+        const slideshow = this.refs.slideshow;
+        if (slideshow) {
+          // Try to find and select the slide with the matching media ID first
+          if (mediaId && slideshow.slides) {
+            const mediaIdStr = mediaId.toString();
+            const slide = Array.from(slideshow.slides).find((s) => s.getAttribute('slide-id') === mediaIdStr);
+            if (slide) {
+              // Slide exists - select it
+              slideshow.select({ id: mediaIdStr }, undefined, { animate: false });
+            } else if (featuredImageUrl && slideshow.slides.length > 0) {
+              // Slide doesn't exist (different product) - update current slide's image
+              const currentIndex = slideshow.current ?? 0;
+              const slides = slideshow.slides;
+              if (slides) {
+                const currentSlide = slides[currentIndex];
+                if (currentSlide) {
+                  const img = currentSlide.querySelector('img');
+                  if (img instanceof HTMLImageElement) {
+                    img.src = featuredImageUrl;
+                    img.srcset = featuredImageUrl;
+                    // Also update picture source elements
+                    const picture = currentSlide.querySelector('picture');
+                    if (picture) {
+                      const sources = picture.querySelectorAll('source');
+                      sources.forEach((source) => {
+                        if (source instanceof HTMLSourceElement && source.srcset) {
+                          source.srcset = featuredImageUrl;
+                        }
+                      });
+                    }
+                  }
+                }
+              }
+            }
+          } else if (featuredImageUrl && slideshow.slides && slideshow.slides.length > 0) {
+            // No media ID - update current slide's image
+            const currentIndex = slideshow.current ?? 0;
+            const slides = slideshow.slides;
+            if (slides) {
+              const currentSlide = slides[currentIndex];
+              if (currentSlide) {
+                const img = currentSlide.querySelector('img');
+                if (img instanceof HTMLImageElement) {
+                  img.src = featuredImageUrl;
+                  img.srcset = featuredImageUrl;
+                  // Also update picture source elements
+                  const picture = currentSlide.querySelector('picture');
+                  if (picture) {
+                    const sources = picture.querySelectorAll('source');
+                    sources.forEach((source) => {
+                      if (source instanceof HTMLSourceElement && source.srcset) {
+                        source.srcset = featuredImageUrl;
+                      }
+                    });
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        // Update the URL if we have a connected product URL
+        if (connectedProductUrl && this.refs.productCardLink) {
+          this.refs.productCardLink.href = connectedProductUrl;
+          const { cardGalleryLink, productTitleLink } = this.refs;
+          if (cardGalleryLink instanceof HTMLAnchorElement) {
+            cardGalleryLink.href = connectedProductUrl;
+          }
+          if (productTitleLink instanceof HTMLAnchorElement) {
+            productTitleLink.href = connectedProductUrl;
+          }
+        }
+      }
+    }
   }
 
   /**
@@ -740,13 +852,12 @@ export class ProductCard extends Component {
         soldOutBadge.style.display = 'none';
       }
 
-      // Show other badges
-      const otherBadges = badgeContainer.querySelectorAll(
-        '.product-badges__badge:not(.product-badges__badge--sold-out-preview)'
-      );
-      otherBadges.forEach((badge) => {
+      // Hide all badges when hovering over an available swatch
+      // This ensures badges from the original product don't show when previewing a different product in combined listings
+      const allBadges = badgeContainer.querySelectorAll('.product-badges__badge');
+      allBadges.forEach((badge) => {
         if (badge instanceof HTMLElement) {
-          badge.style.display = '';
+          badge.style.display = 'none';
         }
       });
     }

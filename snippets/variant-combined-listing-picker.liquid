@@ -1447,6 +1447,17 @@
                         variant_swatch_width: swatch_variant_width
                       %}
                     {% endif %}
+                    {% unless color_is_available %}
+                      <svg
+                        viewBox="0 0 100 46"
+                        preserveAspectRatio="xMidYMid slice"
+                      >
+                        {% # 25deg %}
+                        <line x1="100" y1="0" x2="0" y2="46" vector-effect="non-scaling-stroke" />
+                        {% # duplicate line for motion overlay %}
+                        <line x1="100" y1="0" x2="0" y2="46" vector-effect="non-scaling-stroke" />
+                      </svg>
+                    {% endunless %}
                   {% else %}
                     {% if color_is_available == true %}
                       <span class="variant-picker-cl-dual__pill"></span>
@@ -2268,6 +2279,17 @@
                     %}
                   {% endif %}
                 {% endif %}
+                {% unless variant_actually_available %}
+                  <svg
+                    viewBox="0 0 100 46"
+                    preserveAspectRatio="xMidYMid slice"
+                  >
+                    {% # 25deg %}
+                    <line x1="100" y1="0" x2="0" y2="46" vector-effect="non-scaling-stroke" />
+                    {% # duplicate line for motion overlay %}
+                    <line x1="100" y1="0" x2="0" y2="46" vector-effect="non-scaling-stroke" />
+                  </svg>
+                {% endunless %}
               </label>
             </li>
             {% endif %}
@@ -2754,6 +2776,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(var(--variant-min-width), 1fr));
     width: 100%;
+    max-width: 250px;
   }
 
   .variant-picker-cl-dual__fieldset--equal-width-buttons .variant-picker-cl-dual__label {
