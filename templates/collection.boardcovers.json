@@ -274,6 +274,7 @@
             "swatches": {
               "type": "swatches",
               "name": "t:names.swatches",
+              "disabled": true,
               "settings": {
                 "show_swatch_text_labels": false,
                 "product_swatches_alignment": "center",
