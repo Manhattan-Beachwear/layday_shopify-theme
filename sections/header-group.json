@@ -14,6 +14,20 @@
     "header_announcements_9jGBFp": {
       "type": "header-announcements",
       "blocks": {
+        "announcement_y4xynq": {
+          "type": "_announcement",
+          "name": "t:names.announcement",
+          "settings": {
+            "text": "Order by December 15th for Christmas Delivery | More Info Here",
+            "link": "shopify://pages/holiday-2025-shipping-information",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "weight": "",
+            "letter_spacing": "normal",
+            "case": "none"
+          },
+          "blocks": {}
+        },
         "announcement_BxgCk9": {
           "type": "_announcement",
           "settings": {
@@ -29,6 +43,7 @@
         }
       },
       "block_order": [
+        "announcement_y4xynq",
         "announcement_BxgCk9"
       ],
       "name": "t:names.announcement_bar",
