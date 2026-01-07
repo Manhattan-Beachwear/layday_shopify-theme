@@ -1,0 +1,7 @@
+[environments.main]
+store = "laydayusa.myshopify.com"
+ignore = ""
+
+[environments.dev]
+store = "leisure-collective-dev-store"
+ignore = ""
