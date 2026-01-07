@@ -1,5 +1,5 @@
 [environments.main]
-store = "creaturesusa"
+store = "laydayusa.myshopify.com"
 ignore = ""
 
 [environments.dev]
