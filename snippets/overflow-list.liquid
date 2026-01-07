@@ -24,7 +24,10 @@
   <template shadowrootmode="open">
     {{ 'overflow-list.css' | asset_url | stylesheet_tag }}
 
-    <ul part="list">
+    <div
+      part="list"
+      role="list"
+    >
       <slot></slot>
       <slot
         name="more"
@@ -34,9 +37,7 @@
           {{ more-attributes }}
         {% endif %}
       >
-        <li
-          part="more"
-        >
+        <div part="more">
           <button
             class="button"
             type="button"
@@ -44,18 +45,21 @@
           >
             {{ 'actions.more' | t }}
           </button>
-        </li>
+        </div>
       </slot>
-      <li
+      <div
         part="placeholder"
         hidden
-      ></li>
-    </ul>
+      ></div>
+    </div>
 
     <div part="overflow">
-      <ul part="overflow-list">
+      <div
+        part="overflow-list"
+        role="list"
+      >
         <slot name="overflow"></slot>
-      </ul>
+      </div>
     </div>
   </template>
 
