@@ -1,12 +1,15 @@
-# 1. Protect Store Data (Colors, Fonts, App Embeds)
+# === CHILD STORE PROTECTION ===
+
+# Protect Store Data
 config/settings_data.json       merge=ours
-
-# 2. Protect Page Templates (JSON Data)
 templates/*.json                merge=ours
-templates/customers/*.json      merge=ours
-
-# 3. Protect Section Groups (JSON Data)
 sections/*.json                 merge=ours
 
-# 4. Protect Main Layout (HTML Shell)
-layout/theme.liquid             merge=ours
+# Protect Custom Script Hooks
+snippets/store-custom-head.liquid   merge=ours
+snippets/store-custom-body.liquid   merge=ours
+
+# Protect Shopify Theme Config
+shopify.theme.toml              merge=ours
+
+# Note: layout/theme.liquid is SYNCED. Do not add it here.
