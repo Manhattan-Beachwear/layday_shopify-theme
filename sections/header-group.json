@@ -75,7 +75,7 @@
           "type": "_header-menu",
           "static": true,
           "settings": {
-            "menu": "",
+            "menu": "main-menu",
             "color_scheme": "scheme-1",
             "type_font_primary_size": "1.125rem",
             "menu_font_style": "regular",
