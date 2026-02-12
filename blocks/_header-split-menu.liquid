@@ -127,11 +127,12 @@
                         style="{% render 'submenu-font-styles', settings: block_settings %}"
                       >
                         {% assign list_id = 'SplitMenuList-left-' | append: forloop.index %}
+                        {% assign menu_content_type_val = block_settings.menu_style | default: 'text' %}
                         {% render 'mega-menu',
                           section: section,
                           parent_link: link,
                           id: list_id,
-                          menu_content_type: block_settings.menu_style | default: 'text',
+                          menu_content_type: menu_content_type_val,
                           content_aspect_ratio: block_settings.featured_collections_aspect_ratio,
                           image_border_radius: block_settings.image_border_radius
                         %}
@@ -205,11 +206,12 @@
                         style="{% render 'submenu-font-styles', settings: block_settings %}"
                       >
                         {% assign list_id = 'SplitMenuList-right-' | append: forloop.index %}
+                        {% assign menu_content_type_val = block_settings.menu_style | default: 'text' %}
                         {% render 'mega-menu',
                           section: section,
                           parent_link: link,
                           id: list_id,
-                          menu_content_type: block_settings.menu_style | default: 'text',
+                          menu_content_type: menu_content_type_val,
                           content_aspect_ratio: block_settings.featured_collections_aspect_ratio,
                           image_border_radius: block_settings.image_border_radius
                         %}
