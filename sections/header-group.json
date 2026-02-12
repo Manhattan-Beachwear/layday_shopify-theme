@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-{
+ {
   "type": "header",
   "name": "t:names.header",
   "sections": {
@@ -71,18 +71,16 @@
           },
           "blocks": {}
         },
-        "header-split-menu": {
-          "type": "_header-split-menu",
+        "header-menu": {
+          "type": "_header-menu",
           "static": true,
           "settings": {
-            "menu": "",
-            "split_after_item": 2,
+            "menu": "main-menu-aus-update",
             "color_scheme": "scheme-1",
             "type_font_primary_size": "1.125rem",
             "menu_font_style": "regular",
             "type_font_primary_link": "subheading",
             "type_case_primary_link": "none",
-            "dropdown_alignment": "left",
             "menu_style": "collection_images",
             "featured_products_aspect_ratio": "4 / 5",
             "featured_collections_aspect_ratio": "16 / 9",
@@ -98,10 +96,8 @@
       },
       "settings": {
         "logo_position": "left",
-        "menu_layout": "split",
         "menu_position": "left",
         "menu_row": "top",
-        "menu_row_center": false,
         "show_search": true,
         "search_position": "right",
         "search_row": "top",
