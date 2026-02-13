@@ -128,11 +128,11 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<p>Outdoor Essentials for Land & Sea.</p>",
+            "text": "<h2>Outdoor Essentials for Land & Sea.</h2>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
-            "type_preset": "rte",
+            "type_preset": "paragraph",
             "font": "var(--font-body--family)",
             "font_size": "1rem",
             "line_height": "normal",
