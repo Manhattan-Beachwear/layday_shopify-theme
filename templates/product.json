@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
     "main": {
       "type": "product-information",
@@ -71,8 +71,6 @@
               "type": "group",
               "name": "Header",
               "settings": {
-                "link": "",
-                "open_in_new_tab": false,
                 "content_direction": "column",
                 "vertical_on_mobile": true,
                 "horizontal_alignment": "flex-start",
@@ -96,11 +94,13 @@
                 "border_width": 1,
                 "border_opacity": 100,
                 "border_radius": 0,
-                "placeholder": "",
                 "toggle_overlay": false,
                 "overlay_color": "#00000026",
                 "overlay_style": "solid",
                 "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -178,6 +178,10 @@
               "settings": {
                 "variant_style": "buttons",
                 "show_swatches": false,
+                "show_product_image_swatches": true,
+                "product_image_swatch_style": "square",
+                "product_image_swatch_size": 60,
+                "show_product_image_swatch_variant_name": false,
                 "alignment": "left",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
@@ -265,7 +269,12 @@
         "gap": 48,
         "color_scheme": "",
         "padding-block-start": 0,
-        "padding-block-end": 0
+        "padding-block-end": 0,
+        "enable_combined_listings": false,
+        "show_product_image_swatches": false,
+        "product_image_swatch_style": "circle",
+        "product_image_swatch_size": 48,
+        "show_horizontal_scroll": false
       }
     },
     "product_recommendations_qggXJq": {
@@ -319,7 +328,9 @@
               "type": "_product-card-gallery",
               "name": "t:names.product_card_media",
               "settings": {
+                "show_second_image_on_hover": true,
                 "image_ratio": "adapt",
+                "media_fit": "cover",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
