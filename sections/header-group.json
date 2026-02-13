@@ -18,13 +18,13 @@
           "type": "_announcement",
           "name": "t:names.announcement",
           "settings": {
-            "text": "Order by December 15th for Christmas Delivery | More Info Here",
+            "text": "<strong>Free shipping on all orders</strong>",
             "link": "shopify://pages/holiday-2025-shipping-information",
             "font": "var(--font-body--family)",
             "font_size": "1rem",
             "weight": "",
             "letter_spacing": "normal",
-            "case": "none"
+            "case": "uppercase"
           },
           "blocks": {}
         },
