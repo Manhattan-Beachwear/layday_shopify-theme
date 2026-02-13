@@ -432,7 +432,7 @@
               "settings": {
                 "image": "shopify://shop_images/LIFESTYLE20.webp",
                 "link": "",
-                "hover_scale": false,
+                "hover_scale": true,
                 "image_ratio": "adapt",
                 "width": "fill",
                 "custom_width": 100,
@@ -454,7 +454,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h3>Shop Towels</h3>",
+                "text": "<h2>Shop Towels</h2>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -538,11 +538,35 @@
             "padding-inline-end": 0
           },
           "blocks": {
+            "image_NmLaT6": {
+              "type": "image",
+              "name": "t:names.image",
+              "settings": {
+                "image": "shopify://shop_images/VOYAGENAVY.webp",
+                "link": "",
+                "hover_scale": true,
+                "image_ratio": "adapt",
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
             "text_WDbbta": {
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2>Customer care</h2>",
+                "text": "<h2>Shop Cooler Bags</h2>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -592,6 +616,7 @@
             }
           },
           "block_order": [
+            "image_NmLaT6",
             "text_WDbbta",
             "text_ck3Mc6"
           ]
