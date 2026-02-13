@@ -227,7 +227,7 @@
         "padding-block-end": 100
       }
     },
-    "product_list_fa6P9H": {
+    "product_list_L6Fdpr": {
       "type": "product-list",
       "blocks": {
         "static-header": {
@@ -264,7 +264,7 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "product_list_text_YFtzcL": {
+            "product_list_text_E9RNLE": {
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
@@ -272,9 +272,9 @@
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "h4",
+                "type_preset": "rte",
                 "font": "var(--font-body--family)",
-                "font_size": "",
+                "font_size": "1rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
@@ -290,7 +290,7 @@
               },
               "blocks": {}
             },
-            "product_list_button_MWeP9V": {
+            "product_list_button_FhcXtB": {
               "type": "_product-list-button",
               "name": "t:names.product_list_button",
               "settings": {
@@ -306,8 +306,8 @@
             }
           },
           "block_order": [
-            "product_list_text_YFtzcL",
-            "product_list_button_MWeP9V"
+            "product_list_text_E9RNLE",
+            "product_list_button_FhcXtB"
           ]
         },
         "static-product-card": {
@@ -328,7 +328,7 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "product_card_gallery_677WP3": {
+            "product_card_gallery_cKp9c7": {
               "type": "_product-card-gallery",
               "name": "t:names.product_card_media",
               "settings": {
@@ -346,11 +346,29 @@
               },
               "blocks": {}
             },
-            "product_title_YXxMTj": {
+            "swatches_6LkXXa": {
+              "type": "swatches",
+              "name": "t:names.swatches",
+              "settings": {
+                "product_swatches_alignment": "flex-start",
+                "product_swatches_alignment_mobile": "flex-start",
+                "hide_padding": false,
+                "product_swatches_padding_top": 4,
+                "product_swatches_padding_bottom": 0,
+                "product_swatches_padding_left": 0,
+                "product_swatches_padding_right": 0,
+                "show_product_image_swatches": false,
+                "product_image_swatch_style": "circle",
+                "product_image_swatch_size": 48,
+                "show_horizontal_scroll": false
+              },
+              "blocks": {}
+            },
+            "product_title_qaRwAN": {
               "type": "product-title",
               "name": "t:names.product_title",
               "settings": {
-                "width": "100%",
+                "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
                 "type_preset": "rte",
@@ -371,7 +389,7 @@
               },
               "blocks": {}
             },
-            "price_JQzVV4": {
+            "price_pwNiXw": {
               "type": "price",
               "name": "t:names.product_price",
               "settings": {
@@ -396,15 +414,16 @@
             }
           },
           "block_order": [
-            "product_card_gallery_677WP3",
-            "product_title_YXxMTj",
-            "price_JQzVV4"
+            "product_card_gallery_cKp9c7",
+            "swatches_6LkXXa",
+            "product_title_qaRwAN",
+            "price_pwNiXw"
           ]
         }
       },
-      "name": "t:names.featured_collection",
+      "name": "t:names.products_grid",
       "settings": {
-        "collection": "all",
+        "collection": "featured-products",
         "layout_type": "grid",
         "carousel_on_mobile": false,
         "max_products": 8,
@@ -421,7 +440,7 @@
         "color_scheme": "scheme-1",
         "padding-block-start": 48,
         "padding-block-end": 48,
-        "enable_combined_listings": false,
+        "enable_combined_listings": true,
         "show_product_image_swatches": false,
         "product_image_swatch_style": "circle",
         "product_image_swatch_size": 48,
@@ -432,6 +451,6 @@
   "order": [
     "hero_jVaWmY",
     "section_KWYxEL",
-    "product_list_fa6P9H"
+    "product_list_L6Fdpr"
   ]
 }
