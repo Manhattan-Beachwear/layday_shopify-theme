@@ -32,3 +32,4 @@ pnpm-debug.log
 .github/workflows/node_modules/
 
 .shopify
+sections/footer-group.json
