@@ -866,12 +866,28 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "button_rDx84H": {
+              "type": "button",
+              "name": "t:names.button",
+              "settings": {
+                "label": "Learn About Sustainability",
+                "link": "shopify://pages/sustainability",
+                "open_in_new_tab": false,
+                "style_class": "button",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "text_bJ6j63",
             "text_NyWhpV",
-            "text_np8CPg"
+            "text_np8CPg",
+            "button_rDx84H"
           ]
         }
       },
