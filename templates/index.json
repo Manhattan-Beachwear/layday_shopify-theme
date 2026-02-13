@@ -7,20 +7,46 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
     "hero_jVaWmY": {
       "type": "hero",
       "blocks": {
+        "text_zCUYPg": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>Made for days off</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h6",
+            "font": "var(--font-body--family)",
+            "font_size": "1.25rem",
+            "line_height": "loose",
+            "letter_spacing": "loose",
+            "case": "uppercase",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
         "text_YLPk4p": {
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<p>Browse our latest products</p>",
+            "text": "<p>Hello, Summer</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
-            "type_preset": "h2",
+            "type_preset": "h1",
             "font": "var(--font-body--family)",
             "font_size": "1rem",
             "line_height": "normal",
@@ -55,13 +81,19 @@
         }
       },
       "block_order": [
+        "text_zCUYPg",
         "text_YLPk4p",
         "button_H9gpTf"
       ],
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
+        "image_1": "shopify://shop_images/SUMMER25_5.webp",
         "media_type_2": "image",
+        "stack_media_on_mobile": false,
+        "custom_mobile_media": false,
+        "media_type_1_mobile": "image",
+        "media_type_2_mobile": "image",
         "link": "",
         "open_in_new_tab": false,
         "content_direction": "column",
@@ -69,7 +101,7 @@
         "horizontal_alignment": "space-between",
         "vertical_alignment": "flex-end",
         "align_baseline": true,
-        "horizontal_alignment_flex_direction_column": "center",
+        "horizontal_alignment_flex_direction_column": "flex-start",
         "vertical_alignment_flex_direction_column": "flex-end",
         "gap": 24,
         "section_width": "page-width",
@@ -82,6 +114,7 @@
         "gradient_direction": "to bottom",
         "blurred_reflection": false,
         "reflection_opacity": 75,
+        "image_zoom_fade_animation": false,
         "padding-block-start": 100,
         "padding-block-end": 72
       }
@@ -191,7 +224,9 @@
               "type": "_product-card-gallery",
               "name": "t:names.product_card_media",
               "settings": {
+                "show_second_image_on_hover": true,
                 "image_ratio": "adapt",
+                "media_fit": "cover",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
@@ -277,7 +312,12 @@
         "gap": 28,
         "color_scheme": "scheme-1",
         "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-end": 48,
+        "enable_combined_listings": false,
+        "show_product_image_swatches": false,
+        "product_image_swatch_style": "circle",
+        "product_image_swatch_size": 48,
+        "show_horizontal_scroll": false
       }
     }
   },
