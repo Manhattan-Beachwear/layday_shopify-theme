@@ -432,7 +432,7 @@
               "settings": {
                 "image": "shopify://shop_images/LIFESTYLE20.webp",
                 "link": "",
-                "hover_scale": true,
+                "hover_scale": false,
                 "image_ratio": "adapt",
                 "width": "fill",
                 "custom_width": 100,
@@ -517,7 +517,7 @@
               "settings": {
                 "image": "shopify://shop_images/VOYAGENAVY.webp",
                 "link": "",
-                "hover_scale": true,
+                "hover_scale": false,
                 "image_ratio": "adapt",
                 "width": "fill",
                 "custom_width": 100,
@@ -600,7 +600,7 @@
           "settings": {
             "image": "shopify://shop_images/BORDER.webp",
             "link": "shopify://collections/all",
-            "hover_scale": true,
+            "hover_scale": false,
             "image_ratio": "portrait",
             "width": "custom",
             "custom_width": 50,
@@ -624,7 +624,7 @@
           "settings": {
             "image": "shopify://shop_images/SEAandTREES.webp",
             "link": "shopify://collections/all",
-            "hover_scale": true,
+            "hover_scale": false,
             "image_ratio": "portrait",
             "width": "custom",
             "custom_width": 50,
