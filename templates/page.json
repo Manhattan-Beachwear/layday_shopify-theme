@@ -353,6 +353,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
+                "image": "shopify://shop_images/Polaroid52_359f7cd2-e9f3-4d4a-930d-fabcf32f005f.webp",
                 "link": "",
                 "hover_scale": false,
                 "image_ratio": "adapt",
@@ -376,11 +377,11 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2>Quality first</h2>",
+                "text": "<h3>Consciously Crafted</h3>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
-                "type_preset": "h4",
+                "type_preset": "h2",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
@@ -402,7 +403,7 @@
               "type": "text",
               "name": "t:names.description",
               "settings": {
-                "text": "<p>We obsess over the details and strive to deliver the best products at the best prices, every time.</p>",
+                "text": "<p>We are in the business of doing good business. Designed with the planet in mind, our products feature natural fibers & recycled materials that won't cost the earth.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -475,6 +476,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
+                "image": "shopify://shop_images/Polaroid55_5ae0ec16-ffed-43eb-8e38-9d22a3e00cc6.webp",
                 "link": "",
                 "hover_scale": false,
                 "image_ratio": "adapt",
@@ -498,11 +500,11 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2>Customer care</h2>",
+                "text": "<h3>Optimised for Adventure</h3>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
-                "type_preset": "h4",
+                "type_preset": "h2",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
