@@ -362,7 +362,7 @@
                     "text_FWKcme": {
                       "type": "text",
                       "settings": {
-                        "text": "",
+                        "text": "{{ closest.product.metafields.custom.care_instructions.value.care_instructions | metafield_tag }}",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
