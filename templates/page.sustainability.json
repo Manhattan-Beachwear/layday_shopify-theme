@@ -822,7 +822,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h3>Packaging</h3>",
+                "text": "<h3>Recycled PET</h3>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -848,7 +848,7 @@
               "type": "text",
               "name": "t:names.description",
               "settings": {
-                "text": "<p>We keep our packaging simple and low impact. Recyclable, compostable, or reusable wherever possible. It's about doing better and leaving less behind.</p>",
+                "text": "<p>A selection of our Coast Umbrellas are crafted using recycled PET, transforming discarded plastic into durable, high-quality fabric. This process reduces waste and conserves resources, giving new life to materials that would otherwise end up in landfills.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
