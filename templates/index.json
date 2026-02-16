@@ -1402,7 +1402,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p>Dry off in style with our curated collection of luxury towels. Featuring unique timeless designs our travel towels come in a range of earthy colours inspired by the natural landscapes of our home in Western Australia.  </p><p>Our four signature weaves – <a href=\"/collections/waffle-weave-towels\" title=\"Waffle Weave Towels\">waffle weave</a>, French terry, flat weave and Jacquard weave – offer a range of textures and features catering to all. </p>",
+                "text": "<p>Dry off in style with our curated collection of luxury towels. Featuring unique timeless designs our travel towels come in a range of earthy colours inspired by the natural landscapes of our home in Western Australia.  </p><p>Our four signature weaves – <a href=\"/collections/waffle-weave-towels\" title=\"Waffle Weave Towels\">Waffle weave</a>, French terry, flat weave and Jacquard weave – offer a range of textures and features catering to all. </p>",
                 "width": "100%",
                 "max_width": "none",
                 "alignment": "left",
