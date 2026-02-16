@@ -466,22 +466,25 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "image_yKEMmM": {
-              "type": "image",
-              "name": "t:names.image",
+            "text_ycYHDN": {
+              "type": "text",
+              "name": "t:names.heading",
               "settings": {
-                "link": "",
-                "hover_scale": false,
-                "image_ratio": "adapt",
-                "width": "fill",
-                "custom_width": 100,
-                "width_mobile": "fill",
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
+                "text": "<h2>{{ closest.product.metafields.custom.product_features.value.header.value }}</h2>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -491,7 +494,7 @@
             }
           },
           "block_order": [
-            "image_yKEMmM"
+            "text_ycYHDN"
           ]
         },
         "group_CrieCj": {
