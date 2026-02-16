@@ -1083,7 +1083,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/Papaya.webp",
+                "image": "shopify://shop_images/LIFESTYLE_water.webp",
                 "link": "",
                 "hover_scale": false,
                 "image_ratio": "adapt",
@@ -1206,7 +1206,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/UMBRELLA-SANDSTRIPE4.webp",
+                "image": "shopify://shop_images/Lifestyle_umbrella.webp",
                 "link": "",
                 "hover_scale": false,
                 "image_ratio": "adapt",
@@ -1230,7 +1230,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h3>Recycled PET</h3>",
+                "text": "<h3>FSC certified Timber</h3>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -1256,7 +1256,7 @@
               "type": "text",
               "name": "t:names.description",
               "settings": {
-                "text": "<p>A selection of our Coast Umbrellas are crafted using recycled PET, transforming discarded plastic into durable, high-quality fabric. This process reduces waste and conserves resources, giving new life to materials that would otherwise end up in landfills.</p>",
+                "text": "<p>The poles for our umbrellas are made from FSC-certified timber, sourced responsibly to support sustainable forestry practices and protect ecosystems.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
