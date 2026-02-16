@@ -1036,10 +1036,10 @@
         "padding-block-end": 100
       }
     },
-    "section_cRyKPJ": {
+    "section_nNWVWz": {
       "type": "section",
       "blocks": {
-        "group_7TNyVj": {
+        "group_HMp9nP": {
           "type": "group",
           "name": "t:names.column",
           "settings": {
@@ -1079,16 +1079,16 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "image_cgjV87": {
+            "image_ebDLdG": {
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/Icon-leaf.webp",
+                "image": "shopify://shop_images/Papaya.webp",
                 "link": "",
                 "hover_scale": false,
                 "image_ratio": "adapt",
-                "width": "custom",
-                "custom_width": 75,
+                "width": "fill",
+                "custom_width": 100,
                 "width_mobile": "fill",
                 "custom_width_mobile": 100,
                 "height": "fit",
@@ -1097,20 +1097,20 @@
                 "border_opacity": 100,
                 "border_radius": 0,
                 "padding-block-start": 0,
-                "padding-block-end": 0,
+                "padding-block-end": 12,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
               "blocks": {}
             },
-            "text_eRA9dM": {
+            "text_NLRWBB": {
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h3>Product</h3>",
+                "text": "<h3>Cornstarch</h3>",
                 "width": "100%",
                 "max_width": "normal",
-                "alignment": "center",
+                "alignment": "left",
                 "type_preset": "h2",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
@@ -1129,14 +1129,14 @@
               },
               "blocks": {}
             },
-            "text_XPFpaA": {
+            "text_RRXFm7": {
               "type": "text",
               "name": "t:names.description",
               "settings": {
-                "text": "<p>We design with the long game in mind - pieces made to last for many summers to come. Natural fibres and considered design sit at the heart of what we do.</p>",
+                "text": "<p>Our biodegradable mailer bags and garment bags are made from cornstarch, offering an eco-friendly alternative to plastic. They breakdown naturally, leaving no trace behind.</p>",
                 "width": "100%",
                 "max_width": "normal",
-                "alignment": "center",
+                "alignment": "left",
                 "type_preset": "rte",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
@@ -1157,12 +1157,12 @@
             }
           },
           "block_order": [
-            "image_cgjV87",
-            "text_eRA9dM",
-            "text_XPFpaA"
+            "image_ebDLdG",
+            "text_NLRWBB",
+            "text_RRXFm7"
           ]
         },
-        "group_6rYnyW": {
+        "group_9fpeiz": {
           "type": "group",
           "name": "t:names.column",
           "settings": {
@@ -1202,16 +1202,16 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "image_UTyTR8": {
+            "image_4FRJqB": {
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/icon_sun.webp",
+                "image": "shopify://shop_images/UMBRELLA-SANDSTRIPE4.webp",
                 "link": "",
                 "hover_scale": false,
                 "image_ratio": "adapt",
-                "width": "custom",
-                "custom_width": 75,
+                "width": "fill",
+                "custom_width": 100,
                 "width_mobile": "fill",
                 "custom_width_mobile": 100,
                 "height": "fit",
@@ -1220,20 +1220,20 @@
                 "border_opacity": 100,
                 "border_radius": 0,
                 "padding-block-start": 0,
-                "padding-block-end": 0,
+                "padding-block-end": 12,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
               "blocks": {}
             },
-            "text_qX67Qt": {
+            "text_y3g7NM": {
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h3>Packaging</h3>",
+                "text": "<h3>Recycled PET</h3>",
                 "width": "100%",
                 "max_width": "normal",
-                "alignment": "center",
+                "alignment": "left",
                 "type_preset": "h2",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
@@ -1252,14 +1252,14 @@
               },
               "blocks": {}
             },
-            "text_93jYXT": {
+            "text_fQXiAB": {
               "type": "text",
               "name": "t:names.description",
               "settings": {
-                "text": "<p>We keep our packaging simple and low impact. Recyclable, compostable, or reusable wherever possible. It's about doing better and leaving less behind.</p>",
+                "text": "<p>A selection of our Coast Umbrellas are crafted using recycled PET, transforming discarded plastic into durable, high-quality fabric. This process reduces waste and conserves resources, giving new life to materials that would otherwise end up in landfills.</p>",
                 "width": "100%",
                 "max_width": "normal",
-                "alignment": "center",
+                "alignment": "left",
                 "type_preset": "rte",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
@@ -1280,12 +1280,12 @@
             }
           },
           "block_order": [
-            "image_UTyTR8",
-            "text_qX67Qt",
-            "text_93jYXT"
+            "image_4FRJqB",
+            "text_y3g7NM",
+            "text_fQXiAB"
           ]
         },
-        "group_mkkNPY": {
+        "group_BfaJ9T": {
           "type": "group",
           "name": "t:names.column",
           "settings": {
@@ -1325,16 +1325,16 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "image_h97BnH": {
+            "image_AFJMga": {
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/icon_thumbs-up.webp",
+                "image": "shopify://shop_images/CANDLE3.webp",
                 "link": "",
                 "hover_scale": false,
                 "image_ratio": "adapt",
-                "width": "custom",
-                "custom_width": 75,
+                "width": "fill",
+                "custom_width": 100,
                 "width_mobile": "fill",
                 "custom_width_mobile": 100,
                 "height": "fit",
@@ -1343,20 +1343,20 @@
                 "border_opacity": 100,
                 "border_radius": 0,
                 "padding-block-start": 0,
-                "padding-block-end": 0,
+                "padding-block-end": 12,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
               "blocks": {}
             },
-            "text_A7YCMn": {
+            "text_nW7Ebz": {
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h3>People</h3>",
+                "text": "<h3>Soy Wax</h3>",
                 "width": "100%",
                 "max_width": "normal",
-                "alignment": "center",
+                "alignment": "left",
                 "type_preset": "h2",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
@@ -1375,14 +1375,14 @@
               },
               "blocks": {}
             },
-            "text_QWEYaB": {
+            "text_KM8QYV": {
               "type": "text",
               "name": "t:names.description",
               "settings": {
-                "text": "<p>Great products start with great people. We partner with makers who share our values and ongoing commitment to fair practices.</p>",
+                "text": "<p>Our candles are made from soy wax, a natural material derived from soybeans. Renewable and biodegradable, soy wax burns cleaner and lasts longer than traditional paraffin wax, making it a more sustainable choice.</p>",
                 "width": "100%",
                 "max_width": "normal",
-                "alignment": "center",
+                "alignment": "left",
                 "type_preset": "rte",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
@@ -1403,16 +1403,16 @@
             }
           },
           "block_order": [
-            "image_h97BnH",
-            "text_A7YCMn",
-            "text_QWEYaB"
+            "image_AFJMga",
+            "text_nW7Ebz",
+            "text_KM8QYV"
           ]
         }
       },
       "block_order": [
-        "group_7TNyVj",
-        "group_6rYnyW",
-        "group_mkkNPY"
+        "group_HMp9nP",
+        "group_9fpeiz",
+        "group_BfaJ9T"
       ],
       "name": "t:names.multicolumn",
       "settings": {
@@ -1440,7 +1440,7 @@
         "overlay_color": "#00000026",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 0,
+        "padding-block-start": 100,
         "padding-block-end": 100
       }
     },
@@ -1660,7 +1660,7 @@
     "section_9qhDKz",
     "hero_wA4iwW",
     "section_6yxNRx",
-    "section_cRyKPJ",
+    "section_nNWVWz",
     "hero_7DxAye",
     "section_bXPhia"
   ]
