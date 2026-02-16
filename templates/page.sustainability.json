@@ -404,7 +404,7 @@
               "type": "text",
               "name": "t:names.description",
               "settings": {
-                "text": "<p>We are in the business of doing good business. Designed with the planet in mind, our products feature natural fibers & recycled materials that won't cost the earth.</p>",
+                "text": "<p>We keep our packaging simple and low impact. Recyclable, compostable, or reusable wherever possible. It's about doing better and leaving less behind.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -527,7 +527,7 @@
               "type": "text",
               "name": "t:names.description",
               "settings": {
-                "text": "<p>Made for those on the move. Our products are thoughtfully engineered to be packable & lightweight, without sacrificing comfort. Your companion for adventures of any kind.</p>",
+                "text": "<p>Great products start with great people. We partner with makers who share our values and ongoing commitment to fair practices.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
