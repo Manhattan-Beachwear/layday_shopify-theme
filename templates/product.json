@@ -323,7 +323,7 @@
                     "text_EjLabx": {
                       "type": "text",
                       "settings": {
-                        "text": "{{ closest.product.metafields.custom.dimensions | metafield_tag: field: 'dimmension' }}<p>: </p>{{ closest.product.metafields.custom.dimensions | metafield_tag: field: 'dimension' }}",
+                        "text": "{{ closest.product.metafields.custom.dimensions | metafield_tag: field: 'display_name' }}",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
