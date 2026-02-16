@@ -1353,7 +1353,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h3>Soy Wax</h3>",
+                "text": "<h3>Dyes</h3>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -1379,7 +1379,7 @@
               "type": "text",
               "name": "t:names.description",
               "settings": {
-                "text": "<p>Our candles are made from soy wax, a natural material derived from soybeans. Renewable and biodegradable, soy wax burns cleaner and lasts longer than traditional paraffin wax, making it a more sustainable choice.</p>",
+                "text": "<p>Our suppliers adhere to OEKOTEX100 standards, ensuring all hand-dyeing processes are done responsibly. This guarantees no harmful chemicals are used, protecting both people and planet.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
