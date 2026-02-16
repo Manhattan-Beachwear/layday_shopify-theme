@@ -945,7 +945,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h3>People</h3>",
+                "text": "<h3>Soy Wax</h3>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -971,10 +971,10 @@
               "type": "text",
               "name": "t:names.description",
               "settings": {
-                "text": "<p>Great products start with great people. We partner with makers who share our values and ongoing commitment to fair practices.</p>",
+                "text": "<p>Our candles are made from soy wax, a natural material derived from soybeans. Renewable and biodegradable, soy wax burns cleaner and lasts longer than traditional paraffin wax, making it a more sustainable choice.</p>",
                 "width": "100%",
                 "max_width": "normal",
-                "alignment": "center",
+                "alignment": "left",
                 "type_preset": "rte",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
