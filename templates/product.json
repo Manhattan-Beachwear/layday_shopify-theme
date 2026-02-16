@@ -284,7 +284,7 @@
                     "text_nJ46ra": {
                       "type": "text",
                       "settings": {
-                        "text": "<ul><li></li></ul>{{ closest.product.metafields.custom.specifications | metafield_tag: field: 'specification' }}",
+                        "text": "{{ closest.product.metafields.custom.specifications | metafield_tag: field: 'specification' }}",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
