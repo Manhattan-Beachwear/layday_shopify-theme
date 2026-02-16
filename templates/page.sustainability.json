@@ -62,9 +62,10 @@
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
-        "image_1": "shopify://shop_images/Layday-Beach-Hero.webp",
+        "image_1": "shopify://shop_images/Sustainability-banner_left.webp",
         "media_type_2": "image",
-        "stack_media_on_mobile": false,
+        "image_2": "shopify://shop_images/Sustainability-banner_right.webp",
+        "stack_media_on_mobile": true,
         "custom_mobile_media": false,
         "media_type_1_mobile": "image",
         "media_type_2_mobile": "image",
@@ -100,7 +101,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h1>This is Layday</h1>",
+            "text": "<h1>Sustainability</h1>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -126,7 +127,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>Born & bred on the coast of Western Australia, Layday creates outdoor & lifestyle goods made for your days off.</p><p>At the heart of the brand are thoughtfully produced designs that evoke a sense of Summer & a spirit of adventure. From our plush travel towels to our umbrellas & coolers that help you chill, every Layday design is built to last for many Summer's to come.</p>",
+            "text": "<p>We make products for Days Off spent outdoors. The places we spend them<br/>are worth looking after.</p><p>At Layday, we’re committed to doing better for the<br/>planet. From using responsibly sourced materials to reducing waste in our<br/>packaging, we make conscious choices at every step of the process. It’s all<br/>about creating quality pieces you’ll love for years to come, while protecting<br/>the coastal places we love to explore.</p>",
             "width": "100%",
             "max_width": "none",
             "alignment": "center",
@@ -230,7 +231,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/Polaroid56_01caff74-5578-445a-ab09-18e5cd2f3251.webp",
+                "image": "shopify://shop_images/Icon-leaf.webp",
                 "link": "",
                 "hover_scale": false,
                 "image_ratio": "adapt",
@@ -254,7 +255,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h3>Made for your Days Off</h3>",
+                "text": "<h3>Product</h3>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -270,7 +271,7 @@
                 "background_color": "#00000026",
                 "corner_radius": 0,
                 "padding-block-start": 0,
-                "padding-block-end": 0,
+                "padding-block-end": 24,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
@@ -280,7 +281,7 @@
               "type": "text",
               "name": "t:names.description",
               "settings": {
-                "text": "<p>At the very core, we create products made for your Lay Days. Our collection of towels are designed to evoke a sense of freedom, adventure & carefree living.</p>",
+                "text": "<p>We design with the long game in mind - pieces made to last for many summers to come. Natural fibres and considered design sit at the heart of what we do.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -377,7 +378,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h3>Consciously Crafted</h3>",
+                "text": "<h3>Packaging</h3>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -393,7 +394,7 @@
                 "background_color": "#00000026",
                 "corner_radius": 0,
                 "padding-block-start": 0,
-                "padding-block-end": 0,
+                "padding-block-end": 24,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
@@ -500,7 +501,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h3>Optimised for Adventure</h3>",
+                "text": "<h3>People</h3>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -516,7 +517,7 @@
                 "background_color": "#00000026",
                 "corner_radius": 0,
                 "padding-block-start": 0,
-                "padding-block-end": 0,
+                "padding-block-end": 24,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
