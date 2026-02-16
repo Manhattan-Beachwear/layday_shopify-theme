@@ -1572,7 +1572,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h3><strong>Wrap Yourself in Luxury with our Travel Towels</strong></h3>",
+                "text": "<h3><strong>How to Care for Your Cotton Beach Towel</strong></h3>",
                 "width": "100%",
                 "max_width": "none",
                 "alignment": "left",
@@ -1598,7 +1598,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p>Born and bred on the rugged coast of western Australia, we craft pure cotton travel towels that are made for your Lay Days. </p><p>Whether you are spending your day in the sand, sun or sea, our luxury towels are butter soft, highly absorbent, and super comfortable, making them the best travel towels in Australia. </p>",
+                "text": "<p>Our towels are easy to care for, so you can enjoy their luxury for many summers to come. To ensure its quality and longevity, it's important to take a few simple steps. </p><p>Wash your towel separately before use in cool water. Avoid using any harsh detergents or fabric softeners and do not bleach. Once washed, hang to dry in a well-ventilated area or simply tumble dry on cool / warm. </p>",
                 "width": "100%",
                 "max_width": "none",
                 "alignment": "left",
