@@ -83,9 +83,9 @@
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
-        "image_1": "shopify://shop_images/contact_banner-left.webp",
+        "image_1": "shopify://shop_images/hero-contact-left.webp",
         "media_type_2": "image",
-        "image_2": "shopify://shop_images/contact_banner-right.webp",
+        "image_2": "shopify://shop_images/hero-contact-right.webp",
         "stack_media_on_mobile": false,
         "custom_mobile_media": false,
         "media_type_1_mobile": "image",
