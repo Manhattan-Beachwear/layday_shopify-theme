@@ -583,7 +583,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2>Cooler Bag Care</h2>",
+                "text": "<h2>Umbrella Care</h2>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -609,7 +609,7 @@
               "type": "text",
               "name": "t:names.description",
               "settings": {
-                "text": "<p>Check out our cooler care guide to discover the best way to care for your cooler.</p>",
+                "text": "<p>Check out our umbrella care guide to discover the best way to care for your umbrellas.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -635,8 +635,8 @@
               "type": "button",
               "name": "t:names.button",
               "settings": {
-                "label": "View Cooler Bag Care",
-                "link": "shopify://pages/cooler-bag-care",
+                "label": "Umbrella Care",
+                "link": "shopify://pages/umbrella-care",
                 "open_in_new_tab": false,
                 "style_class": "button",
                 "width": "fit-content",
