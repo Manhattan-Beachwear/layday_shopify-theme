@@ -62,9 +62,9 @@
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
-        "image_1": "shopify://shop_images/towel-care_banner-left.webp",
+        "image_1": "shopify://shop_images/cooler-bag-care_banner-left.webp",
         "media_type_2": "image",
-        "image_2": "shopify://shop_images/towel-care_banner-right.webp",
+        "image_2": "shopify://shop_images/cooler-bag-care_banner-right.webp",
         "stack_media_on_mobile": false,
         "custom_mobile_media": false,
         "media_type_1_mobile": "image",
@@ -101,7 +101,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h1>Looking After Your Layday</h1>",
+            "text": "<h1>Looking After Your Cooler Bag</h1>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
@@ -127,7 +127,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>We want you to enjoy your towels for for many Summer's to come. To keep them looking great & feeling soft, follow the tips below.</p>",
+            "text": "<p>We want you to enjoy your cooler for for many Summer's to come. To keep it looking great, follow the tips below.</p>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
@@ -393,7 +393,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/towel-care_man-drying.webp",
+                "image": "shopify://shop_images/cooler-bag-care_woman-on-beach.webp",
                 "link": "",
                 "hover_scale": false,
                 "image_ratio": "adapt",
@@ -516,7 +516,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/towel-care_beach.webp",
+                "image": "shopify://shop_images/cooler-bag-care_bag-closeup.webp",
                 "link": "",
                 "hover_scale": false,
                 "image_ratio": "adapt",
