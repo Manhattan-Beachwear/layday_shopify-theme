@@ -153,7 +153,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h3>How to Care for Your Zephyr Blanket</h3>",
+            "text": "<h2>How to Care for Your Zephyr Blanket</h2>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -205,7 +205,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h2>Regular Care</h2>",
+            "text": "<h3>A Few Extra Tips</h3>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -231,59 +231,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>For your standard care, we recommend:</p><ul><li>Cold machine wash with like colours on a gentle cycle</li><li>Tumble dry on low</li><li>Avoid Fabric Softeners</li><li>Do not Bleach</li></ul>",
-            "width": "100%",
-            "max_width": "none",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "text_xpgMx3": {
-          "type": "text",
-          "name": "t:names.heading",
-          "settings": {
-            "text": "<h2>Good things come to those who wait</h2>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 24,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "text_qByWCY": {
-          "type": "text",
-          "name": "t:names.text",
-          "settings": {
-            "text": "<p>Our towels get better with age, which is why optimal absorbency comes after 3-6 wash-dry cycles. The natural cotton fibres become softer and more absorbent with time as the natural waxes strip from the yarn. So hang tight, optimal absorbency is on it's way!</p>",
+            "text": "<ul><li>Shake off sand or dirt before packing away.</li><li>Roll it loosely instead of folding tightly to keep the quilted top fluffy.</li><li>Avoid leaving it damp or exposed to direct sun for long periods.</li><li>Treat it right, and your Zephyr Blanket will stay comfy, cushioned, and ready for every adventure.</li></ul>",
             "width": "100%",
             "max_width": "none",
             "alignment": "left",
@@ -312,9 +260,7 @@
         "text_D4BHmX",
         "text_KJR9AE",
         "text_EJBwYw",
-        "text_Wh3cz8",
-        "text_xpgMx3",
-        "text_qByWCY"
+        "text_Wh3cz8"
       ],
       "name": "t:names.rich_text_section",
       "settings": {
