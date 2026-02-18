@@ -153,7 +153,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h2>First Things First</h2>",
+            "text": "<h2>A Note on Waxed Canvas</h2>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -179,7 +179,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>Sure, your Layday will dry you fresh out of the pack, but 2 wash cycles straight up will kick-start a long term drying relationship.</p><p>1. For Wash #1, add 1/2 a cup of white vinegar to a warm machine cycle. This will strip the natural waxes from the yarn and allow optimum absorbency. No need to add any detergents.</p><p>2. While your towel is still wet from Wash #1, wash again on a warm cycle with 1/2 a cup of Bicarbonate Soda. This will tighten the weave and prevent the fabric from snagging. Again, no need to add any detergents to this cycle.</p><p>You're Layday's are now good to go!</p>",
+            "text": "<p>The best thing about waxed canvas, is its ability to age and wear over time. The scuff marks and creases give the material its unique, distinct look. Don't be alarmed if your cooler starts showing these wear marks - it's all a part of the waxed canvas look.</p><p>If you would prefer to reduce the appearance of the marks and scuffs you can use a hairdryer on a mild heat about 10cm away from the surface in a circular motion. This will soften the wax and reduce the appearance of the wear on the material.</p>",
             "width": "100%",
             "max_width": "none",
             "alignment": "left",
@@ -231,7 +231,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>For your standard care, we recommend:</p><ul><li>Cold machine wash with like colours on a gentle cycle</li><li>Tumble dry on low</li><li>Avoid Fabric Softeners</li><li>Do not Bleach</li></ul>",
+            "text": "<p>For your standard care:</p><ul><li>Wipe the interior lining of your cooler after each use</li><li>Allow to air dry completely after each use - never store when wet or damp</li><li>Never soak in water</li><li>Do not machine wash</li></ul>",
             "width": "100%",
             "max_width": "none",
             "alignment": "left",
