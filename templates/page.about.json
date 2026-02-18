@@ -661,7 +661,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>Let's take a proper look at the fibres we use and compare them to Sand Free and conventional travel towels. It’s pretty simple stuff really.</p><p>Polyester (Sand Free Tech) is a synthetic fibre - made from petrochemicals.</p><p>Cotton is a natural fibre - grown by nature.</p><p>Polyester & Nylon shed micro-plastics with each wash and every use. <a href=\"https://layday.co/blogs/cotton-microfibre-news-and-information/australias-national-plastics-plan\">The 2021 Australian National Plastics Plan</a> includes these fibres in their aim to have microfibre filters fitted to every household washing machine.</p><p>In saying this, we’re not here to scare you into buying our stuff. There's no doubt that synthetic yarns definitely deserve their place in the fabric world. Without synthetic fibres we wouldn't have amazing things like snow gear, tents, and technical thermal underwear.</p><p>But, we are saying Cotton is far superior in the world of comfortable fabrics, especially towels. Polyester & Sand Free travel towels exist not only because they pack small, but also because they're extremely cheap to manufacture. We’re not about cheap. We’re about affordable quality and conscious choices. </p><p>If that sounds like it could be your comfort zone too, maybe have a little lay down on a Layday.</p><p>See our full collection of amazing travel towels.</p>",
+            "text": "<p>Let's take a proper look at the fibres we use and compare them to Sand Free and conventional travel towels. It’s pretty simple stuff really.</p><p>Polyester (Sand Free Tech) is a synthetic fibre - made from petrochemicals.</p><p>Cotton is a natural fibre - grown by nature.</p><p>Polyester & Nylon shed micro-plastics with each wash and every use. <a href=\"https://layday.co/blogs/cotton-microfibre-news-and-information/australias-national-plastics-plan\">The 2021 Australian National Plastics Plan</a> includes these fibres in their aim to have microfibre filters fitted to every household washing machine.</p><p>In saying this, we’re not here to scare you into buying our stuff. There's no doubt that synthetic yarns definitely deserve their place in the fabric world. Without synthetic fibres we wouldn't have amazing things like snow gear, tents, and technical thermal underwear.</p><p>But, we are saying Cotton is far superior in the world of comfortable fabrics, especially towels. Polyester & Sand Free travel towels exist not only because they pack small, but also because they're extremely cheap to manufacture. We’re not about cheap. We’re about affordable quality and conscious choices. </p><p>If that sounds like it could be your comfort zone too, maybe have a little lay down on a Layday.</p>",
             "width": "100%",
             "max_width": "none",
             "alignment": "left",
@@ -687,7 +687,7 @@
           "type": "button",
           "name": "t:names.button",
           "settings": {
-            "label": "Shop Layday Products",
+            "label": "See our full collection of amazing travel towels.",
             "link": "shopify://collections/all",
             "open_in_new_tab": false,
             "style_class": "button",
