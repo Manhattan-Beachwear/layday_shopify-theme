@@ -393,6 +393,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
+                "image": "shopify://shop_images/towel-care_man-drying.webp",
                 "link": "",
                 "hover_scale": false,
                 "image_ratio": "adapt",
@@ -515,6 +516,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
+                "image": "shopify://shop_images/towel-care_beach.webp",
                 "link": "",
                 "hover_scale": false,
                 "image_ratio": "adapt",
