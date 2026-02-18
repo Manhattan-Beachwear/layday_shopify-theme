@@ -358,10 +358,64 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "text_XXRFQm": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<h2>A note on Fringes</h2>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_MG8UY4": {
+              "type": "text",
+              "name": "t:names.description",
+              "settings": {
+                "text": "<p>Our towels are fresh off the loom, so naturally there's going to be the odd horizontal yarn that comes loose. Don't stress that your towel is going to unravel - it's simply a few loose strands. To remove the lose thread, gently lift the thread and cut off with scissors. Please do not pull / snap the thread as this will damage the weave.</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
             }
           },
           "block_order": [
-            "image_n6rU8T"
+            "image_n6rU8T",
+            "text_XXRFQm",
+            "text_MG8UY4"
           ]
         },
         "group_K3hXXt": {
@@ -427,10 +481,64 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "text_TrDNMD": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<h2>A Note on Absorbency</h2>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_pbkePj": {
+              "type": "text",
+              "name": "t:names.description",
+              "settings": {
+                "text": "<p>Our towels get better with age, which is why optimal absorbency comes after 3-6 wash-dry cycles. The natural cotton fibres become softer and more absorbent with time as the natural waxes strip from the yarn. So hang tight, optimal absorbency is on the way!</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
             }
           },
           "block_order": [
-            "image_w94tVf"
+            "image_w94tVf",
+            "text_TrDNMD",
+            "text_pbkePj"
           ]
         }
       },
@@ -470,7 +578,6 @@
     },
     "divider_w9CnYB": {
       "type": "divider",
-      "disabled": true,
       "name": "t:names.divider_section",
       "settings": {
         "color_scheme": "",
@@ -530,7 +637,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<h3>Shop Blankets</h3>",
+                "text": "<h3>Shop our Towels</h3>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -626,10 +733,14 @@
       "block_order": [
         "group_aXYDiC"
       ],
-      "disabled": true,
       "name": "t:names.collections_bento",
       "settings": {
-        "collection_list": [],
+        "collection_list": [
+          "all-towels",
+          "flat-weave-towels",
+          "french-terry-towels",
+          "jaquard-weave-towels"
+        ],
         "layout_type": "bento",
         "carousel_on_mobile": false,
         "columns": 4,
