@@ -62,9 +62,9 @@
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
-        "image_1": "shopify://shop_images/Sustainability-banner_left.webp",
+        "image_1": "shopify://shop_images/hero-banner-sustainability_left.webp",
         "media_type_2": "image",
-        "image_2": "shopify://shop_images/Sustainability-banner_right.webp",
+        "image_2": "shopify://shop_images/hero-banner-sustainability_right.webp",
         "stack_media_on_mobile": true,
         "custom_mobile_media": false,
         "media_type_1_mobile": "image",
@@ -105,7 +105,7 @@
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
-            "type_preset": "h2",
+            "type_preset": "h1",
             "font": "var(--font-body--family)",
             "font_size": "1rem",
             "line_height": "normal",
@@ -231,7 +231,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/Icon-leaf.webp",
+                "image": "shopify://shop_images/icon-leaf.webp",
                 "link": "",
                 "hover_scale": false,
                 "image_ratio": "adapt",
@@ -597,7 +597,7 @@
       "name": "Image Banner",
       "settings": {
         "media_type_1": "image",
-        "image_1": "shopify://shop_images/lifestyle_lake.webp",
+        "image_1": "shopify://shop_images/woman-in-lake.webp",
         "media_type_2": "image",
         "stack_media_on_mobile": true,
         "custom_mobile_media": false,
@@ -675,7 +675,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/Papaya.webp",
+                "image": "shopify://shop_images/papaya_square.webp",
                 "link": "",
                 "hover_scale": false,
                 "image_ratio": "adapt",
@@ -798,7 +798,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/UMBRELLA-SANDSTRIPE4.webp",
+                "image": "shopify://shop_images/umbrella-man_square.webp",
                 "link": "",
                 "hover_scale": false,
                 "image_ratio": "adapt",
@@ -876,135 +876,11 @@
             "text_XYa9y9",
             "text_LTpQHk"
           ]
-        },
-        "group_wytxbA": {
-          "type": "group",
-          "name": "t:names.column",
-          "settings": {
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "center",
-            "vertical_alignment_flex_direction_column": "flex-start",
-            "gap": 8,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "link": "",
-            "open_in_new_tab": false,
-            "placeholder": "",
-            "padding-block-start": 10,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "image_3X9KEh": {
-              "type": "image",
-              "name": "t:names.image",
-              "settings": {
-                "image": "shopify://shop_images/CANDLE3.webp",
-                "link": "",
-                "hover_scale": false,
-                "image_ratio": "adapt",
-                "width": "fill",
-                "custom_width": 100,
-                "width_mobile": "fill",
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 12,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text_DLLMEx": {
-              "type": "text",
-              "name": "t:names.heading",
-              "settings": {
-                "text": "<h3>Soy Wax</h3>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "h2",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 24,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text_wMMWkw": {
-              "type": "text",
-              "name": "t:names.description",
-              "settings": {
-                "text": "<p>Our candles are made from soy wax, a natural material derived from soybeans. Renewable and biodegradable, soy wax burns cleaner and lasts longer than traditional paraffin wax, making it a more sustainable choice.</p>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "image_3X9KEh",
-            "text_DLLMEx",
-            "text_wMMWkw"
-          ]
         }
       },
       "block_order": [
         "group_8QaKDM",
-        "group_VpqKAq",
-        "group_wytxbA"
+        "group_VpqKAq"
       ],
       "name": "t:names.multicolumn",
       "settings": {
@@ -1083,7 +959,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/LIFESTYLE_water.webp",
+                "image": "shopify://shop_images/water_square.webp",
                 "link": "",
                 "hover_scale": false,
                 "image_ratio": "adapt",
@@ -1206,7 +1082,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/Lifestyle_umbrella.webp",
+                "image": "shopify://shop_images/umbrella-woman_square.webp",
                 "link": "",
                 "hover_scale": false,
                 "image_ratio": "adapt",
@@ -1329,7 +1205,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/LIFESTYLE22.webp",
+                "image": "shopify://shop_images/beach-towel_square.webp",
                 "link": "",
                 "hover_scale": false,
                 "image_ratio": "adapt",
@@ -1449,7 +1325,7 @@
       "name": "Image Banner",
       "settings": {
         "media_type_1": "image",
-        "image_1": "shopify://shop_images/Lifestyle_towels-on-tree.webp",
+        "image_1": "shopify://shop_images/hero-banner_towels-on-tree.webp",
         "media_type_2": "image",
         "stack_media_on_mobile": true,
         "custom_mobile_media": false,
@@ -1486,7 +1362,7 @@
         "image_iWeaRV": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/B-Corp_leaves.webp",
+            "image": "shopify://shop_images/b-corp_leaves.webp",
             "link": "",
             "hover_scale": false,
             "image_ratio": "square",
