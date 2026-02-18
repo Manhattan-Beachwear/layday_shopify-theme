@@ -149,59 +149,7 @@
           },
           "blocks": {}
         },
-        "text_D4BHmX": {
-          "type": "text",
-          "name": "t:names.heading",
-          "settings": {
-            "text": "<h2>First Things First</h2>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 24,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "text_KJR9AE": {
-          "type": "text",
-          "name": "t:names.text",
-          "settings": {
-            "text": "<p>Sure, your Layday will dry you fresh out of the pack, but 2 wash cycles straight up will kick-start a long term drying relationship.</p><p>1. For Wash #1, add 1/2 a cup of white vinegar to a warm machine cycle. This will strip the natural waxes from the yarn and allow optimum absorbency. No need to add any detergents.</p><p>2. While your towel is still wet from Wash #1, wash again on a warm cycle with 1/2 a cup of Bicarbonate Soda. This will tighten the weave and prevent the fabric from snagging. Again, no need to add any detergents to this cycle.</p><p>You're Layday's are now good to go!</p>",
-            "width": "100%",
-            "max_width": "none",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "text_EJBwYw": {
+        "text_xpgMx3": {
           "type": "text",
           "name": "t:names.heading",
           "settings": {
@@ -227,11 +175,11 @@
           },
           "blocks": {}
         },
-        "text_Wh3cz8": {
+        "text_qByWCY": {
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>For your standard care, we recommend:</p><ul><li>Cold machine wash with like colours on a gentle cycle</li><li>Tumble dry on low</li><li>Avoid Fabric Softeners</li><li>Do not Bleach</li></ul>",
+            "text": "<ul><li>Gently brush off any sand, dust or dirt from the surface of the canopy after each use</li><li>Always ensure the canopy fabric is dry before storing. Never store when wet</li><li>Spot clean with mild soapy water as required</li></ul>",
             "width": "100%",
             "max_width": "none",
             "alignment": "left",
@@ -253,11 +201,11 @@
           },
           "blocks": {}
         },
-        "text_xpgMx3": {
+        "text_D4BHmX": {
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h2>Good things come to those who wait</h2>",
+            "text": "<h3>Assembling your Umbrella</h3>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -279,11 +227,63 @@
           },
           "blocks": {}
         },
-        "text_qByWCY": {
+        "text_KJR9AE": {
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>Our towels get better with age, which is why optimal absorbency comes after 3-6 wash-dry cycles. The natural cotton fibres become softer and more absorbent with time as the natural waxes strip from the yarn. So hang tight, optimal absorbency is on it's way!</p>",
+            "text": "<ol><li>Loosen the hinge by turning the switch to the left</li><li>Straighten the timber pole and secure the hinge by turning the switch to the right</li><li>Secure the pole at least 35cm into the sand</li><li>To open the umbrella, push the slider to the top of the pole and press the bottom button on the slider until you hear a click</li></ol>",
+            "width": "100%",
+            "max_width": "none",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_EJBwYw": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h3>Dismantling your Umbrella</h3>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 24,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_Wh3cz8": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<ol><li>Press the top button on the slider and gently pull the slider down</li><li>Loosen the hinge by turning the switch to the left</li><li>Fold the lower pole towards the umbrella and tighten the hinge again</li><li>Give your umbrella a gentle shake, brushing off any sand and return to carry bag</li></ol>",
             "width": "100%",
             "max_width": "none",
             "alignment": "left",
@@ -309,12 +309,12 @@
       "block_order": [
         "text_pLQDqJ",
         "text_9gP463",
+        "text_xpgMx3",
+        "text_qByWCY",
         "text_D4BHmX",
         "text_KJR9AE",
         "text_EJBwYw",
-        "text_Wh3cz8",
-        "text_xpgMx3",
-        "text_qByWCY"
+        "text_Wh3cz8"
       ],
       "name": "t:names.rich_text_section",
       "settings": {
