@@ -62,9 +62,9 @@
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
-        "image_1": "shopify://shop_images/towel-care_banner-left.webp",
+        "image_1": "shopify://shop_images/umbrella-care_banner-left.webp",
         "media_type_2": "image",
-        "image_2": "shopify://shop_images/towel-care_banner-right.webp",
+        "image_2": "shopify://shop_images/umbrella-care_banner-right.webp",
         "stack_media_on_mobile": false,
         "custom_mobile_media": false,
         "media_type_1_mobile": "image",
@@ -101,7 +101,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h1>Looking After Your Layday</h1>",
+            "text": "<h1>Looking After Your Umbrella</h1>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
@@ -127,7 +127,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>We want you to enjoy your towels for for many Summer's to come. To keep them looking great & feeling soft, follow the tips below.</p>",
+            "text": "<p>We want you to enjoy your umbrella for many Summer's to come. To keep it looking great, follow the tips below.</p>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
@@ -393,7 +393,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/towel-care_man-drying.webp",
+                "image": "shopify://shop_images/umbrella-care_1.webp",
                 "link": "",
                 "hover_scale": false,
                 "image_ratio": "adapt",
@@ -412,64 +412,10 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
-            },
-            "text_XXRFQm": {
-              "type": "text",
-              "name": "t:names.heading",
-              "settings": {
-                "text": "<h2>A note on Fringes</h2>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "center",
-                "type_preset": "h4",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text_MG8UY4": {
-              "type": "text",
-              "name": "t:names.description",
-              "settings": {
-                "text": "<p>Our towels are fresh off the loom, so naturally there's going to be the odd horizontal yarn that comes loose. Don't stress that your towel is going to unravel - it's simply a few loose strands. To remove the lose thread, gently lift the thread and cut off with scissors. Please do not pull / snap the thread as this will damage the weave.</p>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "center",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
             }
           },
           "block_order": [
-            "image_n6rU8T",
-            "text_XXRFQm",
-            "text_MG8UY4"
+            "image_n6rU8T"
           ]
         },
         "group_K3hXXt": {
@@ -516,7 +462,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/towel-care_beach.webp",
+                "image": "shopify://shop_images/umbrella-care_2.webp",
                 "link": "",
                 "hover_scale": false,
                 "image_ratio": "adapt",
@@ -535,64 +481,10 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
-            },
-            "text_TrDNMD": {
-              "type": "text",
-              "name": "t:names.heading",
-              "settings": {
-                "text": "<h2>A Note on Absorbency</h2>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "center",
-                "type_preset": "h4",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text_pbkePj": {
-              "type": "text",
-              "name": "t:names.description",
-              "settings": {
-                "text": "<p>Our towels get better with age, which is why optimal absorbency comes after 3-6 wash-dry cycles. The natural cotton fibres become softer and more absorbent with time as the natural waxes strip from the yarn. So hang tight, optimal absorbency is on the way!</p>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "center",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
             }
           },
           "block_order": [
-            "image_w94tVf",
-            "text_TrDNMD",
-            "text_pbkePj"
+            "image_w94tVf"
           ]
         }
       },
@@ -632,6 +524,7 @@
     },
     "divider_w9CnYB": {
       "type": "divider",
+      "disabled": true,
       "name": "t:names.divider_section",
       "settings": {
         "color_scheme": "",
@@ -691,7 +584,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<h3>Shop our Towels</h3>",
+                "text": "<h3>Shop our Umbrellas</h3>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -787,6 +680,7 @@
       "block_order": [
         "group_aXYDiC"
       ],
+      "disabled": true,
       "name": "t:names.collections_bento",
       "settings": {
         "collection_list": [
