@@ -62,7 +62,7 @@
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
-        "image_1": "shopify://shop_images/Layday-Beach-Hero.webp",
+        "image_1": "shopify://shop_images/beach_hero.webp",
         "media_type_2": "image",
         "stack_media_on_mobile": false,
         "custom_mobile_media": false,
@@ -230,7 +230,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/Polaroid56_01caff74-5578-445a-ab09-18e5cd2f3251.webp",
+                "image": "shopify://shop_images/polaroid-58.webp",
                 "link": "",
                 "hover_scale": false,
                 "image_ratio": "adapt",
@@ -353,7 +353,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/Polaroid52_359f7cd2-e9f3-4d4a-930d-fabcf32f005f.webp",
+                "image": "shopify://shop_images/polaroid-52.webp",
                 "link": "",
                 "hover_scale": false,
                 "image_ratio": "adapt",
@@ -476,7 +476,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/Polaroid55_5ae0ec16-ffed-43eb-8e38-9d22a3e00cc6.webp",
+                "image": "shopify://shop_images/polaroid-55.webp",
                 "link": "",
                 "hover_scale": false,
                 "image_ratio": "adapt",
@@ -596,9 +596,9 @@
       "name": "Image Banner",
       "settings": {
         "media_type_1": "image",
-        "image_1": "shopify://shop_images/Split_1.webp",
+        "image_1": "shopify://shop_images/hero-banner_right.webp",
         "media_type_2": "image",
-        "image_2": "shopify://shop_images/Split_2.webp",
+        "image_2": "shopify://shop_images/hero-banner_left.webp",
         "stack_media_on_mobile": true,
         "custom_mobile_media": false,
         "media_type_1_mobile": "image",
@@ -651,7 +651,7 @@
             "background_color": "#00000026",
             "corner_radius": 0,
             "padding-block-start": 0,
-            "padding-block-end": 48,
+            "padding-block-end": 0,
             "padding-inline-start": 0,
             "padding-inline-end": 0
           },
@@ -687,12 +687,12 @@
           "type": "button",
           "name": "t:names.button",
           "settings": {
-            "label": "Shop now",
+            "label": "Shop Layday Products",
             "link": "shopify://collections/all",
             "open_in_new_tab": false,
             "style_class": "button",
-            "width": "fit-content",
-            "custom_width": 100,
+            "width": "custom",
+            "custom_width": 60,
             "width_mobile": "fit-content",
             "custom_width_mobile": 100
           },
@@ -713,7 +713,7 @@
         "align_baseline": false,
         "horizontal_alignment_flex_direction_column": "center",
         "vertical_alignment_flex_direction_column": "center",
-        "gap": 25,
+        "gap": 60,
         "section_width": "full-width",
         "section_height": "",
         "section_height_custom": 50,
