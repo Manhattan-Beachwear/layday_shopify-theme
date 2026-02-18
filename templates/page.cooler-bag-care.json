@@ -470,6 +470,7 @@
     },
     "divider_w9CnYB": {
       "type": "divider",
+      "disabled": true,
       "name": "t:names.divider_section",
       "settings": {
         "color_scheme": "",
@@ -625,14 +626,10 @@
       "block_order": [
         "group_aXYDiC"
       ],
+      "disabled": true,
       "name": "t:names.collections_bento",
       "settings": {
-        "collection_list": [
-          "all-towels",
-          "flat-weave-towels",
-          "french-terry-towels",
-          "jaquard-weave-towels"
-        ],
+        "collection_list": [],
         "layout_type": "bento",
         "carousel_on_mobile": false,
         "columns": 4,
