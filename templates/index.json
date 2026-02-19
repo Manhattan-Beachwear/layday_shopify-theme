@@ -1180,7 +1180,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h3><strong>Wrap Yourself in Luxury with our Travel Towels</strong></h3>",
+                "text": "<h2><strong>Wrap Yourself in Luxury with our Travel Towels</strong></h2>",
                 "width": "100%",
                 "max_width": "none",
                 "alignment": "left",
