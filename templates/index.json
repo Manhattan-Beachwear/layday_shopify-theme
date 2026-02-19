@@ -1304,7 +1304,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p>Optimised for adventure, our cotton beach towels are highly packable, with only one third of the bulk of a standard beach towel. Whether you’re exploring the coast or chasing waterfalls, our lightweight beach towels pack down smaller and are easy to carry, making them the ultimate adventure companion. </p><p>Crafted from the highest quality materials, our collection is made from 100% pure cotton. Known for its excellent absorbency, durability and softness, cotton is the superior material when it comes to comfort. It is also incredibly sustainable and eco-friendly – cotton is a natural fibre grown in nature that is naturally renewable and biodegradable – making our towels better for you and the planet. </p>",
+                "text": "<p>Optimised for adventure, our cotton beach towels are highly packable, with only one third of the bulk of a standard beach towel. Whether you’re exploring the coast or chasing waterfalls, our lightweight beach towels pack down smaller and are easy to carry, making them the ultimate adventure companion. </p><p>Crafted from the highest quality materials, our collection is made from 100% pure cotton. Known for its excellent absorbency, durability and softness, cotton is the superior material when it comes to comfort. It is also incredibly <a href=\"/pages/sustainability\" title=\"Sustainability\">sustainable</a> and eco-friendly – cotton is a natural fibre grown in nature that is naturally renewable and biodegradable – making our towels better for you and the planet. </p>",
                 "width": "100%",
                 "max_width": "none",
                 "alignment": "left",
