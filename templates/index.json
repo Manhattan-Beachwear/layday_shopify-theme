@@ -1133,10 +1133,10 @@
         "padding-block-end": 48
       }
     },
-    "section_GnxCzb": {
-      "type": "section",
+    "expandable_AjyqTw": {
+      "type": "expandable",
       "blocks": {
-        "group_Y73tUH": {
+        "group_9mrfXq": {
           "type": "group",
           "name": "t:names.group",
           "settings": {
@@ -1234,7 +1234,7 @@
             "text_FB3bAX"
           ]
         },
-        "group_dYRdVy": {
+        "group_tKJzCt": {
           "type": "group",
           "name": "t:names.group",
           "settings": {
@@ -1332,7 +1332,7 @@
             "text_K4LgEN"
           ]
         },
-        "group_qiLqwg": {
+        "group_w7P4dr": {
           "type": "group",
           "name": "t:names.group",
           "settings": {
@@ -1430,7 +1430,7 @@
             "text_XtGG9f"
           ]
         },
-        "group_pqqeN9": {
+        "group_UBaVEw": {
           "type": "group",
           "name": "t:names.group",
           "settings": {
@@ -1528,7 +1528,7 @@
             "text_zHHikf"
           ]
         },
-        "group_i9kiJp": {
+        "group_b6nxFV": {
           "type": "group",
           "name": "t:names.group",
           "settings": {
@@ -1625,43 +1625,41 @@
             "text_PEEWiJ",
             "text_reazE6"
           ]
+        },
+        "read-more-button": {
+          "type": "expandable-trigger",
+          "name": "t:names.expandable_trigger",
+          "static": true,
+          "settings": {
+            "style_class": "button",
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100,
+            "margin_top": 24,
+            "margin_bottom": 0,
+            "read_more_text": "",
+            "read_less_text": ""
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "group_Y73tUH",
-        "group_dYRdVy",
-        "group_qiLqwg",
-        "group_pqqeN9",
-        "group_i9kiJp"
+        "group_9mrfXq",
+        "group_tKJzCt",
+        "group_w7P4dr",
+        "group_UBaVEw",
+        "group_b6nxFV"
       ],
-      "name": "t:names.rich_text_section",
+      "name": "t:names.expandable",
       "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "flex-start",
-        "gap": 25,
-        "section_width": "page-width",
-        "section_height": "small",
-        "section_height_custom": 50,
+        "expanded_by_default": false,
+        "preview_blocks": 1,
+        "blocks_gap": 24,
         "color_scheme": "",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "image_zoom_fade_animation": false,
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     }
   },
@@ -1673,6 +1671,6 @@
     "section_cUcCrR",
     "section_iN8MND",
     "section_Brp7XT",
-    "section_GnxCzb"
+    "expandable_AjyqTw"
   ]
 }
