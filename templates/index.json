@@ -1208,7 +1208,7 @@
               "settings": {
                 "text": "<p>Born and bred on the rugged coast of western Australia, we craft pure cotton travel towels that are made for your Lay Days. </p><p>Whether you are spending your day in the sand, sun or sea, our luxury towels are butter soft, highly absorbent, and super comfortable, making them the best travel towels in Australia. </p>",
                 "width": "100%",
-                "max_width": "normal",
+                "max_width": "none",
                 "alignment": "left",
                 "type_preset": "rte",
                 "font": "var(--font-body--family)",
@@ -1278,7 +1278,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h3><strong>Discover the Best Towels in Australia</strong></h3>",
+                "text": "<h3><strong>Discover the Best Towels from Australia</strong></h3>",
                 "width": "100%",
                 "max_width": "none",
                 "alignment": "left",
@@ -1653,7 +1653,7 @@
       ],
       "name": "t:names.expandable",
       "settings": {
-        "expanded_by_default": false,
+        "expanded_by_default": true,
         "preview_blocks": 1,
         "blocks_gap": 24,
         "color_scheme": "",
