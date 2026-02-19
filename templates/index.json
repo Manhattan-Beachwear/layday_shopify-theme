@@ -1598,7 +1598,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p>Our collection of sustainable beach towels are the perfect companion for all adventures. Browse the <a href=\"https://layday.co/collections/all\">collection</a> to find a travel towel for your next Layday.</p>",
+                "text": "<p>Our collection of sustainable beach towels are the perfect companion for all adventures. Browse the <a href=\"/collections/all-towels\" title=\"All Towels\">collection</a> to find a travel towel for your next Layday.</p>",
                 "width": "100%",
                 "max_width": "none",
                 "alignment": "left",
