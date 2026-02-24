@@ -455,7 +455,7 @@
               "name": "t:names.button",
               "settings": {
                 "label": "Shop Towels",
-                "link": "shopify://collections/all",
+                "link": "shopify://collections/towels",
                 "open_in_new_tab": false,
                 "style_class": "button",
                 "width": "fit-content",
@@ -539,8 +539,8 @@
               "type": "button",
               "name": "t:names.button",
               "settings": {
-                "label": "Shop Bags",
-                "link": "shopify://collections/all",
+                "label": "Shop Cooler Bags",
+                "link": "shopify://collections/cooler-bags",
                 "open_in_new_tab": false,
                 "style_class": "button",
                 "width": "fit-content",
