@@ -359,7 +359,7 @@
       },
       "name": "t:names.products_grid",
       "settings": {
-        "collection": "towels",
+        "collection": "all-towels",
         "layout_type": "grid",
         "carousel_on_mobile": false,
         "max_products": 3,
@@ -1057,10 +1057,10 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/TIDESEAGRASS4.webp",
+                "image": "shopify://shop_images/Screenshot_2026-02-24_121148.png",
                 "link": "",
                 "hover_scale": false,
-                "image_ratio": "adapt",
+                "image_ratio": "square",
                 "width": "fill",
                 "custom_width": 100,
                 "width_mobile": "fill",
@@ -1081,8 +1081,8 @@
               "type": "button",
               "name": "t:names.button",
               "settings": {
-                "label": "Shop Towels",
-                "link": "shopify://collections/all-towels",
+                "label": "Shop Blankets",
+                "link": "shopify://collections/blankets",
                 "open_in_new_tab": false,
                 "style_class": "button",
                 "width": "fit-content",
