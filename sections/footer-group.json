@@ -228,7 +228,7 @@
               "name": "t:names.menu",
               "settings": {
                 "menu": "footer",
-                "heading": "",
+                "heading": "Explore the Brand",
                 "menu_spacing": 12,
                 "show_as_accordion": true,
                 "accordion_icon": "caret",
@@ -321,7 +321,7 @@
               "name": "t:names.menu",
               "settings": {
                 "menu": "footer-menu-new",
-                "heading": "",
+                "heading": "Shop Now",
                 "menu_spacing": 12,
                 "show_as_accordion": true,
                 "accordion_icon": "caret",
