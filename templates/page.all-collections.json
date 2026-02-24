@@ -99,8 +99,8 @@
           "static": true,
           "settings": {
             "placement": "on_image",
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "flex-start",
+            "horizontal_alignment": "center",
+            "vertical_alignment": "center",
             "collection_card_gap": 8,
             "inherit_color_scheme": true,
             "color_scheme": "",
@@ -165,15 +165,14 @@
       "name": "t:names.collections_grid",
       "settings": {
         "collection_list": [
-          "all-towels",
           "towels",
           "cooler-bags",
           "umbrellas",
           "blankets"
         ],
-        "layout_type": "carousel",
+        "layout_type": "grid",
         "carousel_on_mobile": false,
-        "columns": 3,
+        "columns": 4,
         "mobile_columns": "2",
         "mobile_card_size": "60cqw",
         "columns_gap": 8,
