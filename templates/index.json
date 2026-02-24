@@ -69,7 +69,7 @@
           "name": "t:names.button",
           "settings": {
             "label": "Shop Now",
-            "link": "shopify://collections/all",
+            "link": "shopify://collections",
             "open_in_new_tab": false,
             "style_class": "button",
             "width": "fit-content",
@@ -180,7 +180,7 @@
           "name": "t:names.button",
           "settings": {
             "label": "Shop now",
-            "link": "shopify://collections/all",
+            "link": "shopify://collections",
             "open_in_new_tab": false,
             "style_class": "button",
             "width": "fit-content",
@@ -840,7 +840,7 @@
               "name": "t:names.button",
               "settings": {
                 "label": "Shop Umbrellas",
-                "link": "shopify://collections/all",
+                "link": "shopify://collections/umbrellas",
                 "open_in_new_tab": false,
                 "style_class": "button",
                 "width": "fit-content",
