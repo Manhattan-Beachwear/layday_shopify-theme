@@ -200,6 +200,7 @@
             "text_j44Qzp": {
               "type": "text",
               "name": "t:names.heading",
+              "disabled": true,
               "settings": {
                 "text": "<h2>Layday</h2>",
                 "width": "fit-content",
@@ -228,7 +229,7 @@
               "name": "t:names.menu",
               "settings": {
                 "menu": "footer",
-                "heading": "Explore the Brand",
+                "heading": "Laydya",
                 "menu_spacing": 12,
                 "show_as_accordion": true,
                 "accordion_icon": "caret",
@@ -293,6 +294,7 @@
             "text_N7wne4": {
               "type": "text",
               "name": "t:names.heading",
+              "disabled": true,
               "settings": {
                 "text": "<h2>Shop</h2>",
                 "width": "fit-content",
@@ -321,7 +323,7 @@
               "name": "t:names.menu",
               "settings": {
                 "menu": "footer-menu-new",
-                "heading": "Shop Now",
+                "heading": "Shop",
                 "menu_spacing": 12,
                 "show_as_accordion": true,
                 "accordion_icon": "caret",
