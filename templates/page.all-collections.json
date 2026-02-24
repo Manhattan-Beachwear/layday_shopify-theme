@@ -166,10 +166,10 @@
       "settings": {
         "collection_list": [
           "all-towels",
-          "blankets",
-          "cooler-bags",
           "towels",
-          "umbrellas"
+          "cooler-bags",
+          "umbrellas",
+          "blankets"
         ],
         "layout_type": "carousel",
         "carousel_on_mobile": false,
