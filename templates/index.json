@@ -493,7 +493,7 @@
       "name": "Image Border",
       "settings": {
         "content_direction": "row",
-        "vertical_on_mobile": true,
+        "vertical_on_mobile": false,
         "horizontal_alignment": "center",
         "vertical_alignment": "center",
         "align_baseline": false,
@@ -717,10 +717,10 @@
                 "label": "Learn About Sustainability",
                 "link": "shopify://pages/sustainability",
                 "open_in_new_tab": false,
-                "style_class": "button",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
+                "style_class": "button-secondary",
+                "width": "custom",
+                "custom_width": 46,
+                "width_mobile": "custom",
                 "custom_width_mobile": 100
               },
               "blocks": {}
