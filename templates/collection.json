@@ -223,7 +223,7 @@
         "padding-block-start": 0,
         "padding-block-end": 32,
         "enable_combined_listings": true,
-        "show_product_image_swatches": false,
+        "show_product_image_swatches": true,
         "product_image_swatch_style": "circle",
         "product_image_swatch_size": 48,
         "show_horizontal_scroll": false
