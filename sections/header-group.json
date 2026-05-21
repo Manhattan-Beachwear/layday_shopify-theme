@@ -18,7 +18,7 @@
           "type": "_announcement",
           "name": "t:names.announcement",
           "settings": {
-            "text": "<strong>Free shipping on all orders</strong>",
+            "text": "<strong>25% off sitewide. use code mdw25.</strong>",
             "link": "shopify://pages/holiday-2025-shipping-information",
             "font": "var(--font-accent--family)",
             "font_size": "0.875rem",
