@@ -16,7 +16,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>Our Memorial Day Sale Is Live</p>",
+            "text": "<p>Made for Days Off</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -42,7 +42,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<p>Celebrate Summer with 25% off</p>",
+            "text": "<p>Celebrate Summer with Layday</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -68,7 +68,7 @@
           "type": "button",
           "name": "t:names.button",
           "settings": {
-            "label": "Use code mdw25",
+            "label": "Shop Now",
             "link": "shopify://collections",
             "open_in_new_tab": false,
             "style_class": "button",
