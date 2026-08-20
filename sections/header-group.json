@@ -13,25 +13,7 @@
   "sections": {
     "header_announcements_9jGBFp": {
       "type": "header-announcements",
-      "blocks": {
-        "announcement_y4xynq": {
-          "type": "_announcement",
-          "name": "t:names.announcement",
-          "settings": {
-            "text": "<strong>25% off sitewide. use code mdw25.</strong>",
-            "link": "shopify://pages/holiday-2025-shipping-information",
-            "font": "var(--font-accent--family)",
-            "font_size": "0.875rem",
-            "weight": "",
-            "letter_spacing": "loose",
-            "case": "uppercase"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "announcement_y4xynq"
-      ],
+      "disabled": true,
       "name": "t:names.announcement_bar",
       "settings": {
         "speed": 5,
