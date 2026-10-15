@@ -314,6 +314,91 @@
             "button_E7TtMj"
           ]
         },
+        "group_tT7QPK": {
+          "type": "group",
+          "name": "t:names.column",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "flex-start",
+            "gap": 24,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 10,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "image_iPmN3M": {
+              "type": "image",
+              "name": "t:names.image",
+              "settings": {
+                "image": "shopify://shop_images/LDL-DUN001_F_1.jpg",
+                "link": "shopify://collections/beach-chairs",
+                "hover_scale": false,
+                "image_ratio": "portrait",
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "button_Mxnizz": {
+              "type": "button",
+              "name": "t:names.button",
+              "settings": {
+                "label": "Shop Beach Chairs",
+                "link": "shopify://collections/beach-chairs",
+                "open_in_new_tab": false,
+                "style_class": "button",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "image_iPmN3M",
+            "button_Mxnizz"
+          ]
+        },
         "group_cVRGyP": {
           "type": "group",
           "name": "t:names.column",
@@ -358,7 +443,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/LDC-VOY001_5.jpg",
+                "image": "shopify://shop_images/LDC-VOY004_D.jpg",
                 "link": "",
                 "hover_scale": false,
                 "image_ratio": "portrait",
@@ -402,6 +487,7 @@
       },
       "block_order": [
         "group_bbA8zh",
+        "group_tT7QPK",
         "group_cVRGyP"
       ],
       "name": "t:names.multicolumn",
